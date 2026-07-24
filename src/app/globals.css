@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  ============================================================
+  DESPERTAR PΨ — SISTEMA DE DESIGN
+  ============================================================
+  Conceito: "o limiar" — Despertar é o instante em que a noite
+  vira dia. O trabalho interior mergulha na noite (inconsciente);
+  o despertar chega na luz do amanhecer.
+
+  As cores abaixo são o "vocabulário visual" do site inteiro.
+  Você raramente vai precisar mexer aqui. Se quiser trocar uma
+  cor da marca, mude o valor ao lado de --brand-... e ela muda
+  no site todo.
+  ============================================================
+*/
+
+@theme {
+  /* — Base clara e acolhedora (luz de amanhecer) — */
+  --color-dawn: #fbf6f1; /* fundo principal */
+  --color-dawn-deep: #f4e7de; /* seções de respiro (pêssego suave) */
+  --color-dawn-line: #e7d8cc; /* linhas e bordas finas */
+
+  /* — Crepúsculo (o mundo interior, a noite) — */
+  --color-twilight: #251c33; /* texto e seções escuras */
+  --color-twilight-soft: #3a2f4d; /* superfícies escuras secundárias */
+
+  /* — Identidade: ametista (Ψ, intuição, espiritualidade) — */
+  --color-amethyst: #574a8c;
+  --color-amethyst-deep: #40356b;
+  --color-amethyst-tint: #ece8f4; /* fundo suave lilás */
+
+  /* — Calor / ação (herda o calor da terracota) — */
+  --color-ember: #c36a4c; /* CTAs */
+  --color-ember-deep: #a9502f;
+  --color-gold: #c79a54; /* primeira luz — símbolo Ψ e detalhes */
+
+  /* — Tinta de texto sobre fundo claro — */
+  --color-ink: #2a2233;
+  --color-ink-soft: #6a6072; /* texto secundário */
+
+  /* — Espectro de cromoterapia (cor de cada terapia) —
+     Retirado do próprio texto do Marco: cada cor tem um sentido.
+     É usado para dar identidade a cada uma das 9 terapias. */
+  --color-cromo-azul: #3e6b8f; /* acalmar mente e corpo */
+  --color-cromo-verde: #4e7a5e; /* equilíbrio e serenidade */
+  --color-cromo-violeta: #6b4e9e; /* intuição e espiritualidade */
+  --color-cromo-ambar: #cf9640; /* alegria e clareza */
+  --color-cromo-rosa: #b7657a; /* acolhimento */
+  --color-cromo-indigo: #48507e; /* profundidade / memória */
+  --color-cromo-vermelho: #b24a3c; /* energia e vitalidade */
+  --color-cromo-turquesa: #3f8a80; /* renovação */
+  --color-cromo-lavanda: #8a79b0; /* calma e serenidade */
+
+  /* — Tipografia — */
+  --font-display: var(--font-newsreader); /* serifa literária */
+  --font-body: var(--font-hanken); /* sans humanista */
+
+  /* — Ritmo — */
+  --radius-soft: 0.75rem;
+  --radius-round: 1.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+  Reduz o tamanho automático de fonte no iOS ao girar o celular,
+  e garante rolagem suave para os links de âncora do menu.
+*/
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-dawn);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Títulos usam a serifa por padrão. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-twilight);
+  text-wrap: balance;
+}
+
+/* Parágrafos não quebram deixando uma palavra órfã na última linha. */
+p {
+  text-wrap: pretty;
+}
+
+/* Foco visível para navegação por teclado (acessibilidade). */
+:focus-visible {
+  outline: 2px solid var(--color-amethyst);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respeita quem pediu menos animação no sistema operacional. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/*
+  — Textura de grão sutil — assinatura visual discreta que dá
+  "peso de papel" ao fundo claro, evitando o ar de template.
+  Aplicada com a classe .grain.
+*/
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Revelação suave ao rolar a página (usada por [data-reveal]). */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Linha "horizonte" — divisor fino que evoca a linha do amanhecer. */
+.horizon {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-dawn-line) 15%,
+    var(--color-dawn-line) 85%,
+    transparent
+  );
 }

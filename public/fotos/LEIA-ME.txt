@@ -1,0 +1,14 @@
+Coloque aqui as fotos do site (do Marco e do espaço).
+
+Sugestões de nomes:
+  marco.jpg          -> retrato do Marco
+  espaco.jpg         -> ambiente da clínica
+  detalhe.jpg        -> um detalhe acolhedor (poltrona, plantas, mãos em Reiki)
+
+Depois, na página, troque o placeholder informando o caminho, ex.:
+  src="/fotos/marco.jpg"
+
+Dicas:
+- Use fotos em boa resolução (o site otimiza e reduz sozinho).
+- Retrato em luz natural funciona melhor que flash.
+- Evite fotos de banco de imagem genéricas: rosto real converte mais.

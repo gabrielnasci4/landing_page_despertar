@@ -32,6 +32,11 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# permitir o modelo de exemplo (sem segredos)
+!.env.example
+
+# material de origem (docx do Marco) — fica só no computador
+/_material_original
 
 # vercel
 .vercel
