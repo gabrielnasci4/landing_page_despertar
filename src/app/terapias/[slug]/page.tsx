@@ -97,7 +97,8 @@ export default async function TerapiaPage({
               </div>
             </div>
             <PhotoSlot
-              alt={`Atendimento de ${t.nome}`}
+              src="/fotos/consultorio.jpg"
+              alt={`Espaço de atendimento para ${t.nome}`}
               etiqueta={`Foto — ${t.nome}`}
               priority
               className="aspect-[4/3] w-full rounded-[2rem]"

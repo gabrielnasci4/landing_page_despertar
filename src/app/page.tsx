@@ -6,6 +6,7 @@ import { TherapyGrid } from "@/components/sections/TherapyGrid";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ContactForm } from "@/components/ContactForm";
+import { FrasesCard } from "@/components/FrasesCard";
 import { JsonLd } from "@/components/JsonLd";
 import { faq } from "@/content/faq";
 import { clinica } from "@/content/clinica";
@@ -51,6 +52,7 @@ export default function Home() {
 
           <div className="relative">
             <PhotoSlot
+              src="/fotos/marco.jpg"
               alt="Marco Sadério, parapsicólogo clínico, em seu espaço de atendimento"
               etiqueta="Foto do Marco / do espaço"
               priority
@@ -136,7 +138,8 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2">
           <div data-reveal>
             <PhotoSlot
-              alt="Ambiente acolhedor do espaço de atendimento"
+              src="/fotos/consultorio.jpg"
+              alt="Ambiente acolhedor do consultório da Despertar PΨ"
               etiqueta="Foto do espaço / detalhe"
               className="aspect-[5/4] w-full rounded-[2rem]"
             />
@@ -238,12 +241,30 @@ export default function Home() {
         </ol>
       </section>
 
+      {/* 7.5 — MENSAGEM / CÁPSULA */}
+      <section className="mx-auto max-w-6xl px-5 pb-8 sm:px-8">
+        <div className="text-center" data-reveal>
+          <Eyebrow className="justify-center">Uma mensagem para você</Eyebrow>
+          <h2 className="mt-4 text-3xl leading-[1.1] sm:text-4xl">
+            Sua cápsula do dia
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-[var(--color-ink-soft)]">
+            No consultório, o Marco entrega uma mensagem a cada pessoa. Tire a
+            sua — e leve com você.
+          </p>
+        </div>
+        <div className="mt-10" data-reveal>
+          <FrasesCard />
+        </div>
+      </section>
+
       {/* 8 — SOBRE O MARCO */}
       <section className="bg-[var(--color-dawn-deep)]">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.9fr_1.1fr]">
           <div data-reveal>
             <PhotoSlot
-              alt="Retrato de Marco Sadério"
+              src="/fotos/recepcao.jpg"
+              alt="Sala de espera acolhedora da clínica"
               etiqueta="Retrato do Marco"
               className="aspect-[4/5] w-full rounded-[2rem]"
             />

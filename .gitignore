@@ -37,6 +37,8 @@ yarn-error.log*
 
 # material de origem (docx do Marco) — fica só no computador
 /_material_original
+# pasta bruta com todas as fotos originais (as usadas ficam em public/fotos)
+/fotos despertar
 
 # vercel
 .vercel

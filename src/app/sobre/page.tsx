@@ -31,6 +31,7 @@ export default function SobrePage() {
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="relative" data-reveal>
           <PhotoSlot
+            src="/fotos/marco.jpg"
             alt="Retrato de Marco Sadério, parapsicólogo clínico"
             etiqueta="Retrato do Marco"
             priority

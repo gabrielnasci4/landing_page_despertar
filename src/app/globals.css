@@ -21,23 +21,25 @@
   --color-dawn-deep: #f4e7de; /* seções de respiro (pêssego suave) */
   --color-dawn-line: #e7d8cc; /* linhas e bordas finas */
 
-  /* — Crepúsculo (o mundo interior, a noite) — */
-  --color-twilight: #251c33; /* texto e seções escuras */
-  --color-twilight-soft: #3a2f4d; /* superfícies escuras secundárias */
+  /* — Verde profundo (seções escuras — folha, floresta) — */
+  --color-twilight: #1f2b23; /* texto e seções escuras */
+  --color-twilight-soft: #2f4034; /* superfícies escuras secundárias */
 
-  /* — Identidade: ametista (Ψ, intuição, espiritualidade) — */
-  --color-amethyst: #574a8c;
-  --color-amethyst-deep: #40356b;
-  --color-amethyst-tint: #ece8f4; /* fundo suave lilás */
+  /* — Identidade: verde do logo (lótus — equilíbrio, despertar) —
+     Obs.: as variáveis mantêm o nome "amethyst" por motivo técnico,
+     mas o valor é o verde da marca. Mude aqui para reajustar o tom. */
+  --color-amethyst: #3f8552; /* verde principal (links, destaques) */
+  --color-amethyst-deep: #2e6a3f; /* verde escuro */
+  --color-amethyst-tint: #e7f0e6; /* fundo suave esverdeado */
 
-  /* — Calor / ação (herda o calor da terracota) — */
+  /* — Calor / ação (terracota — contraste quente com o verde) — */
   --color-ember: #c36a4c; /* CTAs */
   --color-ember-deep: #a9502f;
-  --color-gold: #c79a54; /* primeira luz — símbolo Ψ e detalhes */
+  --color-gold: #c79a54; /* dourado — detalhes e o símbolo Ψ */
 
   /* — Tinta de texto sobre fundo claro — */
-  --color-ink: #2a2233;
-  --color-ink-soft: #6a6072; /* texto secundário */
+  --color-ink: #26302a;
+  --color-ink-soft: #64706a; /* texto secundário */
 
   /* — Espectro de cromoterapia (cor de cada terapia) —
      Retirado do próprio texto do Marco: cada cor tem um sentido.

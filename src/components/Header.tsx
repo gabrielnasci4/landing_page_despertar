@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { PsiMark } from "./PsiMark";
+import Image from "next/image";
 import { CtaWhatsapp } from "./CtaWhatsapp";
 import { clinica } from "@/content/clinica";
 
@@ -48,15 +48,15 @@ export function Header() {
           aria-label={`${clinica.nome} — início`}
           onClick={() => setAberto(false)}
         >
-          <PsiMark className="h-8 w-8 text-[var(--color-gold)]" />
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-lg text-[var(--color-twilight)]">
-              Despertar <span className="text-[var(--color-amethyst)]">PΨ</span>
-            </span>
-            <span className="mt-0.5 text-[0.62rem] uppercase tracking-[0.18em] text-[var(--color-ink-soft)]">
-              Parapsicologia Clínica
-            </span>
-          </span>
+          <Image
+            src="/fotos/logo-despertar.png"
+            alt={clinica.nome}
+            width={2083}
+            height={1621}
+            priority
+            className="h-12 w-auto sm:h-14"
+          />
+          <span className="sr-only">{clinica.nome}</span>
         </Link>
 
         {/* Navegação — computador */}

@@ -61,7 +61,7 @@ export const clinica = {
     latitude: "",
     longitude: "",
     // Link para o botão "Como chegar" (perfil do Google do Marco).
-    linkMapa: "https://share.google/dWGVCOmsjUQWpQ7gf",
+    linkMapa: "https://share.google/0zdUJUY7Ejjeo3TGY",
   },
 
   // Atende presencial, online, ou os dois? true = sim.
@@ -70,11 +70,10 @@ export const clinica = {
   // Plataforma do atendimento online.
   plataformaOnline: "Google Meet",
 
-  // — Horários de atendimento — PREENCHER com os horários reais.
+  // — Horários de atendimento —
   // Cada linha: dia(s) e horário. Deixe a lista vazia [] para esconder.
   horarios: [
-    { dias: "Segunda a sexta", horario: "PREENCHER: ex. 9h às 19h" },
-    { dias: "Sábado", horario: "PREENCHER: ex. 9h às 12h" },
+    { dias: "Segunda a sexta", horario: "9h às 17h" },
   ],
 
   // — Redes sociais —
