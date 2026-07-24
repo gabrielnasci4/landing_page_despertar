@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PsiMark } from "./PsiMark";
+import Image from "next/image";
 import { clinica } from "@/content/clinica";
 import { terapias } from "@/content/terapias";
 import { temEndereco, enderecoLinha, pendente } from "@/lib/site";
@@ -13,12 +13,15 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-4">
         {/* Marca */}
         <div className="lg:col-span-1">
-          <div className="flex items-center gap-2.5">
-            <PsiMark className="h-9 w-9 text-[var(--color-gold)]" />
-            <span className="font-display text-xl text-white">
-              Despertar <span className="text-[var(--color-gold)]">PΨ</span>
-            </span>
-          </div>
+          <span className="inline-flex rounded-2xl bg-[var(--color-dawn)] px-4 py-3">
+            <Image
+              src="/fotos/logo-despertar.png"
+              alt={clinica.nome}
+              width={2083}
+              height={1621}
+              className="h-14 w-auto"
+            />
+          </span>
           <p className="mt-4 text-sm leading-relaxed text-[var(--color-dawn)]/65">
             {clinica.atividade}. Um espaço de acolhimento para o
             autoconhecimento, o equilíbrio e o bem-estar.

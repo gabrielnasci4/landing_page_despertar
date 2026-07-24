@@ -263,8 +263,8 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.9fr_1.1fr]">
           <div data-reveal>
             <PhotoSlot
-              src="/fotos/recepcao.jpg"
-              alt="Sala de espera acolhedora da clínica"
+              src="/fotos/marco-trabalho.jpg"
+              alt="Marco Sadério atendendo em seu consultório"
               etiqueta="Retrato do Marco"
               className="aspect-[4/5] w-full rounded-[2rem]"
             />
