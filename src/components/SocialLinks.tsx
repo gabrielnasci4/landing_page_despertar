@@ -32,25 +32,32 @@ const NOMES: Record<string, string> = {
 export function SocialLinks({
   tom = "escuro",
   tamanho = 18,
+  borda = true,
   className = "",
 }: {
   tom?: "claro" | "escuro";
   tamanho?: number;
+  borda?: boolean; // false = só o ícone, sem o círculo (para a barra do topo)
   className?: string;
 }) {
   const redes = Object.entries(clinica.redes).filter(([, url]) => url);
 
   if (redes.length === 0) return null;
 
-  const estiloLink =
+  const comBorda =
     tom === "claro"
-      ? "border-white/15 text-[var(--color-dawn)]/80 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
-      : "border-[var(--color-dawn-line)] text-[var(--color-ink-soft)] hover:border-[var(--color-amethyst)] hover:text-[var(--color-amethyst)]";
+      ? "border border-white/15 text-[var(--color-dawn)]/80 hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+      : "border border-[var(--color-dawn-line)] text-[var(--color-ink-soft)] hover:border-[var(--color-amethyst)] hover:text-[var(--color-amethyst)]";
+
+  const semBorda =
+    tom === "claro"
+      ? "text-[var(--color-dawn)]/70 hover:text-white"
+      : "text-[var(--color-ink-soft)] hover:text-[var(--color-amethyst)]";
 
   const lado = tamanho + 22;
 
   return (
-    <div className={`flex items-center gap-2.5 ${className}`}>
+    <div className={`flex items-center gap-2 ${className}`}>
       {redes.map(([rede, url]) => (
         <a
           key={rede}
@@ -58,8 +65,8 @@ export function SocialLinks({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={NOMES[rede] ?? rede}
-          className={`flex items-center justify-center rounded-full border transition-colors ${estiloLink}`}
-          style={{ width: lado, height: lado }}
+          className={`flex items-center justify-center rounded-full transition-colors ${borda ? comBorda : `${semBorda} p-1`}`}
+          style={borda ? { width: lado, height: lado } : undefined}
         >
           <svg width={tamanho} height={tamanho} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             {ICONES[rede]}

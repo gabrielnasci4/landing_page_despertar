@@ -75,12 +75,15 @@ export function Header() {
         }`}
       >
         {/* Barra utilitária + redes sociais (computador) */}
-        <div className="hidden border-b border-[var(--color-dawn-line)]/60 lg:block">
+        <div className="hidden bg-[var(--color-twilight)] lg:block">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-8 py-1.5">
-            <span className="text-xs text-[var(--color-ink-soft)]">
+            <span className="text-xs tracking-wide text-[var(--color-dawn)]/75">
               {cidade ? `${cidade} · ` : ""}Atendimento {formato || "presencial e online"}
             </span>
-            <SocialLinks tom="escuro" tamanho={14} />
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-[var(--color-dawn)]/60">Siga a Despertar PΨ</span>
+              <SocialLinks tom="claro" tamanho={16} borda={false} />
+            </div>
           </div>
         </div>
 
@@ -155,7 +158,7 @@ export function Header() {
         cobre a tela inteira corretamente.
       */}
       {aberto && (
-        <div className="fixed inset-0 top-[80px] z-40 overflow-y-auto bg-[var(--color-dawn)] px-5 py-8 lg:hidden">
+        <div className="fixed inset-0 top-[80px] z-[45] overflow-y-auto bg-[var(--color-dawn)] px-5 py-8 lg:hidden">
           <nav className="flex flex-col gap-1">
             {navegacao.map((item) => (
               <Link

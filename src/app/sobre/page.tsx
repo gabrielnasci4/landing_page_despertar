@@ -5,7 +5,6 @@ import { Eyebrow } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { personJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { clinica } from "@/content/clinica";
-import { pendente } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sobre Marco Sadério — Parapsicólogo Clínico",
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
 
 export default function SobrePage() {
   const p = clinica.profissional;
-  const temCredenciais = p.credenciais.some((c) => !pendente(c));
 
   return (
     <>
@@ -70,42 +68,6 @@ export default function SobrePage() {
 
           <div className="mt-8">
             <CtaWhatsapp origem="sobre">Conversar com o Marco</CtaWhatsapp>
-          </div>
-        </div>
-      </section>
-
-      {/* Formação e credenciais */}
-      <section className="bg-[var(--color-dawn-deep)]">
-        <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
-          <Eyebrow>Formação &amp; qualificações</Eyebrow>
-          <div className="mt-6 grid gap-8 sm:grid-cols-2">
-            <div>
-              <h2 className="font-display text-2xl text-[var(--color-twilight)]">
-                Formação
-              </h2>
-              <p className="mt-3 leading-relaxed text-[var(--color-ink)]">
-                {pendente(p.formacao)
-                  ? "Formação a ser detalhada."
-                  : p.formacao}
-              </p>
-            </div>
-            {temCredenciais && (
-              <div>
-                <h2 className="font-display text-2xl text-[var(--color-twilight)]">
-                  Qualificações
-                </h2>
-                <ul className="mt-3 space-y-2">
-                  {p.credenciais
-                    .filter((c) => !pendente(c))
-                    .map((c) => (
-                      <li key={c} className="flex items-start gap-2.5 text-[var(--color-ink)]">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-gold)]" aria-hidden="true" />
-                        {c}
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            )}
           </div>
         </div>
       </section>
