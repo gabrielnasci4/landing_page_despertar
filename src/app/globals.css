@@ -68,6 +68,9 @@
   e garante rolagem suave para os links de âncora do menu.
 */
 html {
+  /* Base um pouco maior para leitura confortável (pedido do Marco).
+     Escala todo o site de forma proporcional. */
+  font-size: 108%;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   color-scheme: light;

@@ -137,6 +137,32 @@ export function Footer() {
                 </svg>
               </a>
             )}
+            {clinica.redes.youtube && (
+              <a
+                href={clinica.redes.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
+                </svg>
+              </a>
+            )}
+            {clinica.redes.tiktok && (
+              <a
+                href={clinica.redes.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-colors hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M16.6 5.82a4.28 4.28 0 01-1.06-2.82h-3.3v13.15a2.6 2.6 0 01-2.6 2.6 2.6 2.6 0 01-2.6-2.6 2.6 2.6 0 013.44-2.46v-3.36a5.94 5.94 0 00-6.79 5.82A5.94 5.94 0 009.64 22a5.94 5.94 0 005.94-5.94V9.4a7.56 7.56 0 004.42 1.42V7.5a4.28 4.28 0 01-3.4-1.68z" />
+                </svg>
+              </a>
+            )}
           </div>
         </div>
       </div>

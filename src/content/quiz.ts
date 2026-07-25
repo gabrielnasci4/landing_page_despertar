@@ -29,7 +29,7 @@ export const quiz: PerguntaQuiz[] = [
     opcoes: [
       { texto: "Ansiedade, tensão ou estresse do dia a dia", aponta: ["relaxamento-mental", "hipnose-clinica", "reiki"] },
       { texto: "Padrões que se repetem na minha vida", aponta: ["regressao-de-memorias", "reprogramacao-mental"] },
-      { texto: "Medos ou bloqueios sem explicação", aponta: ["vidas-passadas", "regressao-de-memorias"] },
+      { texto: "Medos ou bloqueios sem explicação", aponta: ["regressao-de-memorias", "reprogramacao-mental"] },
       { texto: "Cansaço, sobrecarga e falta de equilíbrio", aponta: ["reiki", "cromoterapia"] },
     ],
   },
@@ -48,15 +48,15 @@ export const quiz: PerguntaQuiz[] = [
       { texto: "Um momento profundo de descanso e acolhimento", aponta: ["reiki", "relaxamento-mental"] },
       { texto: "Entender a origem do que sinto", aponta: ["regressao-de-memorias", "regressao-ao-utero-materno"] },
       { texto: "Ferramentas práticas para mudar hábitos", aponta: ["pnl", "reprogramacao-mental"] },
-      { texto: "Explorar minha intuição e espiritualidade", aponta: ["vidas-passadas", "cromoterapia"] },
+      { texto: "Explorar minha intuição e espiritualidade", aponta: ["cromoterapia", "reiki"] },
     ],
   },
   {
     pergunta: "Você já viveu alguma experiência com terapias assim?",
     opcoes: [
       { texto: "Nunca, é a primeira vez", aponta: ["relaxamento-mental", "reiki"] },
-      { texto: "Já fiz e gostaria de aprofundar", aponta: ["regressao-de-memorias", "vidas-passadas"] },
-      { texto: "Tenho curiosidade, mas ainda receio", aponta: ["hipnose-clinica", "reiki"] },
+      { texto: "Já fiz e gostaria de aprofundar", aponta: ["regressao-de-memorias", "regressao-ao-utero-materno"] },
+      { texto: "Tenho curiosidade, mas ainda receio", aponta: ["reiki", "relaxamento-mental"] },
       { texto: "Estou aberto a qualquer caminho", aponta: ["reprogramacao-mental"] },
     ],
   },

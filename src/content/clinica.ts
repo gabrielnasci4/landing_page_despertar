@@ -77,10 +77,13 @@ export const clinica = {
   ],
 
   // — Redes sociais —
-  // Deixe o link vazio "" para esconder o ícone daquela rede.
+  // Cole o link completo. Deixe "" para esconder o ícone daquela rede.
+  // (Facebook, YouTube e TikTok: PREENCHER quando o Marco enviar os links.)
   redes: {
     instagram: "https://www.instagram.com/despertarparapsi/",
     facebook: "",
+    youtube: "",
+    tiktok: "",
   },
 
   // — Dados fiscais para o rodapé —

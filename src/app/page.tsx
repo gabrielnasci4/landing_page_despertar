@@ -36,8 +36,8 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
               Um espaço de acolhimento para acessar e ressignificar as raízes
-              invisíveis de dores emocionais, padrões que se repetem e crenças
-              que limitam — e despertar o seu potencial interior.
+              invisíveis de dores emocionais, dos padrões que se repetem e das
+              crenças que limitam, despertando o seu potencial interior.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <CtaWhatsapp origem="hero">Agendar uma conversa</CtaWhatsapp>
@@ -92,9 +92,10 @@ export default function Home() {
             Às vezes, algo trava por dentro — e a explicação não aparece.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-            Medicina e psicologia nem sempre explicam sozinhas certas
-            experiências. A parapsicologia clínica amplia esse olhar, buscando as
-            causas invisíveis por trás do que sentimos.
+            Muitas vezes, além dos sintomas, existem padrões emocionais, crenças
+            e registros internos que também pedem atenção. A parapsicologia
+            clínica amplia esse olhar, buscando compreender o que está por trás
+            das dores, bloqueios e repetições.
           </p>
         </div>
 
@@ -122,10 +123,10 @@ export default function Home() {
               data-reveal
               className="rounded-2xl border border-[var(--color-dawn-line)] bg-white p-6"
             >
-              <h3 className="font-display text-xl text-[var(--color-twilight)]">
+              <h3 className="font-display text-2xl text-[var(--color-twilight)]">
                 {item.t}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-soft)]">
+              <p className="mt-2 text-base leading-relaxed text-[var(--color-ink-soft)]">
                 {item.d}
               </p>
             </div>
@@ -150,11 +151,15 @@ export default function Home() {
               O que é a Parapsicologia Clínica
             </h2>
             <p className="mt-5 leading-relaxed text-[var(--color-ink-soft)]">
-              É uma área que integra estudos da mente e práticas terapêuticas
-              para compreender como pensamentos, emoções, crenças e energias
-              sutis influenciam a nossa vida. Mais do que aliviar sintomas, ela
-              ajuda a compreender e ressignificar as causas invisíveis que
-              alimentam dores emocionais e padrões repetitivos.
+              A Parapsicologia Clínica é uma abordagem que investiga a mente
+              humana em sua totalidade — em suas dimensões conscientes,
+              subconscientes e sutis. Por meio de escuta qualificada e práticas
+              terapêuticas específicas, ela ajuda a identificar e ressignificar
+              crenças, memórias e padrões internos que muitas vezes influenciam o
+              bem-estar emocional, os comportamentos e a qualidade de vida. Seu
+              diferencial está em olhar além do sintoma, buscando compreender as
+              causas mais profundas por trás de sofrimentos que se repetem e
+              apoiar um processo de autoconhecimento e transformação.
             </p>
             <Link
               href="/parapsicologia-clinica"

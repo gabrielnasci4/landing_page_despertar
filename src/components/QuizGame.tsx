@@ -95,9 +95,10 @@ export function QuizGame() {
         >
           Refazer o teste
         </button>
-        <p className="mt-8 text-xs leading-relaxed text-[var(--color-ink-soft)]">
-          Esta sugestão é um ponto de partida para a conversa, e não uma
-          recomendação clínica. O caminho ideal é definido junto com o Marco.
+        <p className="mt-8 text-sm leading-relaxed text-[var(--color-ink-soft)]">
+          Esta sugestão é apenas um ponto de partida para a nossa conversa — não
+          uma recomendação clínica. Cada processo é único, e as práticas são
+          escolhidas com cuidado, no seu tempo, sempre junto com o Marco.
         </p>
       </div>
     );

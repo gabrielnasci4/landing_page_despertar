@@ -43,7 +43,7 @@ export function Accordion({ itens }: { itens: PerguntaFrequente[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="max-w-2xl text-[0.98rem] leading-relaxed text-[var(--color-ink-soft)]">
+                <p className="max-w-2xl text-[1.05rem] leading-relaxed text-[var(--color-ink-soft)]">
                   {item.resposta}
                 </p>
               </div>

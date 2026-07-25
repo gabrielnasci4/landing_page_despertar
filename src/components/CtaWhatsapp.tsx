@@ -19,7 +19,7 @@ export function CtaWhatsapp({
   children?: React.ReactNode;
   mensagem?: string;
   origem?: string;
-  variante?: "solid" | "outline" | "light";
+  variante?: "solid" | "outline" | "light" | "whatsapp";
   className?: string;
 }) {
   const base =
@@ -32,6 +32,8 @@ export function CtaWhatsapp({
       "border border-[var(--color-twilight)]/25 text-[var(--color-twilight)] hover:border-[var(--color-ember)] hover:text-[var(--color-ember)]",
     light:
       "bg-white/90 text-[var(--color-twilight)] hover:bg-white shadow-sm hover:-translate-y-0.5",
+    whatsapp:
+      "bg-[#25D366] text-white hover:bg-[#1eb457] shadow-sm hover:shadow-md hover:-translate-y-0.5",
   }[variante];
 
   return (

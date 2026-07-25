@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { frases } from "@/content/frases";
 import { track } from "@/lib/analytics";
 
@@ -13,6 +13,13 @@ import { track } from "@/lib/analytics";
 export function FrasesCard() {
   const [indice, setIndice] = useState(0);
   const [girando, setGirando] = useState(false);
+
+  // Sorteia uma frase diferente já ao abrir a página (feito só no
+  // navegador para não dar conflito de renderização).
+  useEffect(() => {
+    const sortear = () => setIndice(Math.floor(Math.random() * frases.length));
+    sortear();
+  }, []);
 
   function tirarOutra() {
     if (frases.length < 2) return;

@@ -41,7 +41,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2 sm:px-8">
         <Link
           href="/"
           className="flex items-center gap-2.5"
@@ -54,7 +54,7 @@ export function Header() {
             width={2083}
             height={1621}
             priority
-            className="h-12 w-auto sm:h-14"
+            className="h-16 w-auto sm:h-20"
           />
           <span className="sr-only">{clinica.nome}</span>
         </Link>
@@ -70,7 +70,7 @@ export function Header() {
               {item.rotulo}
             </Link>
           ))}
-          <CtaWhatsapp origem="header" className="px-5 py-2.5 text-sm">
+          <CtaWhatsapp origem="header" variante="whatsapp" className="px-5 py-2.5 text-sm">
             Agendar
           </CtaWhatsapp>
         </nav>
@@ -105,7 +105,7 @@ export function Header() {
 
       {/* Menu — celular */}
       {aberto && (
-        <div className="fixed inset-0 top-[64px] z-40 bg-[var(--color-dawn)] px-5 py-8 lg:hidden">
+        <div className="fixed inset-0 top-[84px] z-40 bg-[var(--color-dawn)] px-5 py-8 lg:hidden">
           <nav className="flex flex-col gap-1">
             {navegacao.map((item) => (
               <Link

@@ -12,11 +12,14 @@ export function TherapyGrid() {
       <div className="max-w-2xl" data-reveal>
         <Eyebrow>Nove caminhos</Eyebrow>
         <h2 className="mt-4 text-4xl leading-[1.1] sm:text-5xl">
-          Cada pessoa pede um caminho diferente.
+          Cada pessoa é única, e cada caminho também.
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-[var(--color-ink-soft)]">
           As sessões são personalizadas: a técnica é escolhida conforme a sua
-          necessidade e o momento que você vive. Conheça cada uma.
+          necessidade e o momento que você vive. Cada prática tem sua
+          especificidade, mas todas se conectam e se complementam ao longo do
+          processo — porque as mudanças mais profundas acontecem quando olhamos
+          para o todo. Conheça cada uma delas.
         </p>
       </div>
 
@@ -39,10 +42,10 @@ export function TherapyGrid() {
                 {t.corSentido}
               </span>
             </div>
-            <h3 className="font-display text-xl text-[var(--color-twilight)]">
+            <h3 className="font-display text-2xl text-[var(--color-twilight)]">
               {t.nome}
             </h3>
-            <p className="text-sm leading-relaxed text-[var(--color-ink-soft)]">
+            <p className="text-base leading-relaxed text-[var(--color-ink-soft)]">
               {t.resumo}
             </p>
             <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-[var(--color-amethyst)]">
