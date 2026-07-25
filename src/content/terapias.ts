@@ -36,6 +36,32 @@ export type Terapia = {
 
 export const terapias: Terapia[] = [
   {
+    slug: "conversas-terapeuticas",
+    nome: "Conversas Terapêuticas",
+    cor: "#b07a56",
+    corSentido: "o fio que conduz",
+    eyebrow: "Escuta e acolhimento",
+    resumo:
+      "Mais do que conversar: uma escuta ativa e acolhedora que ajuda a colocar em palavras o que pede atenção.",
+    pergunta:
+      "E se ser ouvido de verdade, sem julgamentos, já fosse o começo da sua transformação?",
+    oQueE: [
+      "As conversas terapêuticas (o diálogo terapêutico) são o fio condutor de todo o trabalho. Vão além de uma simples conversa: são um processo de escuta ativa, acolhimento e direcionamento, que ajuda você a trazer à tona questões profundas e a enxergar novos caminhos.",
+      "Em um espaço seguro e sem julgamentos, você é conduzido por perguntas abertas e reflexivas. Juntos, vamos reconhecendo padrões de pensamento, crenças que limitam, dores que estavam ocultas e possíveis caminhos.",
+    ],
+    apoia: [
+      "Alívio imediato ao se expressar e ser ouvido",
+      "Clareza sobre situações confusas ou que se repetem",
+      "Organização de ideias e emoções",
+      "Insights e decisões mais conscientes",
+    ],
+    comoFunciona:
+      "Cada encontro é uma conversa cuidadosa, conduzida no seu ritmo. As conversas terapêuticas podem vir sozinhas ou preparar e complementar outras práticas, como o relaxamento, a hipnose ou o Reiki — dando sentido a todo o processo.",
+    metaTitle: "Conversas Terapêuticas em [cidade] | Despertar PΨ",
+    metaDescription:
+      "Conversas terapêuticas (diálogo terapêutico): escuta ativa e acolhedora para trazer clareza, organizar emoções e abrir novos caminhos. Presencial e online.",
+  },
+  {
     slug: "hipnose-clinica",
     nome: "Hipnose Clínica",
     cor: "#3e6b8f",
@@ -214,18 +240,44 @@ export const terapias: Terapia[] = [
       "Regressão a vidas passadas: ferramenta de autoconhecimento conduzida com respeito às suas crenças, para compreender bloqueios sem explicação. Presencial e online.",
   },
   {
+    slug: "meditacao",
+    nome: "Meditação",
+    cor: "#6a86a8",
+    corSentido: "presença e quietude",
+    eyebrow: "Aquietar a mente",
+    resumo:
+      "Práticas de atenção e presença para acalmar os pensamentos e reencontrar o silêncio interior.",
+    pergunta:
+      "Quando foi a última vez que você deu à sua mente um verdadeiro momento de silêncio?",
+    oQueE: [
+      "A meditação é uma prática simples e profunda de atenção e presença. Em um mundo acelerado, ela oferece um espaço para desacelerar, observar os pensamentos sem se prender a eles e reencontrar a calma que já existe dentro de você.",
+      "Não é preciso “esvaziar a mente” nem ter experiência: com orientação, a prática se torna acessível e natural, e os seus efeitos aparecem no dia a dia.",
+    ],
+    apoia: [
+      "Redução da ansiedade e do estresse",
+      "Mais foco, clareza e presença",
+      "Equilíbrio emocional",
+      "Qualidade do sono e sensação de bem-estar",
+    ],
+    comoFunciona:
+      "Conduzo você por práticas guiadas de respiração, atenção e quietude, em um ambiente tranquilo. Você também aprende recursos simples para levar a meditação para a sua rotina.",
+    metaTitle: "Meditação em [cidade] | Despertar PΨ",
+    metaDescription:
+      "Meditação guiada como prática integrativa: atenção e presença para acalmar a mente, reduzir a ansiedade e reencontrar o equilíbrio. Presencial e online.",
+  },
+  {
     slug: "relaxamento-mental",
-    nome: "Relaxamento Mental Guiado",
+    nome: "Relaxamento Físico e Mental",
     cor: "#8a79b0",
     corSentido: "lavanda · serenidade",
     eyebrow: "Equilíbrio imediato",
     resumo:
-      "Respiração consciente e calma guiada para reduzir o estresse e reencontrar clareza em poucos minutos.",
+      "Respiração consciente e técnicas de calma para relaxar o corpo, aliviar a tensão e reencontrar clareza mental.",
     pergunta:
       "Já pensou como alguns minutos de relaxamento poderiam mudar totalmente o seu dia?",
     oQueE: [
-      "Vivemos num mundo acelerado, em que a mente dificilmente descansa. O relaxamento mental guiado combina respiração consciente, concentração e técnicas de calma para trazer equilíbrio imediato.",
-      "É simples e poderoso: em poucos minutos, o corpo reduz a tensão e a mente reencontra clareza.",
+      "Vivemos num mundo acelerado, em que o corpo e a mente dificilmente descansam. O relaxamento físico e mental combina respiração consciente, concentração e técnicas de calma para soltar as tensões do corpo e trazer equilíbrio imediato.",
+      "É simples e poderoso: em poucos minutos, o corpo relaxa e a mente reencontra clareza.",
     ],
     apoia: [
       "Ansiedade, tensão e estresse do dia a dia",

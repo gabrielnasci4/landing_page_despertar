@@ -12,7 +12,7 @@ const navegacao = [
   { rotulo: "Terapias", href: "/#terapias" },
   { rotulo: "A abordagem", href: "/parapsicologia-clinica" },
   { rotulo: "Sobre", href: "/sobre" },
-  { rotulo: "Descubra sua terapia", href: "/quiz" },
+  { rotulo: "Por onde começar", href: "/quiz" },
   { rotulo: "Contato", href: "/contato" },
 ];
 

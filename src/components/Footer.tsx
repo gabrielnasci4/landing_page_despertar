@@ -57,7 +57,7 @@ export function Footer() {
             {[
               { r: "A abordagem", h: "/parapsicologia-clinica" },
               { r: "Sobre o Marco", h: "/sobre" },
-              { r: "Descubra sua terapia", h: "/quiz" },
+              { r: "Por onde começar", h: "/quiz" },
               { r: "Contato", h: "/contato" },
               { r: "Política de Privacidade", h: "/politica-de-privacidade" },
             ].map((i) => (

@@ -189,11 +189,11 @@ export default function Home() {
               Não sabe por onde começar?
             </Eyebrow>
             <h2 className="mt-4 text-3xl text-white sm:text-4xl">
-              Descubra por onde começar o seu caminho.
+              Um convite para refletir sobre o seu momento.
             </h2>
             <p className="mt-4 text-white/85">
-              Quatro perguntas rápidas. No fim, um caminho de práticas que se
-              complementam, pensado para você — construído junto com o Marco.
+              Três perguntas rápidas para colocar em palavras o que você busca —
+              e dar o primeiro passo para uma conversa com o Marco.
             </p>
             <Link
               href="/quiz"

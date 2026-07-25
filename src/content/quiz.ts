@@ -1,101 +1,81 @@
 /*
   ============================================================
-  QUIZ — "Por onde começar o seu caminho?"
+  QUIZ — "Por onde começar a sua conversa?"
   ============================================================
-  Em vez de indicar UMA terapia isolada, o quiz sugere um
-  "caminho" — um conjunto de práticas que se complementam. Isso
-  reflete a realidade do trabalho do Marco: as terapias andam
-  juntas, e o caminho é construído junto com o cliente,
-  respeitando as crenças e o tempo de cada um.
+  IMPORTANTE (decisão do Marco): o teste NÃO indica nem sugere
+  terapias. Cada pessoa é única, muitas vezes nem sabe ainda o que
+  sente, e a indicação depende de conversa e é individual.
 
-  No fim, abre o WhatsApp com o caminho sugerido já escrito.
+  Então o teste apenas ACOLHE e REFLETE o que a pessoa está
+  buscando naquele momento, e a conduz para uma conversa com o
+  Marco — deixando claro que o caminho é definido a dois, com
+  cuidado. É uma porta de entrada, não um diagnóstico.
 
-  COMO EDITAR:
-  - Os textos das perguntas e opções podem ser mudados livremente.
-  - O campo "caminho" liga cada resposta a um dos caminhos abaixo
-    (alivio, autoconhecimento, confianca, equilibrio).
-  - Em cada caminho, "praticas" usa o "slug" das terapias
-    (veja terapias.ts). Mude com cuidado.
+  COMO EDITAR: os textos podem ser mudados livremente. O campo
+  "tema" liga cada resposta a um dos temas abaixo.
   ============================================================
 */
 
-export type Caminho = {
-  nome: string;
-  resumo: string;
-  praticas: string[]; // slugs das terapias que compõem o caminho
+export type Tema = {
+  titulo: string; // como o tema é nomeado ("acolhimento e alívio")
+  reflexo: string; // a frase que reflete o momento da pessoa
 };
 
-// Os quatro caminhos sugeridos. Nenhum "prescreve" regressão a vidas
-// passadas — ela fica como aprofundamento possível, só se fizer
-// sentido para a pessoa, conversado com o Marco.
-export const caminhos: Record<string, Caminho> = {
-  alivio: {
-    nome: "Acolhimento e alívio",
-    resumo:
-      "Um começo suave, para reduzir a ansiedade, aliviar tensões e reencontrar calma e descanso.",
-    praticas: ["relaxamento-mental", "reiki", "cromoterapia"],
+export const temas: Record<string, Tema> = {
+  acolhimento: {
+    titulo: "acolhimento e alívio",
+    reflexo:
+      "Parece que este é um momento de buscar calma, acolhimento e um espaço seguro para respirar.",
   },
   autoconhecimento: {
-    nome: "Autoconhecimento e ressignificação",
-    resumo:
-      "Um caminho para compreender a origem de padrões que se repetem e ressignificar o que ainda pesa — sempre no seu tempo.",
-    praticas: ["hipnose-clinica", "reprogramacao-mental", "regressao-de-memorias"],
+    titulo: "autoconhecimento",
+    reflexo:
+      "Parece que você sente o chamado de se compreender melhor e ressignificar aquilo que ainda pesa.",
   },
-  confianca: {
-    nome: "Confiança e novos hábitos",
-    resumo:
-      "Ferramentas práticas para fortalecer a autoestima, melhorar a comunicação e construir hábitos mais saudáveis.",
-    praticas: ["pnl", "reprogramacao-mental", "hipnose-clinica"],
+  clareza: {
+    titulo: "confiança e clareza",
+    reflexo:
+      "Parece que você busca fortalecer a autoconfiança e encontrar mais clareza para os seus caminhos.",
   },
   equilibrio: {
-    nome: "Equilíbrio e energia",
-    resumo:
-      "Práticas para renovar as forças, equilibrar as emoções e trazer mais serenidade e bem-estar.",
-    praticas: ["reiki", "cromoterapia", "relaxamento-mental"],
+    titulo: "equilíbrio e bem-estar",
+    reflexo:
+      "Parece que você procura renovar as energias, equilibrar as emoções e reencontrar o bem-estar.",
   },
 };
 
-export type OpcaoQuiz = { texto: string; caminho: keyof typeof caminhos };
+export type OpcaoQuiz = { texto: string; tema: keyof typeof temas };
 export type PerguntaQuiz = { pergunta: string; opcoes: OpcaoQuiz[] };
 
 export const quiz: PerguntaQuiz[] = [
   {
     pergunta: "O que mais pesa para você neste momento?",
     opcoes: [
-      { texto: "Ansiedade, tensão ou estresse do dia a dia", caminho: "alivio" },
-      { texto: "Padrões que se repetem na minha vida", caminho: "autoconhecimento" },
-      { texto: "Insegurança ou dificuldade de me expressar", caminho: "confianca" },
-      { texto: "Cansaço, sobrecarga e falta de equilíbrio", caminho: "equilibrio" },
+      { texto: "Ansiedade, tensão ou estresse do dia a dia", tema: "acolhimento" },
+      { texto: "Padrões que se repetem na minha vida", tema: "autoconhecimento" },
+      { texto: "Insegurança ou dificuldade de me expressar", tema: "clareza" },
+      { texto: "Cansaço, sobrecarga e falta de equilíbrio", tema: "equilibrio" },
     ],
   },
   {
     pergunta: "O que você mais gostaria de encontrar?",
     opcoes: [
-      { texto: "Um momento de descanso e acolhimento", caminho: "alivio" },
-      { texto: "Entender a origem do que sinto", caminho: "autoconhecimento" },
-      { texto: "Fortalecer minha autoconfiança", caminho: "confianca" },
-      { texto: "Renovar minha energia e serenidade", caminho: "equilibrio" },
+      { texto: "Um momento de descanso e acolhimento", tema: "acolhimento" },
+      { texto: "Entender melhor a origem do que sinto", tema: "autoconhecimento" },
+      { texto: "Fortalecer a minha autoconfiança", tema: "clareza" },
+      { texto: "Renovar a minha energia e serenidade", tema: "equilibrio" },
     ],
   },
   {
-    pergunta: "Como você prefere começar?",
+    pergunta: "Como você descreveria o seu momento?",
     opcoes: [
-      { texto: "De forma leve e tranquila", caminho: "alivio" },
-      { texto: "Com abertura para me aprofundar aos poucos", caminho: "autoconhecimento" },
-      { texto: "Com foco em resultados práticos no dia a dia", caminho: "confianca" },
-      { texto: "Buscando mais conexão comigo e bem-estar", caminho: "equilibrio" },
-    ],
-  },
-  {
-    pergunta: "É a sua primeira vez com terapias como estas?",
-    opcoes: [
-      { texto: "Sim, é a primeira vez", caminho: "alivio" },
-      { texto: "Já tive experiências e quero aprofundar", caminho: "autoconhecimento" },
-      { texto: "Quero desenvolver habilidades e confiança", caminho: "confianca" },
-      { texto: "Busco relaxamento e equilíbrio", caminho: "equilibrio" },
+      { texto: "Preciso de um respiro e de acolhimento", tema: "acolhimento" },
+      { texto: "Tenho vontade de me conhecer mais a fundo", tema: "autoconhecimento" },
+      { texto: "Quero clareza e confiança para decidir", tema: "clareza" },
+      { texto: "Busco mais equilíbrio e bem-estar", tema: "equilibrio" },
     ],
   },
 ];
 
-// Caminho sugerido em caso de empate sem pontuação (o mais suave).
-export const caminhoPadrao: keyof typeof caminhos = "alivio";
+// Tema padrão se nada pontuar (o mais acolhedor).
+export const temaPadrao: keyof typeof temas = "acolhimento";
