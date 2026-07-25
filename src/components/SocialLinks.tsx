@@ -30,12 +30,11 @@ const NOMES: Record<string, string> = {
 };
 
 // Cores das marcas (usadas quando colorido = true).
-// TikTok fica branco para aparecer bem sobre fundo escuro.
 const CORES: Record<string, string> = {
   instagram: "#E4405F",
   facebook: "#1877F2",
   youtube: "#FF0000",
-  tiktok: "#FFFFFF",
+  tiktok: "#010101", // preto — aparece bem sobre o fundo claro do topo
 };
 
 export function SocialLinks({

@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { CtaWhatsapp } from "./CtaWhatsapp";
 import { SocialLinks } from "./SocialLinks";
 import { clinica } from "@/content/clinica";
-import { cidadeUf, formatoAtendimento } from "@/lib/site";
 
 const navegacao = [
   { rotulo: "Terapias", href: "/#terapias" },
@@ -62,9 +61,6 @@ export function Header() {
     };
   }, [aberto]);
 
-  const cidade = cidadeUf();
-  const formato = formatoAtendimento();
-
   return (
     <>
       <header
@@ -74,19 +70,6 @@ export function Header() {
             : "bg-transparent"
         }`}
       >
-        {/* Barra utilitária + redes sociais (computador) */}
-        <div className="hidden bg-[var(--color-twilight)] lg:block">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-8 py-1.5">
-            <span className="text-xs tracking-wide text-[var(--color-dawn)]/75">
-              {cidade ? `${cidade} · ` : ""}Atendimento {formato || "presencial e online"}
-            </span>
-            <div className="flex items-center gap-3">
-              <span className="text-xs text-[var(--color-dawn)]/60">Siga a Despertar PΨ</span>
-              <SocialLinks tom="claro" tamanho={17} borda={false} colorido />
-            </div>
-          </div>
-        </div>
-
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2 sm:px-8">
           <Link
             href="/"
@@ -106,7 +89,7 @@ export function Header() {
           </Link>
 
           {/* Navegação — computador */}
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-6 lg:flex">
             {navegacao.map((item) => (
               <Link
                 key={item.href}
@@ -117,6 +100,8 @@ export function Header() {
                 {item.rotulo}
               </Link>
             ))}
+            <span className="h-5 w-px bg-[var(--color-dawn-line)]" aria-hidden="true" />
+            <SocialLinks tamanho={18} borda={false} colorido />
             <CtaWhatsapp origem="header" variante="whatsapp" className="px-5 py-2.5 text-sm">
               Agendar
             </CtaWhatsapp>
@@ -177,7 +162,7 @@ export function Header() {
             </CtaWhatsapp>
           </div>
           <div className="mt-8 flex justify-center">
-            <SocialLinks tom="escuro" tamanho={18} />
+            <SocialLinks tamanho={22} borda={false} colorido />
           </div>
         </div>
       )}
