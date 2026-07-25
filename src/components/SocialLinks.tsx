@@ -29,15 +29,26 @@ const NOMES: Record<string, string> = {
   tiktok: "TikTok",
 };
 
+// Cores das marcas (usadas quando colorido = true).
+// TikTok fica branco para aparecer bem sobre fundo escuro.
+const CORES: Record<string, string> = {
+  instagram: "#E4405F",
+  facebook: "#1877F2",
+  youtube: "#FF0000",
+  tiktok: "#FFFFFF",
+};
+
 export function SocialLinks({
   tom = "escuro",
   tamanho = 18,
   borda = true,
+  colorido = false,
   className = "",
 }: {
   tom?: "claro" | "escuro";
   tamanho?: number;
   borda?: boolean; // false = só o ícone, sem o círculo (para a barra do topo)
+  colorido?: boolean; // true = ícones nas cores das marcas
   className?: string;
 }) {
   const redes = Object.entries(clinica.redes).filter(([, url]) => url);
@@ -65,10 +76,18 @@ export function SocialLinks({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={NOMES[rede] ?? rede}
-          className={`flex items-center justify-center rounded-full transition-colors ${borda ? comBorda : `${semBorda} p-1`}`}
+          className={`flex items-center justify-center rounded-full transition ${
+            colorido ? "hover:opacity-70" : borda ? comBorda : `${semBorda} p-1`
+          } ${colorido && !borda ? "p-1" : ""}`}
           style={borda ? { width: lado, height: lado } : undefined}
         >
-          <svg width={tamanho} height={tamanho} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg
+            width={tamanho}
+            height={tamanho}
+            viewBox="0 0 24 24"
+            fill={colorido ? CORES[rede] ?? "currentColor" : "currentColor"}
+            aria-hidden="true"
+          >
             {ICONES[rede]}
           </svg>
         </a>

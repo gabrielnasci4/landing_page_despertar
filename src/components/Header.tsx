@@ -82,7 +82,7 @@ export function Header() {
             </span>
             <div className="flex items-center gap-3">
               <span className="text-xs text-[var(--color-dawn)]/60">Siga a Despertar PΨ</span>
-              <SocialLinks tom="claro" tamanho={16} borda={false} />
+              <SocialLinks tom="claro" tamanho={17} borda={false} colorido />
             </div>
           </div>
         </div>
