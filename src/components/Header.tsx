@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CtaWhatsapp } from "./CtaWhatsapp";
+import { SocialLinks } from "./SocialLinks";
 import { clinica } from "@/content/clinica";
+import { cidadeUf, formatoAtendimento } from "@/lib/site";
 
 const navegacao = [
   { rotulo: "Terapias", href: "/#terapias" },
@@ -33,79 +35,99 @@ export function Header() {
     };
   }, [aberto]);
 
+  const cidade = cidadeUf();
+  const formato = formatoAtendimento();
+
   return (
-    <header
-      className={`sticky top-0 z-50 transition-colors duration-300 ${
-        rolou
-          ? "bg-[var(--color-dawn)]/90 backdrop-blur-md border-b border-[var(--color-dawn-line)]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2 sm:px-8">
-        <Link
-          href="/"
-          className="flex items-center gap-2.5"
-          aria-label={`${clinica.nome} — início`}
-          onClick={() => setAberto(false)}
-        >
-          <Image
-            src="/fotos/logo-despertar.png"
-            alt={clinica.nome}
-            width={2083}
-            height={1621}
-            priority
-            className="h-16 w-auto sm:h-20"
-          />
-          <span className="sr-only">{clinica.nome}</span>
-        </Link>
+    <>
+      <header
+        className={`sticky top-0 z-50 transition-colors duration-300 ${
+          rolou
+            ? "bg-[var(--color-dawn)]/90 backdrop-blur-md border-b border-[var(--color-dawn-line)]"
+            : "bg-transparent"
+        }`}
+      >
+        {/* Barra utilitária + redes sociais (computador) */}
+        <div className="hidden border-b border-[var(--color-dawn-line)]/60 lg:block">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-8 py-1.5">
+            <span className="text-xs text-[var(--color-ink-soft)]">
+              {cidade ? `${cidade} · ` : ""}Atendimento {formato || "presencial e online"}
+            </span>
+            <SocialLinks tom="escuro" tamanho={14} />
+          </div>
+        </div>
 
-        {/* Navegação — computador */}
-        <nav className="hidden items-center gap-7 lg:flex">
-          {navegacao.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-[var(--color-ink)] transition-colors hover:text-[var(--color-amethyst)]"
-            >
-              {item.rotulo}
-            </Link>
-          ))}
-          <CtaWhatsapp origem="header" variante="whatsapp" className="px-5 py-2.5 text-sm">
-            Agendar
-          </CtaWhatsapp>
-        </nav>
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-2 sm:px-8">
+          <Link
+            href="/"
+            className="flex items-center gap-2.5"
+            aria-label={`${clinica.nome} — início`}
+            onClick={() => setAberto(false)}
+          >
+            <Image
+              src="/fotos/logo-despertar.png"
+              alt={clinica.nome}
+              width={2083}
+              height={1621}
+              priority
+              className="h-16 w-auto sm:h-20"
+            />
+            <span className="sr-only">{clinica.nome}</span>
+          </Link>
 
-        {/* Botão do menu — celular */}
-        <button
-          type="button"
-          onClick={() => setAberto((v) => !v)}
-          className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-twilight)] lg:hidden"
-          aria-label={aberto ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={aberto}
-        >
-          <span className="relative block h-4 w-6">
-            <span
-              className={`absolute left-0 block h-0.5 w-6 bg-current transition-all ${
-                aberto ? "top-1.5 rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-1.5 block h-0.5 w-6 bg-current transition-all ${
-                aberto ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 block h-0.5 w-6 bg-current transition-all ${
-                aberto ? "top-1.5 -rotate-45" : "top-3"
-              }`}
-            />
-          </span>
-        </button>
-      </div>
+          {/* Navegação — computador */}
+          <nav className="hidden items-center gap-7 lg:flex">
+            {navegacao.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-[var(--color-ink)] transition-colors hover:text-[var(--color-amethyst)]"
+              >
+                {item.rotulo}
+              </Link>
+            ))}
+            <CtaWhatsapp origem="header" variante="whatsapp" className="px-5 py-2.5 text-sm">
+              Agendar
+            </CtaWhatsapp>
+          </nav>
 
-      {/* Menu — celular */}
+          {/* Botão do menu — celular */}
+          <button
+            type="button"
+            onClick={() => setAberto((v) => !v)}
+            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-twilight)] lg:hidden"
+            aria-label={aberto ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={aberto}
+          >
+            <span className="relative block h-4 w-6">
+              <span
+                className={`absolute left-0 block h-0.5 w-6 bg-current transition-all ${
+                  aberto ? "top-1.5 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1.5 block h-0.5 w-6 bg-current transition-all ${
+                  aberto ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 block h-0.5 w-6 bg-current transition-all ${
+                  aberto ? "top-1.5 -rotate-45" : "top-3"
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+      </header>
+
+      {/*
+        Menu do celular — fica FORA do <header> de propósito.
+        O cabeçalho usa "backdrop-blur", e um menu fixo dentro dele não
+        cobre a tela toda (o conteúdo vazava por trás). Aqui fora, ele
+        cobre a tela inteira corretamente.
+      */}
       {aberto && (
-        <div className="fixed inset-0 top-[84px] z-40 bg-[var(--color-dawn)] px-5 py-8 lg:hidden">
+        <div className="fixed inset-0 top-[80px] z-40 overflow-y-auto bg-[var(--color-dawn)] px-5 py-8 lg:hidden">
           <nav className="flex flex-col gap-1">
             {navegacao.map((item) => (
               <Link
@@ -119,12 +141,15 @@ export function Header() {
             ))}
           </nav>
           <div className="mt-8">
-            <CtaWhatsapp origem="menu_celular" className="w-full">
+            <CtaWhatsapp origem="menu_celular" variante="whatsapp" className="w-full">
               Agendar pelo WhatsApp
             </CtaWhatsapp>
           </div>
+          <div className="mt-8 flex justify-center">
+            <SocialLinks tom="escuro" tamanho={18} />
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

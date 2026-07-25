@@ -81,9 +81,9 @@ export const clinica = {
   // (Facebook, YouTube e TikTok: PREENCHER quando o Marco enviar os links.)
   redes: {
     instagram: "https://www.instagram.com/despertarparapsi/",
-    facebook: "",
-    youtube: "",
-    tiktok: "",
+    facebook: "https://www.facebook.com/despertarparapsi",
+    youtube: "https://www.youtube.com/@despertarparapsi",
+    tiktok: "https://www.tiktok.com/@despertarparapsi",
   },
 
   // — Dados fiscais para o rodapé —
