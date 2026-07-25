@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { quiz, terapiaPadraoQuiz } from "@/content/quiz";
+import { quiz, caminhos, caminhoPadrao } from "@/content/quiz";
 import { getTerapia } from "@/content/terapias";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
 import { clinica } from "@/content/clinica";
 import { track } from "@/lib/analytics";
 
 /*
-  Quiz "Qual terapia é ideal para você?".
-  A cada resposta somamos pontos para as terapias que ela aponta.
-  No fim, a terapia com mais pontos é a sugestão — e o botão abre
-  o WhatsApp já com esse resultado escrito.
+  Quiz "Por onde começar o seu caminho?".
+  A cada resposta somamos pontos para um dos caminhos. No fim, o
+  caminho mais pontuado é sugerido — com as práticas que o compõem
+  (elas se complementam) — e o botão abre o WhatsApp com o resultado.
 */
 export function QuizGame() {
   const [passo, setPasso] = useState(0);
@@ -22,14 +22,8 @@ export function QuizGame() {
   const total = quiz.length;
   const progresso = terminou ? 100 : Math.round((passo / total) * 100);
 
-  function responder(aponta: string[]) {
-    setPontos((atual) => {
-      const novo = { ...atual };
-      aponta.forEach((slug) => {
-        novo[slug] = (novo[slug] || 0) + 1;
-      });
-      return novo;
-    });
+  function responder(caminho: string) {
+    setPontos((atual) => ({ ...atual, [caminho]: (atual[caminho] || 0) + 1 }));
     if (passo + 1 < total) {
       setPasso(passo + 1);
     } else {
@@ -44,61 +38,80 @@ export function QuizGame() {
     setTerminou(false);
   }
 
-  // Descobre a terapia mais pontuada.
-  function terapiaSugerida() {
-    let melhorSlug = terapiaPadraoQuiz;
+  function caminhoSugerido() {
+    let melhor = caminhoPadrao as string;
     let melhorPontos = -1;
-    for (const [slug, p] of Object.entries(pontos)) {
+    for (const [chave, p] of Object.entries(pontos)) {
       if (p > melhorPontos) {
         melhorPontos = p;
-        melhorSlug = slug;
+        melhor = chave;
       }
     }
-    return getTerapia(melhorSlug) ?? getTerapia(terapiaPadraoQuiz)!;
+    return caminhos[melhor] ? melhor : (caminhoPadrao as string);
   }
 
   if (terminou) {
-    const t = terapiaSugerida();
-    const mensagem = `Olá, Marco! Fiz o teste no site da ${clinica.nome} e o resultado sugeriu a terapia de ${t.nome}. Gostaria de conversar sobre isso.`;
+    const chave = caminhoSugerido();
+    const c = caminhos[chave];
+    const praticas = c.praticas.map((s) => getTerapia(s)).filter(Boolean);
+    const nomesPraticas = praticas.map((t) => t!.nome).join(", ");
+    const mensagem =
+      `Olá, Marco! Fiz o teste no site da ${clinica.nome} e o resultado sugeriu o caminho "${c.nome}"` +
+      `${nomesPraticas ? ` (com práticas como ${nomesPraticas})` : ""}. Gostaria de conversar sobre por onde começar.`;
+
     return (
       <div className="rounded-[2rem] border border-[var(--color-dawn-line)] bg-white p-8 text-center sm:p-12">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-amethyst)]">
-          A terapia que conversa com o seu momento
+          Um caminho para o seu momento
         </p>
-        <div
-          className="mx-auto mt-6 flex h-16 w-16 items-center justify-center rounded-full text-2xl font-semibold text-white"
-          style={{ backgroundColor: t.cor }}
-        >
-          Ψ
-        </div>
-        <h2 className="mt-5 font-display text-3xl text-[var(--color-twilight)] sm:text-4xl">
-          {t.nome}
+        <h2 className="mt-4 font-display text-3xl text-[var(--color-twilight)] sm:text-4xl">
+          {c.nome}
         </h2>
-        <p className="mx-auto mt-4 max-w-md leading-relaxed text-[var(--color-ink-soft)]">
-          {t.resumo}
+        <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-[var(--color-ink-soft)]">
+          {c.resumo}
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+
+        {praticas.length > 0 && (
+          <div className="mt-8">
+            <p className="text-sm font-medium text-[var(--color-ink)]">
+              Práticas que podem se complementar nesse caminho:
+            </p>
+            <div className="mt-4 flex flex-wrap justify-center gap-2.5">
+              {praticas.map((t) => (
+                <Link
+                  key={t!.slug}
+                  href={`/terapias/${t!.slug}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-dawn-line)] bg-[var(--color-dawn)] px-4 py-2 text-sm font-medium text-[var(--color-ink)] transition-colors hover:border-[var(--color-amethyst)]"
+                >
+                  <span
+                    className="h-2.5 w-2.5 rounded-full"
+                    style={{ backgroundColor: t!.cor }}
+                    aria-hidden="true"
+                  />
+                  {t!.nome}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <CtaWhatsapp origem="quiz_resultado" mensagem={mensagem}>
-            Conversar sobre {t.nome}
+            Conversar sobre esse caminho
           </CtaWhatsapp>
-          <Link
-            href={`/terapias/${t.slug}`}
-            className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[var(--color-twilight)]/20 px-6 py-3 font-semibold text-[var(--color-twilight)] transition-colors hover:border-[var(--color-amethyst)] hover:text-[var(--color-amethyst)]"
+          <button
+            type="button"
+            onClick={recomeçar}
+            className="text-sm text-[var(--color-ink-soft)] underline hover:text-[var(--color-amethyst)]"
           >
-            Ler sobre a terapia
-          </Link>
+            Refazer o teste
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={recomeçar}
-          className="mt-6 text-sm text-[var(--color-ink-soft)] underline hover:text-[var(--color-amethyst)]"
-        >
-          Refazer o teste
-        </button>
-        <p className="mt-8 text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Esta sugestão é apenas um ponto de partida para a nossa conversa — não
-          uma recomendação clínica. Cada processo é único, e as práticas são
-          escolhidas com cuidado, no seu tempo, sempre junto com o Marco.
+
+        <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-[var(--color-ink-soft)]">
+          Esta é apenas uma sugestão de ponto de partida — não uma recomendação
+          clínica. As práticas se complementam e o caminho é construído junto com
+          o Marco, respeitando as suas crenças e o seu tempo.
         </p>
       </div>
     );
@@ -108,7 +121,6 @@ export function QuizGame() {
 
   return (
     <div className="rounded-[2rem] border border-[var(--color-dawn-line)] bg-white p-8 sm:p-12">
-      {/* Progresso */}
       <div className="flex items-center justify-between text-sm text-[var(--color-ink-soft)]">
         <span>
           Pergunta {passo + 1} de {total}
@@ -131,8 +143,8 @@ export function QuizGame() {
           <button
             key={i}
             type="button"
-            onClick={() => responder(opcao.aponta)}
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-[var(--color-dawn-line)] bg-[var(--color-dawn)] px-5 py-4 text-left text-[1.02rem] text-[var(--color-ink)] transition-all hover:border-[var(--color-amethyst)] hover:bg-white"
+            onClick={() => responder(opcao.caminho)}
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-[var(--color-dawn-line)] bg-[var(--color-dawn)] px-5 py-4 text-left text-[1.05rem] text-[var(--color-ink)] transition-all hover:border-[var(--color-amethyst)] hover:bg-white"
           >
             {opcao.texto}
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[var(--color-dawn-line)] text-[var(--color-amethyst)] transition-colors group-hover:border-[var(--color-amethyst)]" aria-hidden="true">

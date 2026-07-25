@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { CtaWhatsapp } from "./CtaWhatsapp";
 import { SocialLinks } from "./SocialLinks";
 import { clinica } from "@/content/clinica";
@@ -19,6 +20,32 @@ const navegacao = [
 export function Header() {
   const [aberto, setAberto] = useState(false);
   const [rolou, setRolou] = useState(false);
+  const pathname = usePathname();
+
+  /*
+    Faz o clique no menu SEMPRE levar ao destino, mesmo quando a
+    pessoa já está na página/seção. Sem isto, clicar de novo no mesmo
+    item não fazia nada (o navegador ignora ir para um endereço igual
+    ao atual).
+  */
+  function aoClicarNavegacao(e: React.MouseEvent, href: string) {
+    setAberto(false);
+    if (href.includes("#")) {
+      const [caminho, id] = href.split("#");
+      const alvoPath = caminho || "/";
+      if (pathname === alvoPath) {
+        e.preventDefault();
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+        else window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+    if (pathname === href) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
 
   useEffect(() => {
     const aoRolar = () => setRolou(window.scrollY > 20);
@@ -81,6 +108,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(e) => aoClicarNavegacao(e, item.href)}
                 className="text-sm text-[var(--color-ink)] transition-colors hover:text-[var(--color-amethyst)]"
               >
                 {item.rotulo}
@@ -133,7 +161,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setAberto(false)}
+                onClick={(e) => aoClicarNavegacao(e, item.href)}
                 className="border-b border-[var(--color-dawn-line)] py-4 font-display text-2xl text-[var(--color-twilight)]"
               >
                 {item.rotulo}

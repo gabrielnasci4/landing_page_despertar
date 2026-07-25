@@ -3,9 +3,9 @@ import { QuizGame } from "@/components/QuizGame";
 import { Eyebrow } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Qual terapia é ideal para você?",
+  title: "Por onde começar o seu caminho?",
   description:
-    "Responda 4 perguntas rápidas e descubra qual terapia integrativa da Despertar PΨ conversa com o seu momento — hipnose, Reiki, regressão, PNL e mais.",
+    "Responda 4 perguntas rápidas e descubra um caminho de práticas integrativas da Despertar PΨ para o seu momento — sempre construído junto com o Marco.",
   alternates: { canonical: "/quiz" },
 };
 
@@ -15,11 +15,12 @@ export default function QuizPage() {
       <div className="text-center">
         <Eyebrow className="justify-center">Descubra seu caminho</Eyebrow>
         <h1 className="mt-5 text-[2.2rem] leading-[1.08] sm:text-5xl">
-          Qual terapia conversa com o seu momento?
+          Por onde começar o seu caminho?
         </h1>
         <p className="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-[var(--color-ink-soft)]">
-          São só quatro perguntas. No fim, uma sugestão pensada para você — e o
-          caminho para conversar com o Marco.
+          São só quatro perguntas. No fim, um caminho de práticas que se
+          complementam, pensado para o seu momento — e sempre construído junto
+          com o Marco, no seu tempo.
         </p>
       </div>
 
