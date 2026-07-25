@@ -101,7 +101,7 @@ export function Header() {
               </Link>
             ))}
             <span className="h-5 w-px bg-[var(--color-dawn-line)]" aria-hidden="true" />
-            <SocialLinks tamanho={18} borda={false} colorido />
+            <SocialLinks colorido tamanho={30} />
             <CtaWhatsapp origem="header" variante="whatsapp" className="px-5 py-2.5 text-sm">
               Agendar
             </CtaWhatsapp>
@@ -162,7 +162,7 @@ export function Header() {
             </CtaWhatsapp>
           </div>
           <div className="mt-8 flex justify-center">
-            <SocialLinks tamanho={22} borda={false} colorido />
+            <SocialLinks colorido tamanho={44} />
           </div>
         </div>
       )}
