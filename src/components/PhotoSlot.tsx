@@ -17,12 +17,16 @@ export function PhotoSlot({
   etiqueta,
   className = "",
   priority = false,
+  posicao = "center",
 }: {
   src?: string;
   alt: string;
   etiqueta?: string;
   className?: string;
   priority?: boolean;
+  // Qual parte da foto priorizar no corte: "center" (padrão) ou "top"
+  // (bom para fotos de pessoas em pé, para não cortar o rosto).
+  posicao?: "center" | "top";
 }) {
   if (src) {
     return (
@@ -33,7 +37,7 @@ export function PhotoSlot({
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
+          className={posicao === "top" ? "object-cover object-top" : "object-cover object-center"}
         />
       </div>
     );

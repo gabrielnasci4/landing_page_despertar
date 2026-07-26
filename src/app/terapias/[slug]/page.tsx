@@ -101,7 +101,8 @@ export default async function TerapiaPage({
               alt={`Atendimento de ${t.nome} com Marco Sadério`}
               etiqueta={`Foto — ${t.nome}`}
               priority
-              className="aspect-[4/3] w-full rounded-[2rem]"
+              posicao="top"
+              className="mx-auto aspect-[4/5] w-full max-w-md rounded-[2rem] lg:max-w-none"
             />
           </div>
         </div>
