@@ -247,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* 7.5 — MENSAGEM / CÁPSULA */}
-      <section className="mx-auto max-w-6xl px-5 pb-8 sm:px-8">
+      <section id="capsula" className="mx-auto max-w-6xl px-5 pb-8 sm:px-8">
         <div className="text-center" data-reveal>
           <Eyebrow className="justify-center">Uma mensagem para você</Eyebrow>
           <h2 className="mt-4 text-3xl leading-[1.1] sm:text-4xl">

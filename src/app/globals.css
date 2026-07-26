@@ -153,6 +153,12 @@ p {
   }
 }
 
+/* Ao rolar até uma seção pelo menu, ela para abaixo do cabeçalho fixo
+   (em vez de ficar escondida atrás dele). */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
 /* Linha "horizonte" — divisor fino que evoca a linha do amanhecer. */
 .horizon {
   height: 1px;

@@ -13,6 +13,7 @@ const navegacao = [
   { rotulo: "A abordagem", href: "/parapsicologia-clinica" },
   { rotulo: "Sobre", href: "/sobre" },
   { rotulo: "Por onde começar", href: "/quiz" },
+  { rotulo: "Cápsula", href: "/#capsula" },
   { rotulo: "Contato", href: "/contato" },
 ];
 
@@ -89,7 +90,7 @@ export function Header() {
           </Link>
 
           {/* Navegação — computador */}
-          <nav className="hidden items-center gap-6 lg:flex">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
             {navegacao.map((item) => (
               <Link
                 key={item.href}
