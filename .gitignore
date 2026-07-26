@@ -39,6 +39,8 @@ yarn-error.log*
 /_material_original
 # pasta bruta com todas as fotos originais (as usadas ficam em public/fotos)
 /fotos despertar
+/fotos organizadas
+/Fotos organizadas
 # pasta bruta com os Words de frases (as frases usadas ficam em src/content/frases.ts)
 /frases despertar
 # arquivos sensíveis que nunca devem ir para o repositório

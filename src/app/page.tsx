@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { Eyebrow, DisclaimerNote } from "@/components/ui";
@@ -82,6 +83,41 @@ export default function Home() {
           <span className="text-[var(--color-gold)]" aria-hidden="true">✦</span>
           <span className="font-medium">Cada sessão é única e personalizada</span>
         </div>
+      </section>
+
+      {/* 2.5 — CHAMARIZ DA CÁPSULA */}
+      <section className="mx-auto max-w-6xl px-5 pt-14 sm:px-8">
+        <a
+          href="#capsula"
+          className="group grid gap-5 rounded-[2rem] border border-[var(--color-dawn-line)] bg-[var(--color-amethyst-tint)]/60 p-5 transition-colors hover:bg-[var(--color-amethyst-tint)] sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-7 sm:p-6"
+        >
+          <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-white sm:h-24 sm:w-24">
+            <Image
+              src="/fotos/capsula.jpg"
+              alt="Cápsulas de Sabedoria da Despertar PΨ"
+              fill
+              sizes="96px"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-amethyst)]">
+              Cápsulas de Sabedoria
+            </span>
+            <h2 className="mt-1 font-display text-2xl text-[var(--color-twilight)] sm:text-[1.7rem]">
+              Tire a sua mensagem do dia
+            </h2>
+            <p className="mt-1 text-[var(--color-ink-soft)]">
+              Uma frase escolhida para o seu momento — leve com você.
+            </p>
+          </div>
+          <span className="inline-flex items-center justify-center gap-2 self-start rounded-full bg-[var(--color-amethyst)] px-6 py-3 font-semibold text-white transition-transform group-hover:-translate-y-0.5 sm:self-auto">
+            Tirar minha cápsula
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </a>
       </section>
 
       {/* 3 — VOCÊ SE RECONHECE AQUI? */}
