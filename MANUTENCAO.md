@@ -1,11 +1,13 @@
 # Manutenção & Operação — Guia do Gabriel 🛠️
 
 Guia técnico do site da **Despertar PΨ**. Cobre rodar localmente,
-publicar na Vercel, apontar o domínio, configurar os leads, o Google e
+publicar no Netlify, apontar o domínio, configurar os leads, o Google e
 os analytics.
 
-Stack: **Next.js 16 (App Router) + TypeScript + Tailwind v4**. Site
-estático (SSG), hospedado na **Vercel** (plano grátis).
+Stack: **Next.js 16 (App Router) + TypeScript + Tailwind v4**. Hospedado
+no **Netlify** (plano grátis, permite uso comercial), no ar em
+**https://despertarparapsi.com.br**. Repositório:
+`github.com/gabrielnasci4/landing_page_despertar`.
 
 ---
 
@@ -54,35 +56,45 @@ git push -u origin main
 
 ---
 
-## 3. Publicar na Vercel (grátis)
+## 3. Publicar no Netlify (grátis)
 
-1. Entre em https://vercel.com e faça login **com o GitHub**.
-2. **Add New > Project** e importe o repositório.
-3. A Vercel detecta Next.js sozinha. Clique em **Deploy**.
-4. Em ~1 min o site está no ar em `algo.vercel.app`.
+> O site já está publicado no Netlify. Esta seção serve de referência
+> (por exemplo, se um dia precisar recriar o site).
+
+1. Entre em https://app.netlify.com e faça login **com o GitHub**.
+2. **Add new site > Import an existing project > GitHub** e selecione o
+   repositório.
+3. O Netlify detecta o Next.js sozinho (o `netlify.toml` já está
+   configurado). Clique em **Deploy**.
+4. Em ~2 min o site está no ar em `algo.netlify.app`.
 
 A partir daí: todo `git push` para a `main` **republica sozinho**. E o
 Marco editando pelo GitHub aciona esse mesmo fluxo.
 
 ### Variáveis de ambiente
-Em **Project Settings > Environment Variables**, adicione as chaves do
+Em **Site configuration > Environment variables**, adicione as chaves do
 arquivo `.env.example` (veja seções 5, 6 e 7). Depois de adicionar,
-faça um **Redeploy** para elas valerem.
+faça um novo deploy (**Deploys > Trigger deploy**) para elas valerem.
 
 ---
 
-## 4. Apontar o domínio próprio
+## 4. Apontar o domínio próprio (já configurado)
 
-1. Na Vercel: **Project Settings > Domains > Add** e digite o domínio
-   (ex.: `despertarparapsi.com.br`).
-2. A Vercel mostra os registros DNS a configurar. No painel de **onde o
-   domínio foi registrado** (Registro.br, GoDaddy, etc.):
-   - Domínio raiz (`dominio.com.br`): registro **A** apontando para o IP
-     que a Vercel indicar.
-   - `www`: registro **CNAME** apontando para `cname.vercel-dns.com`.
-3. Propaga em minutos a algumas horas. O **HTTPS é automático**.
-4. Depois, atualize `siteUrl` em `src/content/clinica.ts` para o domínio
-   final e faça commit.
+O domínio `despertarparapsi.com.br` já está apontado para o Netlify.
+Registro para referência futura:
+
+1. No Netlify: **Domain management > Add a domain** e digite o domínio.
+   Mantenha o **DNS externo** (o do Registro.br) — não troque os
+   nameservers.
+2. No **Registro.br** (Configurar endereçamento), aponte o registro **A**
+   do domínio raiz para o IP do Netlify: **`75.2.60.5`**.
+3. Propaga em minutos a algumas horas. O **HTTPS (Let's Encrypt) é
+   emitido automaticamente** assim que o DNS aponta para o Netlify.
+4. O `siteUrl` em `src/content/clinica.ts` já está com o domínio final.
+
+> Trocou o host ou o IP? Se o site ficar fora do ar só na sua máquina,
+> limpe o cache de DNS: no Windows, `ipconfig /flushdns` (o resto da
+> internet atualiza sozinho no prazo do DNS).
 
 ---
 
@@ -91,7 +103,7 @@ faça um **Redeploy** para elas valerem.
 1. Crie conta grátis em https://resend.com (3.000 e-mails/mês).
 2. Gere uma **API Key** e, de preferência, verifique um domínio para o
    remetente (ex.: `contato@despertarparapsi.com.br`).
-3. Na Vercel, defina:
+3. No Netlify (**Site configuration > Environment variables**), defina:
    - `RESEND_API_KEY`
    - `CONTATO_EMAIL_DESTINO` (e-mail do Marco)
    - `CONTATO_EMAIL_REMETENTE` (remetente verificado)
@@ -121,7 +133,8 @@ function doPost(e) {
 3. **Implantar > Nova implantação > Tipo: App da Web**.
    - Executar como: **você**.
    - Quem tem acesso: **Qualquer pessoa**.
-4. Copie a URL gerada e defina `PLANILHA_WEBHOOK_URL` na Vercel.
+4. Copie a URL gerada e defina `PLANILHA_WEBHOOK_URL` no Netlify
+   (Site configuration > Environment variables).
 
 Cada lead vira uma linha — é o CRM do Marco (contatou / virou cliente?).
 
@@ -162,7 +175,7 @@ resolução — o `next/image` gera WebP/AVIF e redimensiona sozinho.
 - [ ] Formação e história do Marco em `sobre` / `clinica.ts`
 - [ ] Fotos reais no lugar dos placeholders
 - [ ] `siteUrl` com o domínio final
-- [ ] Variáveis de ambiente na Vercel + redeploy
+- [ ] Variáveis de ambiente no Netlify + novo deploy
 - [ ] `npm run build` sem erros
 - [ ] Testar o formulário ponta a ponta (e-mail chega? linha na planilha?)
 - [ ] Testar os botões de WhatsApp no **celular**

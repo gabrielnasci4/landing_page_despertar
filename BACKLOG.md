@@ -4,27 +4,6 @@ Lista de pendências e próximos passos. Ordenado por prioridade.
 
 ---
 
-## 🔴 Importante — resolver em breve
-
-### 1. Migrar a hospedagem do Vercel para o Netlify (uso comercial)
-**Por quê:** o plano gratuito (Hobby) do Vercel é oficialmente **só para uso
-pessoal, não comercial**. O site da clínica é uso comercial, então está fora
-dos termos. O Netlify (também grátis) **permite uso comercial**.
-
-**Esforço:** baixo.
-- Do meu lado (Claude): ~30–45 min — conectar o repositório ao Netlify,
-  ajustar config, remover o Speed Insights (é específico do Vercel), testar o
-  build e o formulário.
-- Do Marco: ~2 min — trocar 1 vez o registro DNS no Registro.br (o Netlify
-  informa o novo valor; mesma tela de antes).
-- Propagação: minutos a poucas horas. O site fica no ar o tempo todo.
-
-**Alternativa:** ficar no Vercel e assinar o plano Pro (~US$ 20/mês ≈ R$ 110/mês).
-Sem migração, mas com custo. Recomendação: **migrar para o Netlify** (grátis e
-regularizado).
-
----
-
 ## 🟡 Aguardando material do Marco
 
 Cobrar estes itens com o Marco:
@@ -50,6 +29,8 @@ Cobrar estes itens com o Marco:
 ## ✅ Já resolvido
 
 - Site no ar em https://despertarparapsi.com.br (com HTTPS)
-- Identidade verde do logo, fotos reais, ícone (lótus) na aba
-- Publicação automática (commit → deploy)
-- Feedbacks do Marco (rodada 1): fontes maiores, logo maior, botão "Agendar" verde, textos revisados, cápsula aleatória, redes sociais preparadas
+- **Hospedagem migrada do Vercel para o Netlify** (uso comercial permitido, grátis); projeto do Vercel apagado
+- Identidade verde do logo, fotos reais (por terapia), ícone (lótus) na aba
+- Publicação automática (commit → deploy no Netlify)
+- Redes sociais (selos coloridos), chamariz da cápsula, quiz reflexivo, 11 terapias, horário 9h–18h
+- Feedbacks do Marco (várias rodadas) e correções de bugs (navegação, menu mobile)

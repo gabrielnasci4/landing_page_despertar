@@ -3,8 +3,8 @@
 Site institucional da **Despertar PΨ — Parapsicologia Clínica e Terapias
 Integrativas** (Marco Sadério).
 
-Feito com Next.js 16 + TypeScript + Tailwind v4. Site estático, hospedado
-na Vercel.
+Feito com Next.js 16 + TypeScript + Tailwind v4. Hospedado no Netlify,
+no ar em https://despertarparapsi.com.br.
 
 ## Documentação
 
