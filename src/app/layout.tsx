@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Newsreader, Hanken_Grotesk } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -90,7 +89,6 @@ export default function RootLayout({
         <Reveal />
         <CookieConsent />
         <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
