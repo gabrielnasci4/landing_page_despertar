@@ -50,12 +50,29 @@ export function AutoTeste() {
   if (terminou) {
     const p = perfis[perfilResultado()];
     const mensagem =
-      `Olá, Marco! Fiz o teste de autoconhecimento no site da ${clinica.nome} e o meu perfil foi "${p.nome}". Gostaria de conversar sobre isso.`;
+      `Olá, Marco! Fiz o teste de autoconhecimento no site da ${clinica.nome} e no meu resultado deu "${p.nome}". Gostaria de conversar.`;
+
+    const urlTeste = `${clinica.siteUrl}/autoconhecimento`;
+    const textoCompartilhar = `Fiz o teste "Qual é o seu momento interior?" da ${clinica.nome} e no meu deu "${p.nome}". Faça o seu:`;
+
+    function compartilhar() {
+      track("autoteste_compartilhado");
+      const nav = typeof navigator !== "undefined" ? navigator : undefined;
+      if (nav?.share) {
+        nav.share({ title: clinica.nome, text: textoCompartilhar, url: urlTeste }).catch(() => {});
+      } else {
+        window.open(
+          `https://wa.me/?text=${encodeURIComponent(`${textoCompartilhar} ${urlTeste}`)}`,
+          "_blank",
+          "noopener,noreferrer",
+        );
+      }
+    }
 
     return (
       <div className="rounded-[2rem] border border-[var(--color-dawn-line)] bg-white p-8 text-center sm:p-12">
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-amethyst)]">
-          O seu perfil interior
+          Um espelho leve do seu momento
         </p>
         <div className="mt-4 text-5xl" aria-hidden="true">
           {p.simbolo}
@@ -82,17 +99,28 @@ export function AutoTeste() {
           </CtaWhatsapp>
           <button
             type="button"
+            onClick={compartilhar}
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[var(--color-twilight)]/20 px-6 py-3 font-semibold text-[var(--color-twilight)] transition-colors hover:border-[var(--color-amethyst)] hover:text-[var(--color-amethyst)]"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M18 8a3 3 0 10-2.83-4M6 12a3 3 0 100 0m12 4a3 3 0 10-2.83 4M8.6 13.5l6.8 3M15.4 7.5l-6.8 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Compartilhar
+          </button>
+          <button
+            type="button"
             onClick={recomeçar}
             className="text-sm text-[var(--color-ink-soft)] underline hover:text-[var(--color-amethyst)]"
           >
-            Refazer o teste
+            Refazer
           </button>
         </div>
 
         <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Este teste é um convite ao autoconhecimento, não é um diagnóstico nem
-          uma avaliação clínica. Somos muito mais do que um único perfil, e cada
-          pessoa é única.
+          Isto é só um espelho leve e afetuoso do seu momento, feito para
+          provocar reflexão. Não é uma avaliação de personalidade nem um
+          diagnóstico. O autoconhecimento de verdade é único e acontece no seu
+          tempo, numa conversa.
         </p>
       </div>
     );

@@ -15,7 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "", prioridade: 1 },
     { url: "/parapsicologia-clinica", prioridade: 0.8 },
     { url: "/sobre", prioridade: 0.7 },
+    { url: "/quizes", prioridade: 0.6 },
     { url: "/quiz", prioridade: 0.6 },
+    { url: "/autoconhecimento", prioridade: 0.6 },
     { url: "/contato", prioridade: 0.9 },
     { url: "/politica-de-privacidade", prioridade: 0.3 },
   ].map((p) => ({
