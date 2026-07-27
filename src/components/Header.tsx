@@ -112,10 +112,11 @@ export function Header() {
           <button
             type="button"
             onClick={() => setAberto((v) => !v)}
-            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-twilight)] xl:hidden"
+            className="flex h-11 items-center gap-2 rounded-full px-2 text-[var(--color-twilight)] xl:hidden"
             aria-label={aberto ? "Fechar menu" : "Abrir menu"}
             aria-expanded={aberto}
           >
+            <span className="text-sm font-medium">{aberto ? "Fechar" : "Menu"}</span>
             <span className="relative block h-4 w-6">
               <span
                 className={`absolute left-0 block h-0.5 w-6 bg-current transition-all ${
