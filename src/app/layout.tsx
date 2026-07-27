@@ -31,11 +31,11 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(clinica.siteUrl),
   title: {
-    default: `${clinica.nome} — ${clinica.atividade}`,
+    default: `${clinica.nome} · ${clinica.atividade}`,
     template: `%s | ${clinica.nome}`,
   },
   description:
-    "Clínica de Parapsicologia Clínica e Terapias Integrativas com Marco Sadério. Hipnose, Reiki, regressão, PNL e mais — acolhimento para autoconhecimento e bem-estar. Presencial e online.",
+    "Clínica de Parapsicologia Clínica e Terapias Integrativas com Marco Sadério. Hipnose, Reiki, regressão, PNL e mais, com acolhimento para autoconhecimento e bem-estar. Presencial e online.",
   keywords: [
     "parapsicologia clínica",
     "terapias integrativas",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: clinica.nome,
-    title: `${clinica.nome} — ${clinica.atividade}`,
+    title: `${clinica.nome} · ${clinica.atividade}`,
     description:
       "Acolhimento para autoconhecimento e bem-estar com Marco Sadério, parapsicólogo clínico. Presencial e online.",
   },

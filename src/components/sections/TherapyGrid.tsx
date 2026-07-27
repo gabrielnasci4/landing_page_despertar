@@ -18,7 +18,7 @@ export function TherapyGrid() {
           As sessões são personalizadas: a técnica é escolhida conforme a sua
           necessidade e o momento que você vive. Cada prática tem sua
           especificidade, mas todas se conectam e se complementam ao longo do
-          processo — porque as mudanças mais profundas acontecem quando olhamos
+          processo, porque as mudanças mais profundas acontecem quando olhamos
           para o todo. Conheça cada uma delas.
         </p>
       </div>

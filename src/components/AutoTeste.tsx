@@ -90,7 +90,7 @@ export function AutoTeste() {
         </div>
 
         <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-[var(--color-ink-soft)]">
-          Este teste é um convite ao autoconhecimento — não é um diagnóstico nem
+          Este teste é um convite ao autoconhecimento, não é um diagnóstico nem
           uma avaliação clínica. Somos muito mais do que um único perfil, e cada
           pessoa é única.
         </p>

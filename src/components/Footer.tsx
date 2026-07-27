@@ -123,7 +123,7 @@ export function Footer() {
           </p>
           <div className="mt-4 flex flex-col gap-1 text-xs text-[var(--color-dawn)]/45 sm:flex-row sm:items-center sm:justify-between">
             <span>
-              © {ano} {clinica.nome} — {clinica.profissional.nomeCompleto}
+              © {ano} {clinica.nome} · {clinica.profissional.nomeCompleto}
               {clinica.cnpj && !pendente(clinica.cnpj) ? ` · CNPJ ${clinica.cnpj}` : ""}
             </span>
             <span>Todos os direitos reservados.</span>

@@ -7,7 +7,7 @@ import { personJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { clinica } from "@/content/clinica";
 
 export const metadata: Metadata = {
-  title: "Sobre Marco Sadério — Parapsicólogo Clínico",
+  title: "Sobre Marco Sadério, Parapsicólogo Clínico",
   description:
     "Conheça Marco Sadério, parapsicólogo clínico à frente da Despertar PΨ. Acolhimento, sigilo e um olhar integrativo para o autoconhecimento e o bem-estar.",
   alternates: { canonical: "/sobre" },

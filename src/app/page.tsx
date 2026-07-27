@@ -108,7 +108,7 @@ export default function Home() {
               Tire a sua mensagem do dia
             </h2>
             <p className="mt-1 text-[var(--color-ink-soft)]">
-              Uma frase escolhida para o seu momento — leve com você.
+              Uma frase escolhida para o seu momento. Leve com você.
             </p>
           </div>
           <span className="inline-flex items-center justify-center gap-2 self-start rounded-full bg-[var(--color-amethyst)] px-6 py-3 font-semibold text-white transition-transform group-hover:-translate-y-0.5 sm:self-auto">
@@ -125,13 +125,13 @@ export default function Home() {
         <div className="max-w-2xl" data-reveal>
           <Eyebrow>Você se reconhece aqui?</Eyebrow>
           <h2 className="mt-4 text-4xl leading-[1.1] sm:text-5xl">
-            Às vezes, algo trava por dentro — e a explicação não aparece.
+            Às vezes, algo trava por dentro, e a explicação não aparece.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-[var(--color-ink-soft)]">
-            Muitas vezes, além dos sintomas, existem padrões emocionais, crenças
-            e registros internos que também pedem atenção. A parapsicologia
-            clínica amplia esse olhar, buscando compreender o que está por trás
-            das dores, bloqueios e repetições.
+            Muitas vezes, além dos sintomas, existem emoções, crenças, memórias e
+            padrões internos que também pedem atenção. A Parapsicologia Clínica
+            amplia esse olhar, buscando compreender o que está por trás das
+            dores, bloqueios e repetições.
           </p>
         </div>
 
@@ -188,7 +188,7 @@ export default function Home() {
             </h2>
             <p className="mt-5 leading-relaxed text-[var(--color-ink-soft)]">
               A Parapsicologia Clínica é uma abordagem que investiga a mente
-              humana em sua totalidade — em suas dimensões conscientes,
+              humana em sua totalidade, em suas dimensões conscientes,
               subconscientes e sutis. Por meio de escuta qualificada e práticas
               terapêuticas específicas, ela ajuda a identificar e ressignificar
               crenças, memórias e padrões internos que muitas vezes influenciam o
@@ -225,11 +225,11 @@ export default function Home() {
               Não sabe por onde começar?
             </Eyebrow>
             <h2 className="mt-4 text-3xl text-white sm:text-4xl">
-              Um convite para refletir sobre o seu momento.
+              Descubra qual caminho de cuidado conversa com o seu momento.
             </h2>
             <p className="mt-4 text-white/85">
-              Três perguntas rápidas para colocar em palavras o que você busca —
-              e dar o primeiro passo para uma conversa com o Marco.
+              Quatro perguntas rápidas. No fim, uma orientação inicial, sem
+              definir uma técnica fechada, para dar o primeiro passo com o Marco.
             </p>
             <Link
               href="/quiz"
@@ -264,7 +264,7 @@ export default function Home() {
             {
               n: "03",
               t: "Um caminho personalizado",
-              d: "A partir da sua necessidade, escolhemos juntos as práticas mais adequadas — no seu ritmo.",
+              d: "A partir da sua necessidade, escolhemos juntos as práticas mais adequadas, no seu ritmo.",
             },
           ].map((p) => (
             <li key={p.n} data-reveal className="relative">
@@ -291,7 +291,7 @@ export default function Home() {
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-[var(--color-ink-soft)]">
             No consultório, o Marco entrega uma mensagem a cada pessoa. Tire a
-            sua — e leve com você.
+            sua e leve com você.
           </p>
         </div>
         <div className="mt-10" data-reveal>
@@ -348,7 +348,7 @@ export default function Home() {
             className="font-display text-3xl italic leading-[1.3] text-[var(--color-dawn)] sm:text-[2.6rem]"
           >
             &ldquo;Já pensou se a resposta para aquilo que mais te trava não está
-            fora, mas dentro de você — esperando ser acessada e
+            fora, mas dentro de você, esperando ser acessada e
             transformada?&rdquo;
           </p>
           <div className="mt-10" data-reveal>
@@ -371,7 +371,7 @@ export default function Home() {
               Dê o primeiro passo hoje.
             </h2>
             <p className="mt-5 leading-relaxed text-[var(--color-ink-soft)]">
-              Preencha e o WhatsApp abre com a sua mensagem pronta — ou fale
+              Preencha e o WhatsApp abre com a sua mensagem pronta, ou fale
               direto com o Marco. O acolhimento começa no primeiro contato.
             </p>
             <div className="mt-8 space-y-3 text-[var(--color-ink)]">

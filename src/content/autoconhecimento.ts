@@ -29,18 +29,18 @@ export const perfis: Record<string, Perfil> = {
     simbolo: "🧭",
     essencia: "Você é movido por perguntas profundas.",
     descricao: [
-      "Você não se contenta com o superficial: quer entender o porquê das coisas, o sentido por trás do que vive. Essa busca é a sua maior força — e, às vezes, a sua inquietação.",
+      "Você não se contenta com o superficial: quer entender o porquê das coisas, o sentido por trás do que vive. Essa busca é a sua maior força e, às vezes, a sua inquietação.",
       "A filosofia chamaria isso de uma alma que procura o essencial; a parapsicologia, de uma consciência em expansão. Quando você encontra propósito, tudo à sua volta parece se reorganizar.",
     ],
     convite:
-      "O convite do seu momento é transformar essa busca em direção — trazer o sentido que você procura para o chão do dia a dia.",
+      "O convite do seu momento é transformar essa busca em direção: trazer o sentido que você procura para o chão do dia a dia.",
   },
   guardiao: {
     nome: "O Guardião",
     simbolo: "🛡️",
     essencia: "Você é a base em que os outros se apoiam.",
     descricao: [
-      "Você cuida, sustenta e resolve — muitas vezes deixando as próprias necessidades por último. A sua lealdade e o seu senso de responsabilidade são raros e preciosos.",
+      "Você cuida, sustenta e resolve, muitas vezes deixando as próprias necessidades por último. A sua lealdade e o seu senso de responsabilidade são raros e preciosos.",
       "Mas há um peso invisível em carregar o mundo sozinho. Ser forte para todos, o tempo todo, cansa uma parte de você que também precisa de cuidado.",
     ],
     convite:
@@ -51,7 +51,7 @@ export const perfis: Record<string, Perfil> = {
     simbolo: "🌙",
     essencia: "Você sente o mundo em alta intensidade.",
     descricao: [
-      "Você percebe o que os outros não notam: capta climas, intuições e emoções com facilidade. Essa sensibilidade é um dom — de empatia, de intuição, de conexão profunda.",
+      "Você percebe o que os outros não notam: capta climas, intuições e emoções com facilidade. Essa sensibilidade é um dom de empatia, de intuição e de conexão profunda.",
       "O desafio é não se perder no que absorve dos outros, nem se cobrar por sentir tanto. A sua sensibilidade não é fragilidade: é uma forma de sabedoria.",
     ],
     convite:
@@ -62,7 +62,7 @@ export const perfis: Record<string, Perfil> = {
     simbolo: "♟️",
     essencia: "A sua mente é rápida, clara e busca controle.",
     descricao: [
-      "Você analisa, planeja e resolve — e isso te levou longe. A razão é uma aliada poderosa, e você sabe usá-la bem.",
+      "Você analisa, planeja e resolve, e isso te levou longe. A razão é uma aliada poderosa, e você sabe usá-la bem.",
       "Mas nem tudo se resolve pensando. Há uma parte de você, mais ligada ao sentir e à intuição, que às vezes fica em segundo plano, esperando espaço.",
     ],
     convite:
@@ -73,7 +73,7 @@ export const perfis: Record<string, Perfil> = {
     simbolo: "🌅",
     essencia: "Você está num limiar, entre o que foi e o que vem.",
     descricao: [
-      "Algo antigo pede para ficar para trás, e algo novo ainda está nascendo. Pode haver inquietação e cansaço do que já passou — e também uma coragem silenciosa de recomeçar.",
+      "Algo antigo pede para ficar para trás, e algo novo ainda está nascendo. Pode haver inquietação e cansaço do que já passou, e também uma coragem silenciosa de recomeçar.",
       "Esse é um dos momentos mais férteis da vida, ainda que nem sempre confortável. Você não está perdido: está em transformação.",
     ],
     convite:

@@ -66,7 +66,7 @@ export function QuizGame() {
         <p className="mx-auto mt-6 max-w-lg leading-relaxed text-[var(--color-ink-soft)]">
           Cada pessoa é única, e o que faz sentido para você só se revela numa
           conversa. Não existe fórmula pronta: o Marco escuta a sua história e,
-          juntos, vocês definem o primeiro passo — no seu tempo e com todo o
+          juntos, vocês definem o primeiro passo, no seu tempo e com todo o
           cuidado.
         </p>
 

@@ -160,7 +160,7 @@ export default async function TerapiaPage({
             Ficou com vontade de experimentar?
           </h2>
           <p className="mx-auto mt-3 max-w-md text-[var(--color-ink-soft)]">
-            Converse com o Marco pelo WhatsApp{cidade ? ` — atendimento em ${cidade} e online` : ""}. Sem compromisso.
+            Converse com o Marco pelo WhatsApp{cidade ? `, com atendimento em ${cidade} e online` : ""}. Sem compromisso.
           </p>
           <div className="mt-6 flex justify-center">
             <CtaWhatsapp origem={`terapia_${t.slug}_fim`} mensagem={mensagemTerapia(t.nome)}>

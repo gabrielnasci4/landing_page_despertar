@@ -3,9 +3,9 @@ import { QuizGame } from "@/components/QuizGame";
 import { Eyebrow } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Por onde começar a sua conversa?",
+  title: "Qual caminho de cuidado conversa com o seu momento?",
   description:
-    "Responda 3 perguntas rápidas e reflita sobre o seu momento. O caminho é sempre individual, construído numa conversa com Marco Sadério, da Despertar PΨ.",
+    "Responda quatro perguntas e receba uma orientação inicial, sem definir uma técnica fechada. O caminho é sempre individual, construído numa conversa com Marco Sadério, da Despertar PΨ.",
   alternates: { canonical: "/quiz" },
 };
 
@@ -15,12 +15,12 @@ export default function QuizPage() {
       <div className="text-center">
         <Eyebrow className="justify-center">Um convite à reflexão</Eyebrow>
         <h1 className="mt-5 text-[2.2rem] leading-[1.08] sm:text-5xl">
-          Por onde começar a sua conversa?
+          Qual caminho de cuidado conversa com o seu momento?
         </h1>
         <p className="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-[var(--color-ink-soft)]">
-          São só três perguntas para refletir sobre o seu momento. Não é um
-          diagnóstico: o caminho é sempre individual, definido numa conversa com
-          o Marco, no seu tempo.
+          São só quatro perguntas. No fim, você recebe uma orientação inicial,
+          sem definir uma técnica fechada, e pode conversar com o Marco para
+          entender o melhor caminho.
         </p>
       </div>
 

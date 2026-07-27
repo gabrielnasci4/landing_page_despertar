@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Teste de Autoconhecimento",
   description:
-    "Um teste de autoconhecimento para descobrir o seu momento interior — reflexão, não diagnóstico. Despertar PΨ, com Marco Sadério.",
+    "Um teste de autoconhecimento para descobrir o seu momento interior. Reflexão, não diagnóstico. Despertar PΨ, com Marco Sadério.",
   // Em avaliação: ainda fora do menu e sem indexar no Google.
   robots: { index: false, follow: false },
   alternates: { canonical: "/autoconhecimento" },
@@ -21,7 +21,7 @@ export default function AutoconhecimentoPage() {
         </h1>
         <p className="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-[var(--color-ink-soft)]">
           Cinco perguntas para refletir sobre você. No fim, um perfil que fala do
-          seu momento — um convite ao autoconhecimento, sem diagnóstico.
+          seu momento, um convite ao autoconhecimento, sem diagnóstico.
         </p>
       </div>
 

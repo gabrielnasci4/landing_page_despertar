@@ -20,7 +20,7 @@ export default function ObrigadoPage() {
       </h1>
       <p className="mt-5 max-w-md text-lg leading-relaxed text-[var(--color-ink-soft)]">
         Se a janela do WhatsApp não abriu automaticamente, é só tocar no botão
-        abaixo. O Marco vai te responder em breve — obrigado pela confiança.
+        abaixo. O Marco vai te responder em breve. Obrigado pela confiança.
       </p>
       <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
         <CtaWhatsapp origem="obrigado">Abrir o WhatsApp</CtaWhatsapp>

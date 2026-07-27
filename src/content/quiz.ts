@@ -75,6 +75,15 @@ export const quiz: PerguntaQuiz[] = [
       { texto: "Busco mais equilíbrio e bem-estar", tema: "equilibrio" },
     ],
   },
+  {
+    pergunta: "O que faria diferença para você agora?",
+    opcoes: [
+      { texto: "Ter um espaço seguro para desacelerar", tema: "acolhimento" },
+      { texto: "Compreender melhor a mim mesmo", tema: "autoconhecimento" },
+      { texto: "Recuperar a confiança nas minhas escolhas", tema: "clareza" },
+      { texto: "Reencontrar energia e leveza", tema: "equilibrio" },
+    ],
+  },
 ];
 
 // Tema padrão se nada pontuar (o mais acolhedor).

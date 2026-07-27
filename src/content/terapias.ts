@@ -56,7 +56,7 @@ export const terapias: Terapia[] = [
       "Insights e decisões mais conscientes",
     ],
     comoFunciona:
-      "Cada encontro é uma conversa cuidadosa, conduzida no seu ritmo. As conversas terapêuticas podem vir sozinhas ou preparar e complementar outras práticas, como o relaxamento, a hipnose ou o Reiki — dando sentido a todo o processo.",
+      "Cada encontro é uma conversa cuidadosa, conduzida no seu ritmo. As conversas terapêuticas podem vir sozinhas ou preparar e complementar outras práticas, como o relaxamento, a hipnose ou o Reiki, dando sentido a todo o processo.",
     metaTitle: "Conversas Terapêuticas em [cidade] | Despertar PΨ",
     metaDescription:
       "Conversas terapêuticas (diálogo terapêutico): escuta ativa e acolhedora para trazer clareza, organizar emoções e abrir novos caminhos. Presencial e online.",
@@ -73,7 +73,7 @@ export const terapias: Terapia[] = [
       "Imagine poder silenciar aquela voz que te sabota e plantar no lugar pensamentos que te fortalecem.",
     oQueE: [
       "Muitas pessoas associam hipnose a palco ou entretenimento. A hipnose clínica é totalmente diferente: é um estado natural de relaxamento profundo e foco concentrado, no qual a mente fica mais aberta a sugestões terapêuticas positivas.",
-      "Você não perde o controle. Permanece consciente o tempo todo e apenas acessa um nível mais tranquilo da mente — aquele em que guardamos memórias, crenças e padrões que orientam boa parte do que sentimos e fazemos.",
+      "Você não perde o controle. Permanece consciente o tempo todo e apenas acessa um nível mais tranquilo da mente, aquele em que guardamos memórias, crenças e padrões que orientam boa parte do que sentimos e fazemos.",
     ],
     apoia: [
       "Ansiedade, estresse e momentos de tensão",
@@ -85,7 +85,7 @@ export const terapias: Terapia[] = [
     comoFunciona:
       "A sessão começa com uma conversa para entender o seu momento. Em seguida, com técnicas de respiração e relaxamento guiado, você chega a um estado calmo e concentrado, no seu ritmo. Tudo é conduzido em um espaço seguro, sem julgamentos, e sempre respeitando seus limites.",
     metaTitle:
-      "Hipnose Clínica em [cidade] | Despertar PΨ — Marco Sadério",
+      "Hipnose Clínica em [cidade] | Despertar PΨ · Marco Sadério",
     metaDescription:
       "Hipnose clínica como prática integrativa de bem-estar: relaxamento profundo e foco para apoiar ansiedade, hábitos e qualidade de vida. Presencial e online.",
     faq: [
@@ -97,7 +97,7 @@ export const terapias: Terapia[] = [
       {
         pergunta: "E se eu não conseguir ser hipnotizado?",
         resposta:
-          "A maioria das pessoas entra tranquilamente nesse estado, porque ele é natural — todos nós passamos por ele várias vezes ao dia. A condução é feita no seu ritmo, sem pressa.",
+          "A maioria das pessoas entra tranquilamente nesse estado, porque ele é natural, e todos nós passamos por ele várias vezes ao dia. A condução é feita no seu ritmo, sem pressa.",
       },
     ],
   },
@@ -110,7 +110,7 @@ export const terapias: Terapia[] = [
     resumo:
       "Substituir crenças limitantes por novos entendimentos que apoiam crescimento e equilíbrio.",
     pergunta:
-      "Quais pensamentos repetidos estão te bloqueando — e como seria a vida se fossem substituídos por ideias de realização?",
+      "Quais pensamentos repetidos estão te bloqueando, e como seria a vida se fossem substituídos por ideias de realização?",
     oQueE: [
       "Nossa mente funciona um pouco como um computador: cheia de “programas” instalados ao longo da vida. Muitos são úteis. Outros se tornam crenças limitantes, frases que ouvimos na infância e medos que carregamos sem perceber.",
       "A reprogramação mental é um processo para reconhecer esses padrões e substituí-los por novos entendimentos, que apoiam o crescimento pessoal e o equilíbrio emocional.",
@@ -130,12 +130,12 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "pnl",
-    nome: "PNL — Programação Neurolinguística",
+    nome: "PNL (Programação Neurolinguística)",
     cor: "#cf9640",
     corSentido: "âmbar · clareza",
     eyebrow: "Linguagem e resultados",
     resumo:
-      "Como pensamentos, palavras e emoções moldam resultados — e como criar novas rotas para seus objetivos.",
+      "Como pensamentos, palavras e emoções moldam resultados, e como criar novas rotas para seus objetivos.",
     pergunta:
       "Já pensou como pequenas mudanças na forma de falar e pensar poderiam transformar a sua vida?",
     oQueE: [
@@ -151,7 +151,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Em conversa, mapeamos os padrões de linguagem e de pensamento ligados ao que você quer alcançar. A partir daí, praticamos novas formas de comunicar e de interpretar situações, com exercícios simples que você pode levar para o dia a dia.",
-    metaTitle: "PNL — Programação Neurolinguística em [cidade] | Despertar PΨ",
+    metaTitle: "PNL (Programação Neurolinguística) em [cidade] | Despertar PΨ",
     metaDescription:
       "PNL como prática integrativa: reconhecer padrões de linguagem e pensamento para ganhar clareza, confiança e comunicação. Atendimento presencial e online.",
   },
@@ -164,7 +164,7 @@ export const terapias: Terapia[] = [
     resumo:
       "Acessar lembranças que ainda influenciam o presente para ressignificá-las com segurança.",
     pergunta:
-      "E se aquilo que mais te trava hoje tivesse origem em um episódio esquecido — e você pudesse finalmente se libertar dele?",
+      "E se aquilo que mais te trava hoje tivesse origem em um episódio esquecido, e você pudesse finalmente se libertar dele?",
     oQueE: [
       "Nossa mente guarda muito do que vivemos, mesmo o que esquecemos conscientemente. Muitas vezes, incômodos e bloqueios do presente têm origem em lembranças antigas.",
       "A regressão de memórias é uma técnica para acessar essas recordações e ressignificá-las, trazendo alívio e clareza. Não se trata de reviver a dor, e sim de reencontrar a lembrança para observá-la de um lugar seguro.",
@@ -234,7 +234,7 @@ export const terapias: Terapia[] = [
       "Processos de luto e dores “sem explicação”",
     ],
     comoFunciona:
-      "A partir de um relaxamento guiado, você acessa imagens e sensações que podem ser compreendidas de forma simbólica ou literal — a escolha é sempre sua. O propósito é sempre o autoconhecimento e o alívio, com respeito total às suas crenças.",
+      "A partir de um relaxamento guiado, você acessa imagens e sensações que podem ser compreendidas de forma simbólica ou literal, e a escolha é sempre sua. O propósito é sempre o autoconhecimento e o alívio, com respeito total às suas crenças.",
     metaTitle: "Regressão a Vidas Passadas em [cidade] | Despertar PΨ",
     metaDescription:
       "Regressão a vidas passadas: ferramenta de autoconhecimento conduzida com respeito às suas crenças, para compreender bloqueios sem explicação. Presencial e online.",
@@ -299,11 +299,11 @@ export const terapias: Terapia[] = [
     corSentido: "verde · equilíbrio",
     eyebrow: "Energia e equilíbrio",
     resumo:
-      "Terapia energética japonesa, reconhecida pela OMS como prática integrativa, pela imposição das mãos.",
+      "Prática integrativa de origem japonesa, incluída na PNPIC do SUS, voltada ao equilíbrio energético, relaxamento e bem-estar.",
     pergunta:
       "E se o equilíbrio que você procura pudesse começar por um profundo momento de acolhimento?",
     oQueE: [
-      "O Reiki é uma terapia energética de origem japonesa, reconhecida pela Organização Mundial da Saúde (OMS) como prática integrativa. A aplicação é feita pela imposição das mãos, sem necessidade de contato físico direto.",
+      "O Reiki é uma prática integrativa de origem japonesa, incluída na Política Nacional de Práticas Integrativas e Complementares (PNPIC) do SUS, voltada ao equilíbrio energético, ao relaxamento e ao bem-estar. A aplicação é feita pela imposição das mãos, sem necessidade de contato físico direto.",
       "Ele atua em diferentes camadas: no corpo, favorecendo o relaxamento; nas emoções, trazendo acolhimento; e na mente, acalmando os pensamentos. Muitas vezes um incômodo físico se relaciona a uma emoção, e o Reiki trabalha justamente essa ligação.",
     ],
     apoia: [
@@ -313,10 +313,10 @@ export const terapias: Terapia[] = [
       "Clareza mental e serenidade",
     ],
     comoFunciona:
-      "Você permanece confortavelmente deitado ou sentado, vestido, enquanto conduzo a aplicação pela imposição das mãos. É um momento de descanso profundo — muitas pessoas relatam uma sensação de leveza e paz ao final.",
-    metaTitle: "Reiki em [cidade] | Despertar PΨ — Terapia Integrativa",
+      "Você permanece confortavelmente deitado ou sentado, vestido, enquanto conduzo a aplicação pela imposição das mãos. É um momento de descanso profundo, e muitas pessoas relatam uma sensação de leveza e paz ao final.",
+    metaTitle: "Reiki em [cidade] | Despertar PΨ · Terapia Integrativa",
     metaDescription:
-      "Reiki, prática integrativa reconhecida pela OMS: relaxamento profundo e equilíbrio pela imposição das mãos. Atendimento presencial e online.",
+      "Reiki, prática integrativa incluída na PNPIC do SUS: relaxamento profundo e equilíbrio energético pela imposição das mãos. Atendimento presencial e online.",
   },
   {
     slug: "cromoterapia",
@@ -329,17 +329,17 @@ export const terapias: Terapia[] = [
     pergunta: "Você já reparou como certas cores mudam o seu humor? Imagine usar isso como terapia.",
     oQueE: [
       "As cores têm poder. Cada uma emite vibrações que influenciam nosso corpo e nossas emoções. A cromoterapia utiliza luzes coloridas e ambientes específicos para favorecer o equilíbrio.",
-      "É impressionante como a cor de um ambiente pode alterar o nosso estado de espírito — e é justamente isso que a cromoterapia coloca a favor do seu bem-estar.",
+      "É impressionante como a cor de um ambiente pode alterar o nosso estado de espírito, e é justamente isso que a cromoterapia coloca a favor do seu bem-estar.",
     ],
     apoia: [
-      "Azul — acalmar mente e corpo",
-      "Verde — equilibrar emoções e trazer serenidade",
-      "Amarelo — despertar alegria e clareza mental",
-      "Violeta — estimular a intuição e a espiritualidade",
-      "Vermelho — estimular energia e vitalidade",
+      "Azul: acalmar mente e corpo",
+      "Verde: equilibrar emoções e trazer serenidade",
+      "Amarelo: despertar alegria e clareza mental",
+      "Violeta: estimular a intuição e a espiritualidade",
+      "Vermelho: estimular energia e vitalidade",
     ],
     comoFunciona:
-      "Usamos luzes e ambientes com cores escolhidas de acordo com o que você precisa naquele momento — mais calma, mais energia ou mais clareza. A cromoterapia costuma acompanhar outras práticas, potencializando o relaxamento.",
+      "Usamos luzes e ambientes com cores escolhidas de acordo com o que você precisa naquele momento: mais calma, mais energia ou mais clareza. A cromoterapia costuma acompanhar outras práticas, potencializando o relaxamento.",
     metaTitle: "Cromoterapia em [cidade] | Despertar PΨ",
     metaDescription:
       "Cromoterapia: o uso das cores e da luz como prática integrativa para favorecer calma, equilíbrio e bem-estar. Atendimento presencial e online.",

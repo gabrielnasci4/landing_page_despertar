@@ -31,7 +31,7 @@ export default function ParapsicologiaPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
             A Parapsicologia Clínica integra estudos da mente e práticas
-            terapêuticas para ampliar o olhar sobre o sofrimento — e revelar os
+            terapêuticas para ampliar o olhar sobre o sofrimento e revelar os
             recursos de transformação que cada pessoa carrega dentro de si.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function ParapsicologiaPage() {
       <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="space-y-5 text-[1.08rem] leading-relaxed text-[var(--color-ink)]">
           <p>
-            A Parapsicologia Clínica é uma área que integra ciência, estudos da
+            A Parapsicologia Clínica é uma abordagem que integra estudos da
             mente e práticas terapêuticas para compreender como pensamentos,
             emoções, crenças e energias sutis influenciam a nossa vida. Ela busca
             reconhecer as raízes invisíveis dos sofrimentos e dos padrões que se
@@ -48,11 +48,10 @@ export default function ParapsicologiaPage() {
             despertar o próprio potencial interior.
           </p>
           <p>
-            Muitas vezes, a medicina e a psicologia tradicionais não explicam
-            sozinhas experiências como intuições, bloqueios sem causa aparente,
-            medos profundos ou a sensação de vazio existencial. A Parapsicologia
-            Clínica amplia esse olhar, mostrando que cada indivíduo carrega em si
-            recursos para o autoconhecimento e a transformação.
+            Muitas vezes, além dos sintomas, existem emoções, crenças, memórias e
+            padrões internos que também pedem atenção. A Parapsicologia Clínica
+            amplia esse olhar, buscando compreender o que está por trás das
+            dores, bloqueios e repetições.
           </p>
         </div>
 
@@ -104,7 +103,7 @@ export default function ParapsicologiaPage() {
             escuta ativa, acolhimento e direcionamento. Em um espaço seguro e sem
             julgamentos, o cliente é conduzido por perguntas abertas que ajudam a
             trazer à tona questões profundas e a enxergar novos caminhos. Ele não
-            substitui as demais práticas — é o fio que dá sentido a tudo,
+            substitui as demais práticas: é o fio que dá sentido a tudo,
             ajudando a integrar cada experiência.
           </p>
         </div>
