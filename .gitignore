@@ -54,3 +54,7 @@ recovery-codes.txt
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# capturas de tela de teste (Playwright)
+.playwright-mcp
+/header-*.png

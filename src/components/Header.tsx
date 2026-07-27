@@ -13,7 +13,7 @@ const navegacao = [
   { rotulo: "A abordagem", href: "/parapsicologia-clinica" },
   { rotulo: "Sobre", href: "/sobre" },
   { rotulo: "Por onde começar", href: "/quiz" },
-  { rotulo: "Cápsula", href: "/#capsula" },
+  { rotulo: "Mensagem do dia", href: "/#capsula" },
   { rotulo: "Contato", href: "/contato" },
 ];
 
@@ -89,8 +89,8 @@ export function Header() {
             <span className="sr-only">{clinica.nome}</span>
           </Link>
 
-          {/* Navegação — computador */}
-          <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
+          {/* Navegação — computador (telas largas) */}
+          <nav className="hidden items-center gap-6 xl:flex">
             {navegacao.map((item) => (
               <Link
                 key={item.href}
@@ -112,7 +112,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setAberto((v) => !v)}
-            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-twilight)] lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-[var(--color-twilight)] xl:hidden"
             aria-label={aberto ? "Fechar menu" : "Abrir menu"}
             aria-expanded={aberto}
           >
@@ -144,7 +144,7 @@ export function Header() {
         cobre a tela inteira corretamente.
       */}
       {aberto && (
-        <div className="fixed inset-0 top-[80px] z-[45] overflow-y-auto bg-[var(--color-dawn)] px-5 py-8 lg:hidden">
+        <div className="fixed inset-0 top-[80px] z-[45] overflow-y-auto bg-[var(--color-dawn)] px-5 py-8 xl:hidden">
           <nav className="flex flex-col gap-1">
             {navegacao.map((item) => (
               <Link
