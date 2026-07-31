@@ -4,17 +4,20 @@ import { useState, useEffect } from "react";
 import Script from "next/script";
 
 /*
-  Carrega o Google Analytics (GA4) e o Pixel do Facebook,
-  mas SOMENTE depois que a pessoa aceitou os cookies.
+  Carrega o Google Analytics (GA4), o Pixel do Facebook e o
+  Microsoft Clarity, mas SOMENTE depois que a pessoa aceitou
+  os cookies.
 
-  Para ativar, defina as variáveis de ambiente na Vercel:
+  Para ativar, defina as variáveis de ambiente na Netlify:
     NEXT_PUBLIC_GA_ID          (ex.: G-XXXXXXX)
     NEXT_PUBLIC_META_PIXEL_ID  (ex.: 123456789012345)
+    NEXT_PUBLIC_CLARITY_ID     (ex.: abcdef1234)
   Enquanto elas não existirem, nada é carregado — o site
   funciona normalmente sem rastreamento.
 */
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CHAVE = "despertar-consentimento";
 
 export function Analytics() {
@@ -65,6 +68,18 @@ export function Analytics() {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '${PIXEL_ID}');
             fbq('track', 'PageView');
+          `}
+        </Script>
+      )}
+
+      {CLARITY_ID && (
+        <Script id="ms-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${CLARITY_ID}");
           `}
         </Script>
       )}
