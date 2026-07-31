@@ -31,16 +31,18 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(clinica.siteUrl),
   title: {
-    default: `${clinica.nome} · ${clinica.atividade}`,
+    default: "Parapsicologia Clínica em Joinville - SC | Despertar PΨ",
     template: `%s | ${clinica.nome}`,
   },
   description:
-    "Clínica de Parapsicologia Clínica e Terapias Integrativas com Marco Sadério. Hipnose, Reiki, regressão, PNL e mais, com acolhimento para autoconhecimento e bem-estar. Presencial e online.",
+    "Parapsicologia Clínica e Terapias Integrativas em Joinville - SC com Marco Sadério: hipnose clínica, Reiki, regressão, PNL e mais. Acolhimento para o autoconhecimento e o bem-estar. Presencial e online.",
   keywords: [
     "parapsicologia clínica",
-    "terapias integrativas",
-    "hipnose clínica",
-    "reiki",
+    "parapsicólogo Joinville",
+    "parapsicologia clínica Joinville",
+    "terapias integrativas Joinville",
+    "hipnose clínica Joinville",
+    "reiki Joinville",
     "regressão de memórias",
     "PNL",
     "Marco Sadério",
@@ -50,9 +52,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: clinica.nome,
-    title: `${clinica.nome} · ${clinica.atividade}`,
+    title: "Parapsicologia Clínica em Joinville - SC | Despertar PΨ",
     description:
-      "Acolhimento para autoconhecimento e bem-estar com Marco Sadério, parapsicólogo clínico. Presencial e online.",
+      "Terapias integrativas em Joinville - SC com Marco Sadério, parapsicólogo clínico: hipnose, Reiki, regressão, PNL e mais. Acolhimento para o autoconhecimento e o bem-estar. Presencial e online.",
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },

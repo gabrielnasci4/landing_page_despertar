@@ -28,7 +28,16 @@ export function localBusinessJsonLd() {
       name: clinica.profissional.nomeCompleto,
       jobTitle: clinica.profissional.titulo,
     },
-    sameAs: [clinica.redes.instagram, clinica.redes.facebook].filter(Boolean),
+    sameAs: [
+      clinica.redes.instagram,
+      clinica.redes.facebook,
+      clinica.redes.youtube,
+      clinica.redes.tiktok,
+    ].filter(Boolean),
+    areaServed: [
+      { "@type": "City", name: clinica.endereco.cidade },
+      { "@type": "AdministrativeArea", name: clinica.endereco.estado },
+    ],
   };
 
   if (temEndereco()) {
@@ -80,7 +89,10 @@ export function serviceJsonLd(slug: string) {
       name: clinica.nome,
       telephone: `+${clinica.whatsappNumero}`,
     },
-    areaServed: "BR",
+    areaServed: [
+      { "@type": "City", name: clinica.endereco.cidade },
+      "BR",
+    ],
     url: `${clinica.siteUrl}/terapias/${t.slug}`,
   };
 }
