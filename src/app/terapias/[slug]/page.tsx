@@ -87,6 +87,11 @@ export default async function TerapiaPage({
               <h1 className="mt-5 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">
                 {t.nome}
               </h1>
+              {cidade && (
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-ink-soft)]">
+                  em {cidade} · presencial e online
+                </p>
+              )}
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
                 {t.resumo}
               </p>
