@@ -36,9 +36,11 @@ export default function Home() {
               de você.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              Um espaço de acolhimento para acessar e ressignificar as raízes
-              invisíveis de dores emocionais, dos padrões que se repetem e das
-              crenças que limitam, despertando o seu potencial interior.
+              Na Despertar PΨ, em Joinville, o parapsicólogo clínico Marco
+              Sadério oferece um espaço de acolhimento para acessar e
+              ressignificar as raízes invisíveis de dores emocionais, dos
+              padrões que se repetem e das crenças que limitam, despertando o
+              seu potencial interior.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <CtaWhatsapp origem="hero">Agendar uma conversa</CtaWhatsapp>
