@@ -225,17 +225,32 @@ export default function Home() {
               Não sabe por onde começar?
             </Eyebrow>
             <h2 className="mt-4 text-3xl text-white sm:text-4xl">
-              Descubra qual caminho de cuidado conversa com o seu momento.
+              Escolha um teste rápido e comece a se ouvir.
             </h2>
             <p className="mt-4 text-white/85">
-              Quatro perguntas rápidas. No fim, uma orientação inicial, sem
-              definir uma técnica fechada, para dar o primeiro passo com o Marco.
+              São dois testes leves e reflexivos, de poucos minutos e sem
+              diagnóstico. Escolha por onde começar — no fim, uma orientação
+              inicial para dar o primeiro passo com o Marco.
             </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <Link
+                href="/quiz"
+                className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-[var(--color-amethyst)] transition-transform hover:-translate-y-0.5"
+              >
+                Caminho de cuidado
+              </Link>
+              <Link
+                href="/autoconhecimento"
+                className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full border border-white/70 px-7 py-4 font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                Momento interior
+              </Link>
+            </div>
             <Link
-              href="/quiz"
-              className="mt-8 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-white px-8 py-4 font-semibold text-[var(--color-amethyst)] transition-transform hover:-translate-y-0.5"
+              href="/quizes"
+              className="mt-5 inline-block text-sm text-white/75 underline underline-offset-4 transition-colors hover:text-white"
             >
-              Fazer o teste
+              Ver os dois testes
             </Link>
           </div>
         </div>
