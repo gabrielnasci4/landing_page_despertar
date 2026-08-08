@@ -20,7 +20,8 @@ export const clinica = {
   // Nome como aparece nos títulos e no topo do site.
   nome: "Despertar PΨ",
   // Versão por extenso (usada onde o símbolo Ψ não fica bom, ex.: Google).
-  nomeExtenso: "Despertar para Psi",
+  // Uma palavra só (como o domínio) para o Google não separar em "para psi".
+  nomeExtenso: "Despertar ParaPSI",
   // Frase curta que descreve a atividade (aparece ao lado do nome).
   atividade: "Parapsicologia Clínica e Terapias Integrativas",
 
