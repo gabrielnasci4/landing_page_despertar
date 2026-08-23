@@ -5,6 +5,7 @@ import { Eyebrow } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { personJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { clinica } from "@/content/clinica";
+import { formacao } from "@/content/formacao";
 
 export const metadata: Metadata = {
   title: "Sobre Marco Sadério, Parapsicólogo Clínico",
@@ -69,6 +70,45 @@ export default function SobrePage() {
           <div className="mt-8">
             <CtaWhatsapp origem="sobre">Conversar com o Marco</CtaWhatsapp>
           </div>
+        </div>
+      </section>
+
+      {/* Formação e certificações */}
+      <section className="mx-auto max-w-6xl px-5 pt-4 sm:px-8">
+        <div
+          className="rounded-[2rem] border border-[var(--color-dawn-line)] bg-[var(--color-dawn-deep)] p-7 sm:p-12"
+          data-reveal
+        >
+          <Eyebrow>Formação e certificações</Eyebrow>
+          <h2 className="mt-4 text-3xl leading-[1.1] sm:text-4xl">
+            Estudo contínuo para cuidar com responsabilidade.
+          </h2>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+            {formacao.map((c) => (
+              <li
+                key={c.curso}
+                className="flex gap-4 rounded-2xl border border-[var(--color-dawn-line)] bg-white p-5"
+              >
+                <span
+                  className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--color-amethyst)]"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p className="font-display text-lg leading-snug text-[var(--color-twilight)]">
+                    {c.curso}
+                  </p>
+                  <p className="mt-1 text-sm text-[var(--color-ink-soft)]">
+                    {c.instituicao}
+                  </p>
+                  {(c.cargaHoraria || c.ano) && (
+                    <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">
+                      {[c.cargaHoraria, c.ano].filter(Boolean).join(" · ")}
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
