@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { terapias } from "@/content/terapias";
 import { clinica } from "@/content/clinica";
 
+// Gera um sitemap.xml fixo no build (site estático).
+export const dynamic = "force-static";
+
 /*
   Mapa do site (sitemap): a lista de páginas que o Google deve
   conhecer. É gerado automaticamente — inclusive as 9 páginas de

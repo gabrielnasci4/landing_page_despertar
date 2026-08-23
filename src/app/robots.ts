@@ -1,16 +1,19 @@
 import type { MetadataRoute } from "next";
 import { clinica } from "@/content/clinica";
 
+// Gera um robots.txt fixo no build (site estático).
+export const dynamic = "force-static";
+
 /*
-  Instruções para os buscadores: pode indexar tudo, menos a área
-  interna e a página de agradecimento. Aponta o caminho do sitemap.
+  Instruções para os buscadores: pode indexar tudo, menos a página
+  de agradecimento. Aponta o caminho do sitemap.
 */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/obrigado"],
+      disallow: ["/obrigado"],
     },
     sitemap: `${clinica.siteUrl}/sitemap.xml`,
   };
