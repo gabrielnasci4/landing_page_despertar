@@ -1,0 +1,10 @@
+{
+  // Configuração da Cloudflare: serve o site 100% estático gerado
+  // na pasta "out/" pelo comando de build (npm run build).
+  "name": "despertarparapsi",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
