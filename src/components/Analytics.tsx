@@ -17,7 +17,11 @@ import Script from "next/script";
 */
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+// ID do Microsoft Clarity. Fica embutido aqui (não é segredo — já
+// aparece no navegador) para funcionar em qualquer hospedagem sem
+// depender de variável de ambiente. A variável, se existir, tem
+// prioridade.
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || "xss14ps28x";
 const CHAVE = "despertar-consentimento";
 
 export function Analytics() {
