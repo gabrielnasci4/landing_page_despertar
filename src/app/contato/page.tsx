@@ -16,6 +16,13 @@ export const metadata: Metadata = {
 
 export default function ContatoPage() {
   const horariosValidos = clinica.horarios.filter((h) => !pendente(h.horario));
+  const e = clinica.endereco;
+  // Endereço do tour 360° (Street View do Google) montado a partir das
+  // coordenadas da clínica. O "137.35" é só o ângulo inicial da câmera.
+  const tourEmbed =
+    e.latitude && e.longitude
+      ? `https://www.google.com/maps/embed?pb=!6m7!1m6!2m2!1d${e.latitude}!2d${e.longitude}!3f137.35!4f-0!5f1`
+      : "";
 
   return (
     <>
@@ -110,6 +117,40 @@ export default function ContatoPage() {
             </div>
           </div>
         </div>
+
+        {/* Tour virtual 360° da clínica */}
+        {tourEmbed && (
+          <div className="mt-16" data-reveal>
+            <Eyebrow>Conheça o espaço</Eyebrow>
+            <h2 className="mt-4 text-3xl leading-[1.1] sm:text-4xl">
+              Faça um tour virtual pela clínica.
+            </h2>
+            <p className="mt-3 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
+              Arraste para olhar em volta, no seu tempo, e sinta o ambiente
+              antes mesmo da primeira visita.
+            </p>
+            <div className="mt-6 overflow-hidden rounded-[2rem] border border-[var(--color-dawn-line)] shadow-sm">
+              <iframe
+                src={tourEmbed}
+                title="Tour virtual 360° da Despertar ParaPSI"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                className="block h-[380px] w-full sm:h-[500px]"
+              />
+            </div>
+            {clinica.tourVirtual && !pendente(clinica.tourVirtual) && (
+              <a
+                href={clinica.tourVirtual}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block text-sm font-semibold text-[var(--color-amethyst)] underline underline-offset-4 hover:text-[var(--color-twilight)]"
+              >
+                Abrir o tour em tela cheia no Google Maps →
+              </a>
+            )}
+          </div>
+        )}
       </section>
     </>
   );

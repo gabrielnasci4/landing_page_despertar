@@ -58,12 +58,15 @@ export const clinica = {
     estado: "SC",
     cep: "89202-205",
     // Coordenadas do Google Maps (ajuda o Google a posicionar no mapa).
-    // Deixe assim por enquanto; preenchemos ao configurar o Google Meu Negócio.
-    latitude: "",
-    longitude: "",
+    latitude: "-26.312575",
+    longitude: "-48.8450751",
     // Link para o botão "Como chegar" (perfil do Google do Marco).
     linkMapa: "https://share.google/0zdUJUY7Ejjeo3TGY",
   },
+
+  // Tour virtual 360° da clínica (Street View do Google). Deixe "" para esconder.
+  tourVirtual:
+    "https://www.google.com/maps/@-26.312575,-48.8450751,3a,75y,137.35h,74.27t/data=!3m7!1e1!3m5!1sCIABIhCoMGoPSiBLKjtxrLlexMZQ!2e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgpms-cs-s%2FAFP8RcOyKHqmeq99fUbgeN18FCPIlWvDiHCwlur60VRzBosuuTjvs5uCLTVksAQuhqfeNVAZKIIDjhqRaJmnk5uGWLICv1Jue-l0-sxF0S6zPUiZeVkUIROQd2qZ2XmfFwFjaV3aZXAs96sQ0HNQ%3Dw900-h600-k-no-pi15.733438988891152-ya171.54626255290174-ro0-fo100!7i12000!8i6000?entry=ttu",
 
   // Atende presencial, online, ou os dois? true = sim.
   atendePresencial: true,
