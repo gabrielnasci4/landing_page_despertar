@@ -57,7 +57,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Cada encontro é uma conversa cuidadosa, conduzida no seu ritmo. As conversas terapêuticas podem vir sozinhas ou preparar e complementar outras práticas, como o relaxamento, a hipnose ou o Reiki, dando sentido a todo o processo.",
-    metaTitle: "Conversas Terapêuticas em [cidade] | Despertar PΨ",
+    metaTitle: "Conversas Terapêuticas em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Conversas terapêuticas (diálogo terapêutico): escuta ativa e acolhedora para trazer clareza, organizar emoções e abrir novos caminhos. Presencial e online.",
   },
@@ -85,7 +85,7 @@ export const terapias: Terapia[] = [
     comoFunciona:
       "A sessão começa com uma conversa para entender o seu momento. Em seguida, com técnicas de respiração e relaxamento guiado, você chega a um estado calmo e concentrado, no seu ritmo. Tudo é conduzido em um espaço seguro, sem julgamentos, e sempre respeitando seus limites.",
     metaTitle:
-      "Hipnose Clínica em [cidade] | Despertar PΨ · Marco Sadério",
+      "Hipnose Clínica em [cidade] | Despertar ParaPSI · Marco Sadério",
     metaDescription:
       "Hipnose clínica como prática integrativa de bem-estar: relaxamento profundo e foco para apoiar ansiedade, hábitos e qualidade de vida. Presencial e online.",
     faq: [
@@ -124,7 +124,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "A partir de uma conversa inicial, identificamos juntos as crenças que hoje limitam você. Com técnicas de relaxamento e sugestão positiva, trabalhamos para firmar novos entendimentos, no seu tempo e de acordo com o que faz sentido para a sua vida.",
-    metaTitle: "Reprogramação Mental em [cidade] | Despertar PΨ",
+    metaTitle: "Reprogramação Mental em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Reprogramação mental: um processo de bem-estar para reconhecer crenças limitantes e firmar novos padrões de autoconfiança e equilíbrio. Presencial e online.",
   },
@@ -151,7 +151,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Em conversa, mapeamos os padrões de linguagem e de pensamento ligados ao que você quer alcançar. A partir daí, praticamos novas formas de comunicar e de interpretar situações, com exercícios simples que você pode levar para o dia a dia.",
-    metaTitle: "PNL (Programação Neurolinguística) em [cidade] | Despertar PΨ",
+    metaTitle: "PNL (Programação Neurolinguística) em [cidade] | Despertar ParaPSI",
     metaDescription:
       "PNL como prática integrativa: reconhecer padrões de linguagem e pensamento para ganhar clareza, confiança e comunicação. Atendimento presencial e online.",
   },
@@ -177,7 +177,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Depois de uma conversa de acolhimento, você é conduzido a um estado de relaxamento no qual pode acessar a lembrança com segurança e distanciamento. A condução é cuidadosa e respeita totalmente o seu ritmo e o seu conforto.",
-    metaTitle: "Regressão de Memórias em [cidade] | Despertar PΨ",
+    metaTitle: "Regressão de Memórias em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Regressão de memórias: prática de autoconhecimento para acessar e ressignificar lembranças que influenciam o presente, com segurança. Presencial e online.",
     faq: [
@@ -209,7 +209,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Em um estado de relaxamento profundo e guiado, acessamos com delicadeza essas primeiras impressões. Todo o processo é conduzido com cuidado, no seu tempo, dentro de um espaço seguro e sem julgamentos.",
-    metaTitle: "Regressão ao Útero Materno em [cidade] | Despertar PΨ",
+    metaTitle: "Regressão ao Útero Materno em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Regressão ao útero materno: prática de autoconhecimento para acolher inseguranças ligadas ao período inicial da vida, com segurança. Presencial e online.",
   },
@@ -235,7 +235,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "A partir de um relaxamento guiado, você acessa imagens e sensações que podem ser compreendidas de forma simbólica ou literal, e a escolha é sempre sua. O propósito é sempre o autoconhecimento e o alívio, com respeito total às suas crenças.",
-    metaTitle: "Regressão a Vidas Passadas em [cidade] | Despertar PΨ",
+    metaTitle: "Regressão a Vidas Passadas em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Regressão a vidas passadas: ferramenta de autoconhecimento conduzida com respeito às suas crenças, para compreender bloqueios sem explicação. Presencial e online.",
   },
@@ -261,7 +261,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Conduzo você por práticas guiadas de respiração, atenção e quietude, em um ambiente tranquilo. Você também aprende recursos simples para levar a meditação para a sua rotina.",
-    metaTitle: "Meditação em [cidade] | Despertar PΨ",
+    metaTitle: "Meditação em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Meditação guiada como prática integrativa: atenção e presença para acalmar a mente, reduzir a ansiedade e reencontrar o equilíbrio. Presencial e online.",
   },
@@ -288,7 +288,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Guio você por exercícios de respiração e concentração, em um ambiente tranquilo, até um estado de calma profunda. É uma prática leve, que você também aprende a levar para o seu dia a dia.",
-    metaTitle: "Relaxamento Mental Guiado em [cidade] | Despertar PΨ",
+    metaTitle: "Relaxamento Mental Guiado em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Relaxamento mental guiado: respiração consciente e calma para reduzir estresse, melhorar o sono e reencontrar clareza. Prática integrativa, presencial e online.",
   },
@@ -314,7 +314,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Você permanece confortavelmente deitado ou sentado, vestido, enquanto conduzo a aplicação pela imposição das mãos. É um momento de descanso profundo, e muitas pessoas relatam uma sensação de leveza e paz ao final.",
-    metaTitle: "Reiki em [cidade] | Despertar PΨ · Terapia Integrativa",
+    metaTitle: "Reiki em [cidade] | Despertar ParaPSI · Terapia Integrativa",
     metaDescription:
       "Reiki, prática integrativa incluída na PNPIC do SUS: relaxamento profundo e equilíbrio energético pela imposição das mãos. Atendimento presencial e online.",
   },
@@ -340,7 +340,7 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Usamos luzes e ambientes com cores escolhidas de acordo com o que você precisa naquele momento: mais calma, mais energia ou mais clareza. A cromoterapia costuma acompanhar outras práticas, potencializando o relaxamento.",
-    metaTitle: "Cromoterapia em [cidade] | Despertar PΨ",
+    metaTitle: "Cromoterapia em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Cromoterapia: o uso das cores e da luz como prática integrativa para favorecer calma, equilíbrio e bem-estar. Atendimento presencial e online.",
   },

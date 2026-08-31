@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   title: "Quizes",
@@ -34,7 +36,14 @@ const quizes = [
 
 export default function QuizesPage() {
   return (
-    <section className="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20">
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { nome: "Início", url: "/" },
+          { nome: "Quizes", url: "/quizes" },
+        ])}
+      />
+      <section className="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20">
       <div className="text-center">
         <Eyebrow className="justify-center">Um convite à reflexão</Eyebrow>
         <h1 className="mt-5 text-[2.2rem] leading-[1.08] sm:text-5xl">Quizes</h1>
@@ -82,6 +91,7 @@ export default function QuizesPage() {
       <p className="mt-10 text-center text-sm text-[var(--color-ink-soft)]">
         Em breve, novos testes por aqui.
       </p>
-    </section>
+      </section>
+    </>
   );
 }

@@ -1,7 +1,52 @@
 import { clinica } from "@/content/clinica";
 import { terapias } from "@/content/terapias";
+import { formacao } from "@/content/formacao";
 import type { PerguntaFrequente } from "@/content/faq";
 import { temEndereco, pendente } from "@/lib/site";
+
+// — Horário de funcionamento em formato schema.org (a partir do texto
+//   livre em clinica.horarios, ex.: "Segunda a sexta" / "9h às 18h"). —
+const DIAS: Record<string, string> = {
+  domingo: "Sunday", segunda: "Monday", terça: "Tuesday", terca: "Tuesday",
+  quarta: "Wednesday", quinta: "Thursday", sexta: "Friday",
+  sábado: "Saturday", sabado: "Saturday",
+};
+const ORDEM = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+function diasParaArray(txt: string): string[] {
+  const t = txt.toLowerCase();
+  const intervalo = t.match(
+    /(domingo|segunda|terça|terca|quarta|quinta|sexta|sábado|sabado)\s*(?:a|até|à)\s*(domingo|segunda|terça|terca|quarta|quinta|sexta|sábado|sabado)/,
+  );
+  if (intervalo) {
+    const i = ORDEM.indexOf(DIAS[intervalo[1]]);
+    const f = ORDEM.indexOf(DIAS[intervalo[2]]);
+    if (i >= 0 && f >= i) return ORDEM.slice(i, f + 1);
+  }
+  const achados: string[] = [];
+  for (const [k, v] of Object.entries(DIAS))
+    if (t.includes(k) && !achados.includes(v)) achados.push(v);
+  return achados;
+}
+function paraHora(s: string): string {
+  const m = s.match(/(\d{1,2})(?:[h:](\d{2}))?/);
+  return m ? `${m[1].padStart(2, "0")}:${m[2] || "00"}` : "";
+}
+function openingHoursSpec() {
+  const specs = [];
+  for (const h of clinica.horarios) {
+    if (pendente(h.horario)) continue;
+    const dias = diasParaArray(h.dias);
+    const horas = h.horario.match(/\d{1,2}(?:[h:]\d{2})?/g);
+    if (!dias.length || !horas || horas.length < 2) continue;
+    specs.push({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: dias,
+      opens: paraHora(horas[0]),
+      closes: paraHora(horas[horas.length - 1]),
+    });
+  }
+  return specs;
+}
 
 /*
   Nome preferido da marca para o Google (igual ao Google Meu Negócio):
@@ -10,12 +55,10 @@ import { temEndereco, pendente } from "@/lib/site";
   "Despertar Psi"). Mantemos o "Despertar PΨ" só no visual do site.
 */
 const NOME_PREFERIDO = clinica.nomeExtenso; // "Despertar ParaPSI"
+// Só as grafias realmente usadas (mais que isso vira ruído).
 const OUTROS_NOMES = [
   clinica.nome, // "Despertar PΨ"
   "Despertar Para Psi",
-  "Despertar Psi",
-  "Despertar PSI",
-  "Despertar ParaPsi",
 ];
 
 /*
@@ -75,6 +118,11 @@ export function localBusinessJsonLd() {
     }
   }
 
+  if (e.linkMapa && !pendente(e.linkMapa)) dados.hasMap = e.linkMapa;
+
+  const horas = openingHoursSpec();
+  if (horas.length) dados.openingHoursSpecification = horas;
+
   return dados;
 }
 
@@ -90,14 +138,29 @@ export function webSiteJsonLd() {
 }
 
 export function personJsonLd() {
+  const p = clinica.profissional;
+  const instituicoes = [...new Set(formacao.map((f) => f.instituicao))];
   return {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: clinica.profissional.nomeCompleto,
-    alternateName: clinica.profissional.nome,
-    jobTitle: clinica.profissional.titulo,
-    worksFor: { "@type": "Organization", name: clinica.nome },
+    name: p.nomeCompleto,
+    alternateName: p.nome,
+    jobTitle: p.titulo,
+    description: `${p.titulo} à frente da ${NOME_PREFERIDO}, em ${clinica.endereco.cidade} - ${clinica.endereco.estado}.`,
+    worksFor: { "@type": "LocalBusiness", name: NOME_PREFERIDO, url: clinica.siteUrl },
     url: `${clinica.siteUrl}/sobre`,
+    image: `${clinica.siteUrl}/fotos/marco.jpg`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: clinica.endereco.cidade,
+      addressRegion: clinica.endereco.estado,
+      addressCountry: "BR",
+    },
+    alumniOf: instituicoes.map((nome) => ({
+      "@type": "EducationalOrganization",
+      name: nome,
+    })),
+    knowsAbout: ["Parapsicologia Clínica", ...terapias.map((t) => t.nome)],
   };
 }
 
