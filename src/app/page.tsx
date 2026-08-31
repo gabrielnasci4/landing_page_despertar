@@ -27,7 +27,7 @@ export default function Home() {
       <section className="grain relative overflow-hidden">
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-10 sm:px-8 sm:pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:pb-24 lg:pt-20">
           <div>
-            <Eyebrow>Parapsicologia Clínica &amp; Terapias Integrativas</Eyebrow>
+            <Eyebrow>Parapsicologia Clínica &amp; Terapias Integrativas · Joinville - SC</Eyebrow>
             <h1 className="mt-6 text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.1rem]">
               As respostas que você procura começam{" "}
               <em className="font-display italic text-[var(--color-amethyst)]">

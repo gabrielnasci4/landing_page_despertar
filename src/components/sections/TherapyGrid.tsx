@@ -3,14 +3,16 @@ import { terapias } from "@/content/terapias";
 import { Eyebrow } from "@/components/ui";
 
 /*
-  Grade com as 9 terapias. Cada card usa a cor-tema da terapia
+  Grade com as terapias. Cada card usa a cor-tema da terapia
   (do espectro da cromoterapia) e leva para a página própria.
+  A quantidade é automática (conta a lista), então não quebra se
+  entrar ou sair uma técnica.
 */
 export function TherapyGrid() {
   return (
     <section id="terapias" className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
       <div className="max-w-2xl" data-reveal>
-        <Eyebrow>Nove caminhos</Eyebrow>
+        <Eyebrow>Caminhos que se complementam</Eyebrow>
         <h2 className="mt-4 text-4xl leading-[1.1] sm:text-5xl">
           Cada pessoa é única, e cada caminho também.
         </h2>

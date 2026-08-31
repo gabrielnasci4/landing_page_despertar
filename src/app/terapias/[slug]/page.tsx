@@ -28,7 +28,9 @@ export async function generateMetadata({
   if (!t) return {};
   const cidade = cidadeUf();
   return {
-    title: t.metaTitle.replace("[cidade]", cidade || "Brasil"),
+    // "absolute" evita o modelo do layout duplicar "| Despertar PΨ"
+    // (o metaTitle da terapia já traz a marca uma vez).
+    title: { absolute: t.metaTitle.replace("[cidade]", cidade || "Brasil") },
     description: t.metaDescription,
     alternates: { canonical: `/terapias/${t.slug}` },
     openGraph: {
