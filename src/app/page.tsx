@@ -11,7 +11,7 @@ import { FrasesCard } from "@/components/FrasesCard";
 import { JsonLd } from "@/components/JsonLd";
 import { faq } from "@/content/faq";
 import { clinica } from "@/content/clinica";
-import { faqJsonLd, personJsonLd } from "@/lib/jsonld";
+import { faqJsonLd, personJsonLd, webSiteJsonLd } from "@/lib/jsonld";
 import { cidadeUf, formatoAtendimento } from "@/lib/site";
 
 export default function Home() {
@@ -20,6 +20,7 @@ export default function Home() {
 
   return (
     <>
+      <JsonLd data={webSiteJsonLd()} />
       <JsonLd data={faqJsonLd(faq)} />
       <JsonLd data={personJsonLd()} />
 

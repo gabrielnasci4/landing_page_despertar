@@ -325,18 +325,18 @@ export const terapias: Terapia[] = [
     corSentido: "o espectro das cores",
     eyebrow: "O poder das cores",
     resumo:
-      "Cada cor emite vibrações que influenciam corpo e emoções. Usamos a luz para restaurar o equilíbrio.",
-    pergunta: "Você já reparou como certas cores mudam o seu humor? Imagine usar isso como terapia.",
+      "Na abordagem da cromoterapia, as cores e a luz são utilizadas com o objetivo de favorecer a sensação de equilíbrio e bem-estar.",
+    pergunta: "Você já reparou como certas cores influenciam como você se sente? Imagine usar isso como apoio ao seu bem-estar.",
     oQueE: [
-      "As cores têm poder. Cada uma emite vibrações que influenciam nosso corpo e nossas emoções. A cromoterapia utiliza luzes coloridas e ambientes específicos para favorecer o equilíbrio.",
-      "É impressionante como a cor de um ambiente pode alterar o nosso estado de espírito, e é justamente isso que a cromoterapia coloca a favor do seu bem-estar.",
+      "Na abordagem da cromoterapia, as cores e a luz são utilizadas com o objetivo de favorecer o equilíbrio e o bem-estar. A proposta é que diferentes cores e ambientes possam influenciar como nos sentimos.",
+      "É impressionante como a cor de um ambiente pode influenciar o nosso estado de espírito, e é justamente isso que a cromoterapia coloca a favor do seu bem-estar.",
     ],
     apoia: [
-      "Azul: acalmar mente e corpo",
-      "Verde: equilibrar emoções e trazer serenidade",
-      "Amarelo: despertar alegria e clareza mental",
-      "Violeta: estimular a intuição e a espiritualidade",
-      "Vermelho: estimular energia e vitalidade",
+      "Azul: favorecer a calma da mente e do corpo",
+      "Verde: favorecer o equilíbrio emocional e a serenidade",
+      "Amarelo: favorecer a sensação de alegria e a clareza mental",
+      "Violeta: favorecer a conexão com a intuição",
+      "Vermelho: favorecer a sensação de energia e vitalidade",
     ],
     comoFunciona:
       "Usamos luzes e ambientes com cores escolhidas de acordo com o que você precisa naquele momento: mais calma, mais energia ou mais clareza. A cromoterapia costuma acompanhar outras práticas, potencializando o relaxamento.",

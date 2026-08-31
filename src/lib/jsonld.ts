@@ -4,6 +4,21 @@ import type { PerguntaFrequente } from "@/content/faq";
 import { temEndereco, pendente } from "@/lib/site";
 
 /*
+  Nome preferido da marca para o Google (igual ao Google Meu Negócio):
+  "Despertar ParaPSI". Os "outros nomes" ajudam o Google a entender que
+  todas essas grafias são a MESMA entidade (evita confundir com outros
+  "Despertar Psi"). Mantemos o "Despertar PΨ" só no visual do site.
+*/
+const NOME_PREFERIDO = clinica.nomeExtenso; // "Despertar ParaPSI"
+const OUTROS_NOMES = [
+  clinica.nome, // "Despertar PΨ"
+  "Despertar Para Psi",
+  "Despertar Psi",
+  "Despertar PSI",
+  "Despertar ParaPsi",
+];
+
+/*
   "Dados estruturados" (JSON-LD): informações que o Google lê
   para entender que este é um negócio local, quem é o
   profissional e quais as perguntas frequentes. É o que ajuda a
@@ -16,8 +31,8 @@ export function localBusinessJsonLd() {
   const dados: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": ["HealthAndBeautyBusiness", "LocalBusiness"],
-    name: clinica.nome,
-    alternateName: clinica.nomeExtenso,
+    name: NOME_PREFERIDO,
+    alternateName: OUTROS_NOMES,
     description: clinica.atividade,
     url: clinica.siteUrl,
     telephone: `+${clinica.whatsappNumero}`,
@@ -61,6 +76,17 @@ export function localBusinessJsonLd() {
   }
 
   return dados;
+}
+
+export function webSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: NOME_PREFERIDO,
+    alternateName: OUTROS_NOMES,
+    url: clinica.siteUrl,
+    publisher: { "@type": "Organization", name: NOME_PREFERIDO },
+  };
 }
 
 export function personJsonLd() {
