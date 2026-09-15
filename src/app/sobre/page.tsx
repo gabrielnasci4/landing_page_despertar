@@ -100,9 +100,9 @@ export default function SobrePage() {
                   <p className="mt-1 text-sm text-[var(--color-ink-soft)]">
                     {c.instituicao}
                   </p>
-                  {(c.cargaHoraria || c.ano) && (
+                  {c.ano && (
                     <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">
-                      {[c.cargaHoraria, c.ano].filter(Boolean).join(" · ")}
+                      {c.ano}
                     </p>
                   )}
                 </div>

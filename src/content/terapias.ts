@@ -65,7 +65,7 @@ export const terapias: Terapia[] = [
     slug: "hipnose-clinica",
     nome: "Hipnose Clínica",
     cor: "#3e6b8f",
-    corSentido: "azul · foco e calma",
+    corSentido: "foco e calma",
     eyebrow: "Estado de foco profundo",
     resumo:
       "Um estado natural de relaxamento e concentração para acessar padrões que sustentam hábitos e emoções.",
@@ -105,7 +105,7 @@ export const terapias: Terapia[] = [
     slug: "reprogramacao-mental",
     nome: "Reprogramação Mental",
     cor: "#3f8a80",
-    corSentido: "turquesa · renovação",
+    corSentido: "renovação",
     eyebrow: "Novos padrões internos",
     resumo:
       "Substituir crenças limitantes por novos entendimentos que apoiam crescimento e equilíbrio.",
@@ -132,7 +132,7 @@ export const terapias: Terapia[] = [
     slug: "pnl",
     nome: "PNL (Programação Neurolinguística)",
     cor: "#cf9640",
-    corSentido: "âmbar · clareza",
+    corSentido: "clareza",
     eyebrow: "Linguagem e resultados",
     resumo:
       "Como pensamentos, palavras e emoções moldam resultados, e como criar novas rotas para seus objetivos.",
@@ -159,7 +159,7 @@ export const terapias: Terapia[] = [
     slug: "regressao-de-memorias",
     nome: "Regressão de Memórias",
     cor: "#48507e",
-    corSentido: "índigo · profundidade",
+    corSentido: "profundidade",
     eyebrow: "A raiz no passado",
     resumo:
       "Acessar lembranças que ainda influenciam o presente para ressignificá-las com segurança.",
@@ -192,7 +192,7 @@ export const terapias: Terapia[] = [
     slug: "regressao-ao-utero-materno",
     nome: "Regressão ao Útero Materno",
     cor: "#b7657a",
-    corSentido: "rosa · acolhimento",
+    corSentido: "acolhimento",
     eyebrow: "A raiz mais antiga",
     resumo:
       "Acessar as primeiras impressões emocionais para acolher inseguranças que acompanham desde sempre.",
@@ -217,7 +217,7 @@ export const terapias: Terapia[] = [
     slug: "vidas-passadas",
     nome: "Regressão a Vidas Passadas",
     cor: "#6b4e9e",
-    corSentido: "violeta · intuição",
+    corSentido: "intuição",
     eyebrow: "Uma história mais longa",
     resumo:
       "Uma ferramenta de autoconhecimento a partir da ideia de que a consciência é contínua.",
@@ -269,7 +269,7 @@ export const terapias: Terapia[] = [
     slug: "relaxamento-mental",
     nome: "Relaxamento Físico e Mental",
     cor: "#8a79b0",
-    corSentido: "lavanda · serenidade",
+    corSentido: "serenidade",
     eyebrow: "Equilíbrio imediato",
     resumo:
       "Respiração consciente e técnicas de calma para relaxar o corpo, aliviar a tensão e reencontrar clareza mental.",
@@ -296,7 +296,7 @@ export const terapias: Terapia[] = [
     slug: "reiki",
     nome: "Reiki",
     cor: "#4e7a5e",
-    corSentido: "verde · equilíbrio",
+    corSentido: "equilíbrio",
     eyebrow: "Energia e equilíbrio",
     resumo:
       "Prática integrativa de origem japonesa, incluída na PNPIC do SUS, voltada ao equilíbrio energético, relaxamento e bem-estar.",
