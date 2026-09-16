@@ -100,11 +100,6 @@ export default function SobrePage() {
                   <p className="mt-1 text-sm text-[var(--color-ink-soft)]">
                     {c.instituicao}
                   </p>
-                  {c.ano && (
-                    <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-ink-soft)]">
-                      {c.ano}
-                    </p>
-                  )}
                 </div>
               </li>
             ))}
