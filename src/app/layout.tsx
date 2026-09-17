@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     template: `%s | ${clinica.nomeExtenso}`,
   },
   description:
-    "Parapsicologia Clínica e Terapias Integrativas em Joinville - SC com Marco Sadério: hipnose clínica, Reiki, regressão, PNL e mais. Acolhimento para o autoconhecimento e o bem-estar. Presencial e online.",
+    "Parapsicologia Clínica em Joinville - SC com Marco Sadério: hipnose, Reiki, regressão, PNL e mais. Acolhimento para o autoconhecimento. Agende pelo WhatsApp.",
   keywords: [
     "parapsicologia clínica",
     "parapsicólogo Joinville",

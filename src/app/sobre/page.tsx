@@ -10,7 +10,7 @@ import { formacao } from "@/content/formacao";
 export const metadata: Metadata = {
   title: "Sobre Marco Sadério, Parapsicólogo Clínico",
   description:
-    "Conheça Marco Sadério, parapsicólogo clínico à frente da Despertar PΨ. Acolhimento, sigilo e um olhar integrativo para o autoconhecimento e o bem-estar.",
+    "Conheça Marco Sadério, parapsicólogo clínico em Joinville: formação, valores e a forma de atender, com acolhimento e sigilo. Agende uma conversa pelo WhatsApp.",
   alternates: { canonical: "/sobre" },
 };
 

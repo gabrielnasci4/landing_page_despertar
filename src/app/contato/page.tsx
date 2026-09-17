@@ -10,7 +10,7 @@ import { temEndereco, enderecoLinha, pendente } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contato & Agendamento",
   description:
-    "Agende sua sessão na Despertar PΨ com Marco Sadério. Fale pelo WhatsApp ou preencha o formulário. Atendimento presencial e online.",
+    "Agende sua sessão com Marco Sadério, parapsicólogo clínico em Joinville. Fale direto pelo WhatsApp ou deixe seus dados. Atendimento presencial e online.",
   alternates: { canonical: "/contato" },
 };
 

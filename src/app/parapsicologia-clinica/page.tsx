@@ -9,7 +9,7 @@ import { terapias } from "@/content/terapias";
 export const metadata: Metadata = {
   title: "O que é Parapsicologia Clínica",
   description:
-    "Entenda a Parapsicologia Clínica: uma abordagem integrativa que busca as causas invisíveis de dores emocionais e padrões repetitivos, com acolhimento e diálogo terapêutico.",
+    "O que é Parapsicologia Clínica: a abordagem que olha além do sintoma para compreender dores e padrões que se repetem. Atendimento em Joinville e online.",
   alternates: { canonical: "/parapsicologia-clinica" },
 };
 
