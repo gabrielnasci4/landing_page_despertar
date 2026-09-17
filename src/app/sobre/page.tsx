@@ -8,7 +8,7 @@ import { clinica } from "@/content/clinica";
 import { formacao } from "@/content/formacao";
 
 export const metadata: Metadata = {
-  title: "Sobre Marco Sadério, Parapsicólogo Clínico",
+  title: "Marco Sadério, Parapsicólogo Clínico em Joinville",
   description:
     "Conheça Marco Sadério, parapsicólogo clínico em Joinville: formação, valores e a forma de atender, com acolhimento e sigilo. Agende uma conversa pelo WhatsApp.",
   alternates: { canonical: "/sobre" },
@@ -39,12 +39,16 @@ export default function SobrePage() {
         </div>
         <div data-reveal>
           <Eyebrow>Quem conduz o seu processo</Eyebrow>
+          {/*
+            O cargo e a cidade ficam DENTRO do h1 (o Google lê o h1 inteiro),
+            mas com estilo menor, para o visual continuar com o nome em destaque.
+          */}
           <h1 className="mt-5 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">
             {p.nome}
+            <span className="mt-3 block font-display text-xl italic text-[var(--color-amethyst)] sm:text-2xl">
+              {p.titulo} em {clinica.endereco.cidade}
+            </span>
           </h1>
-          <p className="mt-3 font-display text-xl italic text-[var(--color-amethyst)]">
-            {p.titulo}
-          </p>
 
           <div className="mt-6 space-y-5 text-[1.06rem] leading-relaxed text-[var(--color-ink)]">
             {/*

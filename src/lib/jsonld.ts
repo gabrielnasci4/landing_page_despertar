@@ -59,6 +59,7 @@ const NOME_PREFERIDO = clinica.nomeExtenso; // "Despertar ParaPSI"
 const OUTROS_NOMES = [
   clinica.nome, // "Despertar PΨ"
   "Despertar Para Psi",
+  "despertarparapsi", // domínio e @ das redes
 ];
 
 /*
@@ -86,12 +87,16 @@ export function localBusinessJsonLd() {
       name: clinica.profissional.nomeCompleto,
       jobTitle: clinica.profissional.titulo,
     },
+    // sameAs = os perfis oficiais da MESMA entidade. Inclui o perfil do
+    // Google (Maps), que é o sinal mais forte para o Google ligar
+    // site + empresa + mapa.
     sameAs: [
       clinica.redes.instagram,
       clinica.redes.facebook,
       clinica.redes.youtube,
       clinica.redes.tiktok,
-    ].filter(Boolean),
+      clinica.endereco.linkMapa,
+    ].filter((u) => u && !pendente(u)),
     areaServed: [
       { "@type": "City", name: clinica.endereco.cidade },
       { "@type": "AdministrativeArea", name: clinica.endereco.estado },

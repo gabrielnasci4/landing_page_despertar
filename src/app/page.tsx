@@ -37,11 +37,11 @@ export default function Home() {
               de você.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              Na Despertar PΨ, em Joinville, o parapsicólogo clínico Marco
-              Sadério oferece um espaço de acolhimento para acessar e
-              ressignificar as raízes invisíveis de dores emocionais, dos
-              padrões que se repetem e das crenças que limitam, despertando o
-              seu potencial interior.
+              A Despertar ParaPSI (Despertar PΨ) é uma clínica de Parapsicologia
+              Clínica e Terapias Integrativas em Joinville, conduzida pelo
+              parapsicólogo clínico Marco Sadério. Um espaço de acolhimento para
+              ressignificar dores emocionais, padrões que se repetem e crenças
+              que limitam, despertando o seu potencial interior.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <CtaWhatsapp origem="hero">Agendar uma conversa</CtaWhatsapp>
