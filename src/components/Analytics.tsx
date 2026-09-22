@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Script from "next/script";
+import { CLARITY_ID, GA_ID, PIXEL_ID } from "@/lib/ferramentas";
 
 /*
   Ferramentas de medição do site.
@@ -24,13 +25,7 @@ import Script from "next/script";
     NEXT_PUBLIC_META_PIXEL_ID  (ex.: 123456789012345)
   Enquanto não existirem, nada disso é carregado.
 */
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-// ID do Microsoft Clarity. Fica embutido aqui (não é segredo — já
-// aparece no navegador) para funcionar em qualquer hospedagem sem
-// depender de variável de ambiente. A variável, se existir, tem
-// prioridade.
-const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || "xss14ps28x";
+// IDs vêm da fonte única (a mesma que a Política de Privacidade lê).
 const CHAVE = "despertar-consentimento";
 
 declare global {

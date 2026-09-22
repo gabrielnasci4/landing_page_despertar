@@ -1,21 +1,55 @@
 import type { Metadata } from "next";
 import { clinica } from "@/content/clinica";
+import { ferramentasAtivas } from "@/lib/ferramentas";
+
+/*
+  ⚠️ ATUALIZE ESTA DATA sempre que o TEXTO desta página for alterado.
+
+  As partes sobre ferramentas (Clarity, Google Analytics, Pixel da Meta,
+  planilha de contatos) se atualizam SOZINHAS conforme o que está ligado
+  no site — veja src/lib/ferramentas.ts. A data, não: ela é manual.
+*/
+const ULTIMA_ATUALIZACAO = "setembro de 2026";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade",
   description:
-    "Política de Privacidade da Despertar PΨ: como tratamos os dados pessoais em conformidade com a LGPD.",
+    "Política de Privacidade da Despertar ParaPSI: como tratamos os dados pessoais em conformidade com a LGPD.",
   alternates: { canonical: "/politica-de-privacidade" },
 };
 
+// Junta uma lista em texto corrido: "a, b e c".
+function juntar(itens: string[]) {
+  if (itens.length <= 1) return itens.join("");
+  return `${itens.slice(0, -1).join(", ")} e ${itens[itens.length - 1]}`;
+}
+
 export default function PoliticaPage() {
+  const f = ferramentasAtivas;
+
+  // Quem trata dados em nosso nome, conforme o que está ativo no site.
+  const prestadores = [
+    "Cloudflare (hospedagem do site)",
+    "Meta (WhatsApp, troca de mensagens)",
+    f.clarity && "Microsoft (Clarity, medição de uso)",
+    f.googleAnalytics && "Google (Google Analytics, medição de audiência)",
+    f.pixelMeta && "Meta (Pixel, anúncios no Facebook e no Instagram)",
+    f.planilhaGoogle && "Google (planilha de contatos e e-mail)",
+  ].filter((x): x is string => Boolean(x));
+
+  // Ferramentas que só são ativadas depois do "Aceitar".
+  const comConsentimento = [
+    f.googleAnalytics && "o Google Analytics",
+    f.pixelMeta && "o Pixel da Meta, usado para anúncios no Facebook e no Instagram",
+  ].filter((x): x is string => Boolean(x));
+
   return (
     <article className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
       <h1 className="text-[2rem] leading-[1.1] sm:text-4xl">
         Política de Privacidade
       </h1>
       <p className="mt-4 text-sm text-[var(--color-ink-soft)]">
-        Última atualização: julho de 2026.
+        Última atualização: {ULTIMA_ATUALIZACAO}.
       </p>
 
       <div className="mt-10 space-y-8 leading-relaxed text-[var(--color-ink)]">
@@ -24,7 +58,7 @@ export default function PoliticaPage() {
             1. Quem somos
           </h2>
           <p className="mt-3">
-            Este site é da {clinica.nome} ({clinica.nomeExtenso}),{" "}
+            Este site é da {clinica.nomeExtenso} ({clinica.nome}),{" "}
             {clinica.atividade.toLowerCase()}, sob responsabilidade de{" "}
             {clinica.profissional.nomeCompleto}. Para qualquer questão sobre os
             seus dados, fale conosco pelo e-mail{" "}
@@ -42,9 +76,13 @@ export default function PoliticaPage() {
           <p className="mt-3">
             Coletamos apenas os dados que você nos fornece de forma espontânea ao
             preencher o formulário de contato: nome, telefone/WhatsApp e, se você
-            quiser, a terapia de interesse e uma mensagem. Também coletamos dados
-            de navegação de forma anônima, para entender como o site é usado, e,
-            com o seu consentimento, por meio de cookies (veja o item 5).
+            quiser, a terapia de interesse e uma mensagem. Ao enviar, o WhatsApp
+            abre com essas informações em uma mensagem já escrita, que você pode
+            revisar antes de mandar
+            {f.planilhaGoogle && "; elas também ficam registradas em uma planilha de contatos"}
+            . Também coletamos dados de navegação de forma anônima, para entender
+            como o site é usado, e, com o seu consentimento, por meio de cookies
+            (veja o item 5).
           </p>
         </section>
 
@@ -58,6 +96,11 @@ export default function PoliticaPage() {
             vendemos nem compartilhamos os seus dados com terceiros para fins de
             marketing.
           </p>
+          <p className="mt-3">
+            Para funcionar, o site conta com prestadores de serviço que tratam
+            dados em nosso nome: {juntar(prestadores)}. Alguns desses serviços
+            podem armazenar dados em servidores fora do Brasil.
+          </p>
         </section>
 
         <section>
@@ -67,10 +110,10 @@ export default function PoliticaPage() {
           <p className="mt-3">
             O tratamento dos seus dados se baseia no seu consentimento e no
             legítimo interesse de responder à sua solicitação e de aprimorar o site
-            por meio de medição anônima de uso, conforme a Lei
-            Geral de Proteção de Dados (Lei nº 13.709/2018). Você pode, a qualquer
-            momento, solicitar acesso, correção ou exclusão dos seus dados, bem
-            como revogar o consentimento, escrevendo para{" "}
+            por meio de medição anônima de uso, conforme a Lei Geral de Proteção
+            de Dados (Lei nº 13.709/2018). Você pode, a qualquer momento, solicitar
+            acesso, correção ou exclusão dos seus dados, bem como revogar o
+            consentimento, escrevendo para{" "}
             <a href={`mailto:${clinica.email}`} className="text-[var(--color-amethyst)] underline">
               {clinica.email}
             </a>
@@ -82,19 +125,21 @@ export default function PoliticaPage() {
           <h2 className="font-display text-2xl text-[var(--color-twilight)]">
             5. Cookies
           </h2>
+          {f.clarity && (
+            <p className="mt-3">
+              Para entender como o site é usado e melhorá-lo, utilizamos o
+              Microsoft Clarity, que registra de forma anônima a navegação
+              (cliques, rolagem e páginas visitadas). Sem o seu consentimento, ele
+              funciona sem cookies e não relaciona uma página visitada com outra.
+              O conteúdo digitado em formulários nunca é gravado.
+            </p>
+          )}
           <p className="mt-3">
-            Para entender como o site é usado e melhorá-lo, utilizamos o Microsoft
-            Clarity, que registra de forma anônima a navegação (cliques, rolagem e
-            páginas visitadas). Sem o seu consentimento, ele funciona sem cookies
-            e não relaciona uma página visitada com outra. O conteúdo digitado em
-            formulários nunca é gravado.
-          </p>
-          <p className="mt-3">
-            Se você aceitar os cookies no aviso exibido ao entrar no site, o
-            Clarity passa a usar cookies para compreender a navegação completa, e
-            ferramentas de análise (como o Google Analytics) e de anúncios também
-            podem ser ativadas. Você pode recusar sem prejuízo à navegação — nesse
-            caso, nenhum cookie de medição é utilizado.
+            Se você aceitar os cookies no aviso exibido ao entrar no site
+            {f.clarity && ", o Clarity passa a usar cookies para compreender a navegação completa"}
+            {comConsentimento.length > 0 && `, e também são ativados ${juntar(comConsentimento)}`}
+            . Você pode recusar sem prejuízo à navegação. Nesse caso, nenhum
+            cookie de medição é utilizado.
           </p>
         </section>
 

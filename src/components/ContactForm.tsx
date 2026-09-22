@@ -6,6 +6,7 @@ import { terapias } from "@/content/terapias";
 import { clinica } from "@/content/clinica";
 import { linkWhatsApp } from "@/lib/whatsapp";
 import { track } from "@/lib/analytics";
+import { WEBHOOK_PLANILHA } from "@/lib/ferramentas";
 
 /*
   Formulário de contato "híbrido":
@@ -22,7 +23,6 @@ import { track } from "@/lib/analytics";
   "interessePadrao": pré-seleciona uma terapia (usado nas
   páginas de terapia). Opcional.
 */
-const WEBHOOK_PLANILHA = process.env.NEXT_PUBLIC_PLANILHA_WEBHOOK_URL;
 export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string }) {
   const router = useRouter();
   const [enviando, setEnviando] = useState(false);
