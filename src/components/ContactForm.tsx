@@ -80,7 +80,7 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
   }
 
   return (
-    <form onSubmit={aoEnviar} className="flex flex-col gap-4">
+    <form onSubmit={aoEnviar} className="flex flex-col gap-4" data-clarity-mask="True">
       {/* Campo-armadilha anti-robô: invisível para pessoas. */}
       <input
         type="text"

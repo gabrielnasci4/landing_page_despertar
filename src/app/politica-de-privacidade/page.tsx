@@ -42,9 +42,9 @@ export default function PoliticaPage() {
           <p className="mt-3">
             Coletamos apenas os dados que você nos fornece de forma espontânea ao
             preencher o formulário de contato: nome, telefone/WhatsApp e, se você
-            quiser, a terapia de interesse e uma mensagem. Também coletamos, com o
-            seu consentimento, dados de navegação por meio de cookies (veja o item
-            5).
+            quiser, a terapia de interesse e uma mensagem. Também coletamos dados
+            de navegação de forma anônima, para entender como o site é usado, e,
+            com o seu consentimento, por meio de cookies (veja o item 5).
           </p>
         </section>
 
@@ -66,7 +66,8 @@ export default function PoliticaPage() {
           </h2>
           <p className="mt-3">
             O tratamento dos seus dados se baseia no seu consentimento e no
-            legítimo interesse de responder à sua solicitação, conforme a Lei
+            legítimo interesse de responder à sua solicitação e de aprimorar o site
+            por meio de medição anônima de uso, conforme a Lei
             Geral de Proteção de Dados (Lei nº 13.709/2018). Você pode, a qualquer
             momento, solicitar acesso, correção ou exclusão dos seus dados, bem
             como revogar o consentimento, escrevendo para{" "}
@@ -82,11 +83,18 @@ export default function PoliticaPage() {
             5. Cookies
           </h2>
           <p className="mt-3">
-            Utilizamos cookies para entender como o site é usado e melhorar a sua
-            experiência, incluindo ferramentas de análise (como o Google
-            Analytics) e de anúncios. Esses cookies só são ativados após o seu
-            consentimento no aviso exibido ao entrar no site. Você pode recusá-los
-            sem prejuízo à navegação.
+            Para entender como o site é usado e melhorá-lo, utilizamos o Microsoft
+            Clarity, que registra de forma anônima a navegação (cliques, rolagem e
+            páginas visitadas). Sem o seu consentimento, ele funciona sem cookies
+            e não relaciona uma página visitada com outra. O conteúdo digitado em
+            formulários nunca é gravado.
+          </p>
+          <p className="mt-3">
+            Se você aceitar os cookies no aviso exibido ao entrar no site, o
+            Clarity passa a usar cookies para compreender a navegação completa, e
+            ferramentas de análise (como o Google Analytics) e de anúncios também
+            podem ser ativadas. Você pode recusar sem prejuízo à navegação — nesse
+            caso, nenhum cookie de medição é utilizado.
           </p>
         </section>
 
