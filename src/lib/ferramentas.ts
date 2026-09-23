@@ -14,7 +14,10 @@
 export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || "xss14ps28x";
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-export const WEBHOOK_PLANILHA = process.env.NEXT_PUBLIC_PLANILHA_WEBHOOK_URL;
+// URL do Apps Script da planilha de contatos (termina em /exec).
+// Cole entre as aspas. Veja docs/apps-script-contatos.gs.
+export const WEBHOOK_PLANILHA =
+  process.env.NEXT_PUBLIC_PLANILHA_WEBHOOK_URL || "";
 
 export const ferramentasAtivas = {
   clarity: Boolean(CLARITY_ID),

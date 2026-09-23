@@ -115,28 +115,23 @@ preenchido (a captura por e-mail/planilha é um extra).
 
 ## 6. Leads na planilha do Google (CRM simples)
 
-1. Crie uma Planilha Google. Na primeira linha:
-   `Quando | Nome | Telefone | Interesse | Mensagem`.
-2. Menu **Extensões > Apps Script** e cole:
+Cada contato enviado pelo formulário vira uma linha numa planilha e gera
+um e-mail de aviso para `despertarparapsi@gmail.com`.
 
-```javascript
-function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-  var d = JSON.parse(e.postData.contents);
-  sheet.appendRow([d.quando, d.nome, d.telefone, d.interesse, d.mensagem]);
-  return ContentService
-    .createTextOutput(JSON.stringify({ ok: true }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-```
+**Conta:** criar na conta da clínica (`despertarparapsi@gmail.com`) —
+os contatos são clientes da clínica.
 
-3. **Implantar > Nova implantação > Tipo: App da Web**.
-   - Executar como: **você**.
-   - Quem tem acesso: **Qualquer pessoa**.
-4. Copie a URL gerada e defina `PLANILHA_WEBHOOK_URL` no Netlify
-   (Site configuration > Environment variables).
+1. O código completo, com o passo a passo, está em
+   [`docs/apps-script-contatos.gs`](docs/apps-script-contatos.gs).
+2. Depois de implantar como **App da Web**, copie o URL (termina em
+   `/exec`) e coloque em `src/lib/ferramentas.ts`, na linha
+   `WEBHOOK_PLANILHA` (ou na variável `NEXT_PUBLIC_PLANILHA_WEBHOOK_URL`
+   da Cloudflare, que tem prioridade).
+3. Ao alterar o script depois: **Gerenciar implantações → editar →
+   Nova versão**. Assim o URL continua o mesmo.
 
-Cada lead vira uma linha — é o CRM do Marco (contatou / virou cliente?).
+Enquanto o URL não estiver configurado, o formulário só abre o WhatsApp
+já preenchido — se a pessoa desistir de mandar, o contato se perde.
 
 ---
 
