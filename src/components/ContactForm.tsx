@@ -17,8 +17,13 @@ import { WEBHOOK_PLANILHA } from "@/lib/ferramentas";
   contato dela já ficou registrado.
 
   Como o site é estático (sem servidor), o registro vai direto para
-  o endereço do Apps Script da planilha, definido na variável
-  NEXT_PUBLIC_PLANILHA_WEBHOOK_URL (configurada na Cloudflare).
+  o endereço do Apps Script da planilha (WEBHOOK_PLANILHA, em
+  src/lib/ferramentas.ts).
+
+  Só dizemos "Recebemos o seu contato" (página /obrigado) quando a
+  planilha CONFIRMA que gravou (resposta "ok"). Sem planilha ligada, ou
+  se ela não confirmar, o formulário apenas abre o WhatsApp e avisa que
+  falta a pessoa tocar em Enviar lá.
 
   "interessePadrao": pré-seleciona uma terapia (usado nas
   páginas de terapia). Opcional.
@@ -27,6 +32,8 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
   const router = useRouter();
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState("");
+  // Mostrado quando o WhatsApp abriu mas o registro não foi confirmado.
+  const [linkAberto, setLinkAberto] = useState("");
 
   async function aoEnviar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -47,6 +54,7 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
     }
 
     setEnviando(true);
+    setLinkAberto("");
 
     // Monta a mensagem que abrirá no WhatsApp.
     const textoWpp =
@@ -55,28 +63,37 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
       (mensagem ? ` ${mensagem}` : "") +
       ` (Enviado pelo site da ${clinica.nome}.)`;
 
-    // 1) Grava o lead (não bloqueia o WhatsApp se falhar).
-    //    "no-cors" + text/plain: o Apps Script recebe o envio sem
-    //    exigir configuração de CORS. Não lemos a resposta (não
-    //    precisamos): é registrar e seguir para o WhatsApp.
+    // 1) Abre o WhatsApp JÁ (antes de esperar a planilha): se abrir
+    //    depois de uma espera, o celular pode bloquear a janela.
+    const link = linkWhatsApp(textoWpp);
+    window.open(link, "_blank", "noopener,noreferrer");
+    track("envio_formulario", { interesse: interesse || "nao_informado" });
+
+    // 2) Grava o contato na planilha e espera a CONFIRMAÇÃO ("ok").
+    //    text/plain evita a checagem extra do navegador (CORS); o
+    //    Google devolve a resposta liberada para leitura.
+    let confirmado = false;
     if (WEBHOOK_PLANILHA) {
       try {
-        await fetch(WEBHOOK_PLANILHA, {
+        const resposta = await fetch(WEBHOOK_PLANILHA, {
           method: "POST",
-          mode: "no-cors",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({ nome, telefone, interesse, mensagem }),
+          signal: AbortSignal.timeout(10000),
         });
+        confirmado = resposta.ok && (await resposta.text()).trim() === "ok";
       } catch {
-        /* segue mesmo assim: o importante é abrir o WhatsApp */
+        confirmado = false;
       }
     }
 
-    track("envio_formulario", { interesse: interesse || "nao_informado" });
-
-    // 2) Abre o WhatsApp e leva para a página de agradecimento.
-    window.open(linkWhatsApp(textoWpp), "_blank", "noopener,noreferrer");
-    router.push("/obrigado");
+    // 3) Só vai para "Recebemos o seu contato" se a planilha confirmou.
+    if (confirmado) {
+      router.push("/obrigado");
+      return;
+    }
+    setEnviando(false);
+    setLinkAberto(link);
   }
 
   return (
@@ -146,16 +163,41 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
 
       {erro && <p className="text-sm text-[var(--color-ember-deep)]">{erro}</p>}
 
+      {linkAberto && (
+        <div
+          role="status"
+          className="rounded-xl border border-[var(--color-dawn-line)] bg-[var(--color-dawn-deep)] p-4 text-sm leading-relaxed text-[var(--color-ink)]"
+        >
+          Abrimos o WhatsApp com a sua mensagem pronta. Para o Marco receber,
+          toque em <strong>Enviar</strong> lá no WhatsApp. Se a janela não
+          abriu,{" "}
+          <a
+            href={linkAberto}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
+          >
+            toque aqui
+          </a>
+          .
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={enviando}
         className="mt-1 inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[var(--color-ember)] px-8 py-4 font-semibold text-white transition-all hover:bg-[var(--color-ember-deep)] hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-70"
       >
-        {enviando ? "Abrindo o WhatsApp…" : "Enviar e falar no WhatsApp"}
+        {enviando
+          ? "Abrindo o WhatsApp…"
+          : WEBHOOK_PLANILHA
+            ? "Enviar e falar no WhatsApp"
+            : "Continuar no WhatsApp"}
       </button>
       <p className="text-center text-xs text-[var(--color-ink-soft)]">
-        Ao enviar, seus dados são registrados e o WhatsApp abre com a mensagem
-        pronta. Você ainda pode revisar antes de mandar.
+        {WEBHOOK_PLANILHA
+          ? "Ao enviar, seus dados são registrados e o WhatsApp abre com a mensagem pronta. Você ainda pode revisar antes de mandar."
+          : "O WhatsApp abre com a mensagem pronta. Você revisa e toca em Enviar lá."}
       </p>
     </form>
   );

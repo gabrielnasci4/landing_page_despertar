@@ -35,6 +35,17 @@ export function metadadosPagina({
       url: caminho,
       title: tituloFinal,
       description: descricao,
+      // Imagem padrão do site (a mesma da home) para as prévias de
+      // compartilhamento. Precisa vir aqui porque o "openGraph" de cada
+      // página substitui o da home por inteiro.
+      images: [
+        {
+          url: "/opengraph-image.png",
+          width: 1200,
+          height: 630,
+          alt: clinica.nomeExtenso,
+        },
+      ],
     },
   };
 }

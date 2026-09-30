@@ -4,6 +4,7 @@ import { Eyebrow } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 import { metadadosPagina } from "@/lib/seo";
+import { WEBHOOK_PLANILHA } from "@/lib/ferramentas";
 import { clinica } from "@/content/clinica";
 import { temEndereco, enderecoLinha, pendente } from "@/lib/site";
 
@@ -113,10 +114,14 @@ export default function ContatoPage() {
           {/* Formulário */}
           <div className="rounded-[2rem] border border-[var(--color-dawn-line)] bg-white p-6 sm:p-8">
             <h2 className="font-display text-2xl text-[var(--color-twilight)]">
-              Prefere que a gente te chame?
+              {WEBHOOK_PLANILHA
+                ? "Prefere que a gente te chame?"
+                : "Prefere escrever primeiro?"}
             </h2>
             <p className="mt-2 text-sm text-[var(--color-ink-soft)]">
-              Deixe seus dados. Ao enviar, o WhatsApp abre com tudo preenchido.
+              {WEBHOOK_PLANILHA
+                ? "Deixe seus dados. Ao enviar, o WhatsApp abre com tudo preenchido."
+                : "Preencha abaixo e o WhatsApp abre com a sua mensagem pronta."}
             </p>
             <div className="mt-6">
               <ContactForm />
