@@ -28,17 +28,21 @@ const hanken = Hanken_Grotesk({
   display: "swap",
 });
 
+// Título e descrição da HOME (as outras páginas usam src/lib/seo.ts).
+const TITULO_HOME = "Parapsicologia Clínica em Joinville | Despertar ParaPSI";
+const DESCRICAO_HOME =
+  "Atendimento com Marco Sadério em Parapsicologia Clínica, Hipnose, Reiki, Regressão de Memórias e Terapias Integrativas em Joinville. Agende pelo WhatsApp.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(clinica.siteUrl),
   title: {
     // Nos títulos/busca usamos o nome por extenso "Despertar ParaPSI"
     // (reduz a ambiguidade com "Despertar PSI"/"Para Psi"). O símbolo
     // "Despertar PΨ" segue só na identidade visual (logo/cabeçalho).
-    default: "Parapsicologia Clínica em Joinville - SC | Despertar ParaPSI",
+    default: TITULO_HOME,
     template: `%s | ${clinica.nomeExtenso}`,
   },
-  description:
-    "Parapsicologia Clínica em Joinville - SC com Marco Sadério: hipnose, Reiki, regressão, PNL e mais. Acolhimento para o autoconhecimento. Agende pelo WhatsApp.",
+  description: DESCRICAO_HOME,
   keywords: [
     "parapsicologia clínica",
     "parapsicólogo Joinville",
@@ -55,9 +59,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: clinica.nomeExtenso,
-    title: "Parapsicologia Clínica em Joinville - SC | Despertar ParaPSI",
-    description:
-      "Terapias integrativas em Joinville - SC com Marco Sadério, parapsicólogo clínico: hipnose, Reiki, regressão, PNL e mais. Acolhimento para o autoconhecimento e o bem-estar. Presencial e online.",
+    url: "/",
+    title: TITULO_HOME,
+    description: DESCRICAO_HOME,
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },

@@ -1,27 +1,29 @@
-import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
 import { Eyebrow } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { metadadosPagina } from "@/lib/seo";
 import { clinica } from "@/content/clinica";
 import { temEndereco, enderecoLinha, pendente } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contato & Agendamento",
-  description:
+export const metadata = metadadosPagina({
+  titulo: "Contato & Agendamento",
+  descricao:
     "Agende sua sessão com Marco Sadério, parapsicólogo clínico em Joinville. Fale direto pelo WhatsApp ou deixe seus dados. Atendimento presencial e online.",
-  alternates: { canonical: "/contato" },
-};
+  caminho: "/contato",
+});
 
 export default function ContatoPage() {
   const horariosValidos = clinica.horarios.filter((h) => !pendente(h.horario));
   const e = clinica.endereco;
   // Endereço do tour 360° (Street View do Google) montado a partir das
-  // coordenadas da clínica. O "137.35" é só o ângulo inicial da câmera.
+  // coordenadas do PONTO DO TOUR (dentro da clínica), que são um pouco
+  // diferentes do pino do Google Meu Negócio. O "137.35" é só o ângulo
+  // inicial da câmera.
   const tourEmbed =
-    e.latitude && e.longitude
-      ? `https://www.google.com/maps/embed?pb=!6m7!1m6!2m2!1d${e.latitude}!2d${e.longitude}!3f137.35!4f-0!5f1`
+    e.tourLatitude && e.tourLongitude
+      ? `https://www.google.com/maps/embed?pb=!6m7!1m6!2m2!1d${e.tourLatitude}!2d${e.tourLongitude}!3f137.35!4f-0!5f1`
       : "";
 
   return (
@@ -45,7 +47,7 @@ export default function ContatoPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] [&>*]:min-w-0">
           {/* Informações */}
           <div className="flex flex-col gap-6">
             <div className="rounded-[2rem] bg-[var(--color-twilight)] p-8 text-[var(--color-dawn)]">
@@ -55,13 +57,17 @@ export default function ContatoPage() {
               </p>
               <div className="mt-6">
                 <CtaWhatsapp origem="contato_pagina" variante="light">
-                  Chamar no WhatsApp
+                  Agendar pelo WhatsApp
                 </CtaWhatsapp>
               </div>
               <dl className="mt-8 space-y-4 text-sm">
                 <div>
                   <dt className="text-[var(--color-gold)]">WhatsApp / Telefone</dt>
-                  <dd className="mt-0.5 text-[var(--color-dawn)]/85">{clinica.telefoneExibicao}</dd>
+                  <dd className="mt-0.5">
+                    <a href={`tel:+${clinica.whatsappNumero}`} className="text-[var(--color-dawn)]/85 hover:text-white">
+                      {clinica.telefoneExibicao}
+                    </a>
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-[var(--color-gold)]">E-mail</dt>

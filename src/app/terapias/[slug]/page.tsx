@@ -10,9 +10,9 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { mensagemTerapia } from "@/lib/whatsapp";
-import { cidadeUf } from "@/lib/site";
+import { metadadosPagina } from "@/lib/seo";
 
-// Gera as 9 páginas de terapia no momento do build (rápidas e boas para SEO).
+// Gera as páginas de terapia no momento do build (rápidas e boas para SEO).
 export function generateStaticParams() {
   return terapias.map((t) => ({ slug: t.slug }));
 }
@@ -26,18 +26,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const t = getTerapia(slug);
   if (!t) return {};
-  const cidade = cidadeUf();
-  return {
-    // "absolute" evita o modelo do layout duplicar "| Despertar PΨ"
-    // (o metaTitle da terapia já traz a marca uma vez).
-    title: { absolute: t.metaTitle.replace("[cidade]", cidade || "Brasil") },
-    description: t.metaDescription,
-    alternates: { canonical: `/terapias/${t.slug}` },
-    openGraph: {
-      title: `${t.nome} | ${clinica.nome}`,
-      description: t.metaDescription,
-    },
-  };
+  return metadadosPagina({
+    // O metaTitle já traz a marca; "[cidade]" vira "Joinville".
+    tituloCompleto: t.metaTitle.replace("[cidade]", clinica.endereco.cidade),
+    descricao: t.metaDescription,
+    caminho: `/terapias/${t.slug}`,
+  });
 }
 
 export default async function TerapiaPage({
@@ -49,8 +43,14 @@ export default async function TerapiaPage({
   const t = getTerapia(slug);
   if (!t) notFound();
 
-  const cidade = cidadeUf();
-  const outras = terapias.filter((x) => x.slug !== t.slug).slice(0, 3);
+  const cidade = clinica.endereco.cidade;
+  // "Continue explorando": as relacionadas definidas em terapias.ts
+  // (ou, se não houver, as primeiras da lista).
+  const outras = (
+    t.relacionadas?.length
+      ? t.relacionadas.map((s) => getTerapia(s)).filter((x) => x !== undefined)
+      : terapias.filter((x) => x.slug !== t.slug)
+  ).slice(0, 3);
 
   return (
     <>
@@ -86,20 +86,29 @@ export default async function TerapiaPage({
               >
                 {t.eyebrow}
               </span>
+              {/*
+                A cidade fica DENTRO do h1 ("Hipnose Clínica em Joinville"),
+                mas em tamanho menor, para o visual continuar igual.
+              */}
               <h1 className="mt-5 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">
-                {t.nome}
+                {t.nome}{" "}
+                <span className="mt-2 block font-display text-2xl italic text-[var(--color-ink-soft)] sm:text-3xl">
+                  em {cidade}
+                </span>
               </h1>
-              {cidade && (
-                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-ink-soft)]">
-                  em {cidade} · presencial e online
-                </p>
-              )}
+              <p className="mt-4 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-ink-soft)]">
+                Atendimento presencial e online
+              </p>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
                 {t.resumo}
               </p>
               <div className="mt-8">
-                <CtaWhatsapp origem={`terapia_${t.slug}_topo`} mensagem={mensagemTerapia(t.nome)}>
-                  Quero saber mais
+                <CtaWhatsapp
+                  origem={`terapia_${t.slug}_topo`}
+                  mensagem={mensagemTerapia(t.nome)}
+                  variante="whatsapp"
+                >
+                  Agendar pelo WhatsApp
                 </CtaWhatsapp>
               </div>
             </div>
@@ -151,6 +160,21 @@ export default async function TerapiaPage({
           ))}
         </ul>
 
+        {/* Botão no meio do conteúdo */}
+        <div className="mt-10 flex flex-col items-start gap-3 rounded-2xl border border-[var(--color-dawn-line)] bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[var(--color-ink)]">
+            Quer entender se {t.nome} faz sentido para o seu momento?
+          </p>
+          <CtaWhatsapp
+            origem={`terapia_${t.slug}_meio`}
+            mensagem={mensagemTerapia(t.nome)}
+            variante="whatsapp"
+            className="shrink-0"
+          >
+            Agendar pelo WhatsApp
+          </CtaWhatsapp>
+        </div>
+
         {/* Como funciona */}
         <h2 className="mt-14 text-2xl text-[var(--color-twilight)] sm:text-3xl">
           Como acontece na prática
@@ -158,20 +182,43 @@ export default async function TerapiaPage({
         <p className="mt-5 text-[1.08rem] leading-relaxed text-[var(--color-ink)]">
           {t.comoFunciona}
         </p>
+        <p className="mt-5 text-[1.08rem] leading-relaxed text-[var(--color-ink)]">
+          Os atendimentos acontecem presencialmente em {cidade}, na{" "}
+          {clinica.nomeExtenso}, e também online. {t.nome} faz parte da{" "}
+          <Link
+            href="/parapsicologia-clinica"
+            className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
+          >
+            Parapsicologia Clínica
+          </Link>
+          , a abordagem que integra as práticas conduzidas por{" "}
+          <Link
+            href="/sobre"
+            className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
+          >
+            Marco Sadério
+          </Link>
+          .
+        </p>
 
         <DisclaimerNote className="mt-12" />
 
-        {/* CTA */}
+        {/* CTA final */}
         <div className="mt-12 rounded-[2rem] border border-[var(--color-dawn-line)] bg-[var(--color-dawn-deep)] p-8 text-center">
           <h2 className="text-2xl text-[var(--color-twilight)] sm:text-3xl">
             Ficou com vontade de experimentar?
           </h2>
           <p className="mx-auto mt-3 max-w-md text-[var(--color-ink-soft)]">
-            Converse com o Marco pelo WhatsApp{cidade ? `, com atendimento em ${cidade} e online` : ""}. Sem compromisso.
+            Converse com o Marco pelo WhatsApp, com atendimento em {cidade} e
+            online. Sem compromisso.
           </p>
           <div className="mt-6 flex justify-center">
-            <CtaWhatsapp origem={`terapia_${t.slug}_fim`} mensagem={mensagemTerapia(t.nome)}>
-              Falar sobre {t.nome}
+            <CtaWhatsapp
+              origem={`terapia_${t.slug}_fim`}
+              mensagem={mensagemTerapia(t.nome)}
+              variante="whatsapp"
+            >
+              Agendar pelo WhatsApp
             </CtaWhatsapp>
           </div>
         </div>
@@ -186,6 +233,9 @@ export default async function TerapiaPage({
       <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
         <hr className="horizon mb-12" />
         <Eyebrow>Continue explorando</Eyebrow>
+        <h2 className="mt-3 text-2xl text-[var(--color-twilight)] sm:text-3xl">
+          Práticas que se conectam com {t.nome}
+        </h2>
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
           {outras.map((o) => (
             <Link

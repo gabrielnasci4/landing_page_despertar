@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { metadadosPagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Quizes",
-  description:
-    "Testes leves e reflexivos da Despertar PΨ: descubra qual caminho de cuidado conversa com o seu momento e qual é o seu momento interior.",
-  alternates: { canonical: "/quizes" },
-};
+export const metadata = metadadosPagina({
+  titulo: "Quizes",
+  descricao:
+    "Testes leves e reflexivos da Despertar ParaPSI: descubra qual caminho de cuidado conversa com o seu momento e qual é o seu momento interior.",
+  caminho: "/quizes",
+});
 
 /*
   Página que reúne os testes/quizes do site. Para adicionar um novo

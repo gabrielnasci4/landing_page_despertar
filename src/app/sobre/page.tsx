@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { Eyebrow } from "@/components/ui";
@@ -6,13 +5,14 @@ import { JsonLd } from "@/components/JsonLd";
 import { personJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { clinica } from "@/content/clinica";
 import { formacao } from "@/content/formacao";
+import { metadadosPagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Marco Sadério, Parapsicólogo Clínico em Joinville",
-  description:
+export const metadata = metadadosPagina({
+  titulo: "Marco Sadério, Parapsicólogo Clínico em Joinville",
+  descricao:
     "Conheça Marco Sadério, parapsicólogo clínico em Joinville: formação, valores e a forma de atender, com acolhimento e sigilo. Agende uma conversa pelo WhatsApp.",
-  alternates: { canonical: "/sobre" },
-};
+  caminho: "/sobre",
+});
 
 export default function SobrePage() {
   const p = clinica.profissional;
@@ -44,7 +44,7 @@ export default function SobrePage() {
             mas com estilo menor, para o visual continuar com o nome em destaque.
           */}
           <h1 className="mt-5 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">
-            {p.nome}
+            {p.nome}{" "}
             <span className="mt-3 block font-display text-xl italic text-[var(--color-amethyst)] sm:text-2xl">
               {p.titulo} em {clinica.endereco.cidade}
             </span>

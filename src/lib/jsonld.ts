@@ -62,6 +62,13 @@ const OUTROS_NOMES = [
   "despertarparapsi", // domínio e @ das redes
 ];
 
+// Identificadores fixos: cada "entidade" aparece UMA vez no site e as
+// outras apontam para ela (em vez de repetir os dados). Assim o Google
+// entende que empresa, Marco, site e serviços são a mesma rede.
+const ID_EMPRESA = `${clinica.siteUrl}/#localbusiness`;
+const ID_MARCO = `${clinica.siteUrl}/sobre#marco`;
+const ID_SITE = `${clinica.siteUrl}/#website`;
+
 /*
   "Dados estruturados" (JSON-LD): informações que o Google lê
   para entender que este é um negócio local, quem é o
@@ -75,18 +82,23 @@ export function localBusinessJsonLd() {
   const dados: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": ["HealthAndBeautyBusiness", "LocalBusiness"],
-    name: NOME_PREFERIDO,
-    alternateName: OUTROS_NOMES,
-    description: clinica.atividade,
-    url: clinica.siteUrl,
+    "@id": ID_EMPRESA,
+    // Nome igual ao do Google Meu Negócio; as outras grafias vão em
+    // alternateName.
+    name: clinica.nomeNoGoogle,
+    alternateName: [NOME_PREFERIDO, ...OUTROS_NOMES],
+    description: `${clinica.atividade} em ${clinica.endereco.cidade}, com ${clinica.profissional.nome}, ${clinica.profissional.titulo.toLowerCase()}.`,
+    url: `${clinica.siteUrl}/`,
     telephone: `+${clinica.whatsappNumero}`,
     email: clinica.email,
+    image: [
+      `${clinica.siteUrl}/fotos/consultorio.jpg`,
+      `${clinica.siteUrl}/fotos/marco.jpg`,
+    ],
+    logo: `${clinica.siteUrl}/fotos/logo-despertar.png`,
     priceRange: "$$",
-    founder: {
-      "@type": "Person",
-      name: clinica.profissional.nomeCompleto,
-      jobTitle: clinica.profissional.titulo,
-    },
+    founder: { "@id": ID_MARCO },
+    employee: { "@id": ID_MARCO },
     // sameAs = os perfis oficiais da MESMA entidade. Inclui o perfil do
     // Google (Maps), que é o sinal mais forte para o Google ligar
     // site + empresa + mapa.
@@ -106,7 +118,7 @@ export function localBusinessJsonLd() {
   if (temEndereco()) {
     dados.address = {
       "@type": "PostalAddress",
-      streetAddress: [e.logradouro, e.complemento]
+      streetAddress: [e.logradouro, e.complemento, e.bairro]
         .filter((x) => x && !pendente(x))
         .join(", "),
       addressLocality: e.cidade,
@@ -135,10 +147,12 @@ export function webSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": ID_SITE,
     name: NOME_PREFERIDO,
     alternateName: OUTROS_NOMES,
-    url: clinica.siteUrl,
-    publisher: { "@type": "Organization", name: NOME_PREFERIDO },
+    url: `${clinica.siteUrl}/`,
+    inLanguage: "pt-BR",
+    publisher: { "@id": ID_EMPRESA },
   };
 }
 
@@ -148,11 +162,12 @@ export function personJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": ID_MARCO,
     name: p.nomeCompleto,
     alternateName: p.nome,
     jobTitle: p.titulo,
     description: `${p.titulo} à frente da ${NOME_PREFERIDO}, em ${clinica.endereco.cidade} - ${clinica.endereco.estado}.`,
-    worksFor: { "@type": "LocalBusiness", name: NOME_PREFERIDO, url: clinica.siteUrl },
+    worksFor: { "@id": ID_EMPRESA },
     url: `${clinica.siteUrl}/sobre`,
     image: `${clinica.siteUrl}/fotos/marco.jpg`,
     address: {
@@ -178,11 +193,7 @@ export function serviceJsonLd(slug: string) {
     name: t.nome,
     serviceType: t.nome,
     description: t.metaDescription,
-    provider: {
-      "@type": "LocalBusiness",
-      name: clinica.nome,
-      telephone: `+${clinica.whatsappNumero}`,
-    },
+    provider: { "@id": ID_EMPRESA },
     areaServed: [
       { "@type": "City", name: clinica.endereco.cidade },
       "BR",

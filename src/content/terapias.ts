@@ -32,11 +32,14 @@ export type Terapia = {
   metaTitle: string; // título que aparece na aba do navegador e no Google
   metaDescription: string; // resumo que o Google mostra na busca
   faq?: { pergunta: string; resposta: string }[]; // dúvidas específicas
+  // Terapias sugeridas em "Continue explorando" (use o "slug" delas).
+  relacionadas?: string[];
 };
 
 export const terapias: Terapia[] = [
   {
     slug: "conversas-terapeuticas",
+    relacionadas: ["hipnose-clinica", "reprogramacao-mental", "relaxamento-mental"],
     nome: "Conversas Terapêuticas",
     cor: "#b07a56",
     corSentido: "o fio que conduz",
@@ -63,6 +66,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "hipnose-clinica",
+    relacionadas: ["regressao-de-memorias", "reprogramacao-mental", "relaxamento-mental"],
     nome: "Hipnose Clínica",
     cor: "#3e6b8f",
     corSentido: "foco e calma",
@@ -85,9 +89,9 @@ export const terapias: Terapia[] = [
     comoFunciona:
       "A sessão começa com uma conversa para entender o seu momento. Em seguida, com técnicas de respiração e relaxamento guiado, você chega a um estado calmo e concentrado, no seu ritmo. Tudo é conduzido em um espaço seguro, sem julgamentos, e sempre respeitando seus limites.",
     metaTitle:
-      "Hipnose Clínica em [cidade] | Despertar ParaPSI · Marco Sadério",
+      "Hipnose Clínica em [cidade] | Despertar ParaPSI",
     metaDescription:
-      "Hipnose clínica em Joinville: relaxamento profundo e foco para apoiar ansiedade, hábitos e qualidade de vida, com você no controle. Agende pelo WhatsApp.",
+      "Hipnose Clínica em Joinville com Marco Sadério. Conheça como a abordagem pode ser utilizada em processos de autoconhecimento e mudança de padrões. Agende.",
     faq: [
       {
         pergunta: "Vou perder o controle ou revelar segredos?",
@@ -103,6 +107,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "reprogramacao-mental",
+    relacionadas: ["hipnose-clinica", "pnl", "conversas-terapeuticas"],
     nome: "Reprogramação Mental",
     cor: "#3f8a80",
     corSentido: "renovação",
@@ -130,6 +135,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "pnl",
+    relacionadas: ["reprogramacao-mental", "hipnose-clinica", "conversas-terapeuticas"],
     nome: "PNL (Programação Neurolinguística)",
     cor: "#cf9640",
     corSentido: "clareza",
@@ -157,6 +163,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "regressao-de-memorias",
+    relacionadas: ["vidas-passadas", "regressao-ao-utero-materno", "hipnose-clinica"],
     nome: "Regressão de Memórias",
     cor: "#48507e",
     corSentido: "profundidade",
@@ -179,7 +186,7 @@ export const terapias: Terapia[] = [
       "Depois de uma conversa de acolhimento, você é conduzido a um estado de relaxamento no qual pode acessar a lembrança com segurança e distanciamento. A condução é cuidadosa e respeita totalmente o seu ritmo e o seu conforto.",
     metaTitle: "Regressão de Memórias em [cidade] | Despertar ParaPSI",
     metaDescription:
-      "Regressão de memórias em Joinville: acesse e ressignifique lembranças que ainda influenciam o presente, com segurança e acolhimento. Agende pelo WhatsApp.",
+      "Regressão de Memórias em Joinville com acompanhamento de Marco Sadério. Conheça a abordagem e tire suas dúvidas antes de agendar uma sessão.",
     faq: [
       {
         pergunta: "Vou reviver traumas e sofrer de novo?",
@@ -190,6 +197,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "regressao-ao-utero-materno",
+    relacionadas: ["regressao-de-memorias", "vidas-passadas", "hipnose-clinica"],
     nome: "Regressão ao Útero Materno",
     cor: "#b7657a",
     corSentido: "acolhimento",
@@ -215,6 +223,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "vidas-passadas",
+    relacionadas: ["regressao-de-memorias", "regressao-ao-utero-materno", "hipnose-clinica"],
     nome: "Regressão a Vidas Passadas",
     cor: "#6b4e9e",
     corSentido: "intuição",
@@ -241,6 +250,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "meditacao",
+    relacionadas: ["relaxamento-mental", "reiki", "cromoterapia"],
     nome: "Meditação",
     cor: "#6a86a8",
     corSentido: "presença e quietude",
@@ -267,6 +277,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "relaxamento-mental",
+    relacionadas: ["meditacao", "hipnose-clinica", "reiki"],
     nome: "Relaxamento Físico e Mental",
     cor: "#8a79b0",
     corSentido: "serenidade",
@@ -294,6 +305,7 @@ export const terapias: Terapia[] = [
   },
   {
     slug: "reiki",
+    relacionadas: ["cromoterapia", "relaxamento-mental", "meditacao"],
     nome: "Reiki",
     cor: "#4e7a5e",
     corSentido: "equilíbrio",
@@ -314,12 +326,13 @@ export const terapias: Terapia[] = [
     ],
     comoFunciona:
       "Você permanece confortavelmente deitado ou sentado, vestido, enquanto conduzo a aplicação pela imposição das mãos. É um momento de descanso profundo, e muitas pessoas relatam uma sensação de leveza e paz ao final.",
-    metaTitle: "Reiki em [cidade] | Despertar ParaPSI · Terapia Integrativa",
+    metaTitle: "Reiki em [cidade] | Despertar ParaPSI",
     metaDescription:
-      "Reiki em Joinville: prática integrativa incluída na PNPIC do SUS, com imposição das mãos para relaxamento profundo e equilíbrio. Agende pelo WhatsApp.",
+      "Sessões de Reiki em Joinville na Despertar ParaPSI. Uma prática integrativa voltada ao relaxamento e bem-estar. Fale com Marco e agende seu horário.",
   },
   {
     slug: "cromoterapia",
+    relacionadas: ["reiki", "relaxamento-mental", "meditacao"],
     nome: "Cromoterapia",
     cor: "#c79a54",
     corSentido: "o espectro das cores",

@@ -47,7 +47,8 @@ export function Analytics() {
   const [liberado, setLiberado] = useState(false);
 
   useEffect(() => {
-    setLiberado(localStorage.getItem(CHAVE) === "aceito");
+    const verificar = () => setLiberado(localStorage.getItem(CHAVE) === "aceito");
+    verificar();
     const aoConsentir = (e: Event) => {
       const detalhe = (e as CustomEvent).detail;
       if (detalhe === "aceito") {

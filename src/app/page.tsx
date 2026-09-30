@@ -27,24 +27,39 @@ export default function Home() {
       {/* 1 — HERO */}
       <section className="grain relative overflow-hidden">
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-10 sm:px-8 sm:pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:pb-24 lg:pt-20">
-          <div>
-            <Eyebrow>Parapsicologia Clínica &amp; Terapias Integrativas · Joinville - SC</Eyebrow>
-            <h1 className="mt-6 text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.1rem]">
+          <div className="flex flex-col">
+            {/*
+              O h1 (o assunto principal que o Google lê) é a linha pequena do
+              topo. A frase grande logo abaixo continua sendo o destaque visual.
+              O "!" força a fonte/cor da linha pequena por cima do estilo
+              padrão dos títulos.
+            */}
+            <h1 className="flex items-start gap-2 text-xs uppercase leading-relaxed font-body! font-semibold! tracking-[0.2em]! text-[var(--color-amethyst)]!">
+              <span className="mt-[0.6em] h-px w-6 shrink-0 bg-[var(--color-gold)]" aria-hidden="true" />
+              Parapsicologia Clínica e Terapias Integrativas em Joinville
+            </h1>
+            <p className="mt-5 font-display text-[2.2rem] font-medium leading-[1.05] tracking-[-0.01em] text-[var(--color-twilight)] [text-wrap:balance] sm:mt-6 sm:text-6xl lg:text-[4.1rem]">
               As respostas que você procura começam{" "}
               <em className="font-display italic text-[var(--color-amethyst)]">
                 dentro
               </em>{" "}
               de você.
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
-              A Despertar ParaPSI (Despertar PΨ) é uma clínica de Parapsicologia
-              Clínica e Terapias Integrativas em Joinville, conduzida pelo
-              parapsicólogo clínico Marco Sadério. Um espaço de acolhimento para
+            </p>
+            <p className="mt-5 max-w-xl text-lg font-semibold leading-snug text-[var(--color-twilight)]">
+              Atendimento presencial em Joinville e online com Marco Sadério,
+              parapsicólogo clínico.
+            </p>
+            {/* No celular, este parágrafo vai para depois dos botões, para o
+                "Agendar pelo WhatsApp" aparecer já na primeira tela. */}
+            <p className="order-last mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)] sm:order-none sm:mt-3">
+              A Despertar ParaPSI (Despertar PΨ) é um espaço de acolhimento para
               ressignificar dores emocionais, padrões que se repetem e crenças
               que limitam, despertando o seu potencial interior.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <CtaWhatsapp origem="hero">Agendar uma conversa</CtaWhatsapp>
+            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
+              <CtaWhatsapp origem="hero" variante="whatsapp">
+                Agendar pelo WhatsApp
+              </CtaWhatsapp>
               <Link
                 href="#terapias"
                 className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[var(--color-twilight)]/20 px-6 py-3.5 text-[0.95rem] font-semibold text-[var(--color-twilight)] transition-colors hover:border-[var(--color-amethyst)] hover:text-[var(--color-amethyst)]"
@@ -200,11 +215,19 @@ export default function Home() {
               causas mais profundas por trás de sofrimentos que se repetem e
               apoiar um processo de autoconhecimento e transformação.
             </p>
+            <p className="mt-4 leading-relaxed text-[var(--color-ink-soft)]">
+              No atendimento, podem ser integradas práticas como{" "}
+              <Link href="/terapias/hipnose-clinica" className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4">hipnose clínica</Link>,{" "}
+              <Link href="/terapias/reiki" className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4">Reiki</Link>,{" "}
+              <Link href="/terapias/regressao-de-memorias" className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4">regressão de memórias</Link>,{" "}
+              <Link href="/terapias/vidas-passadas" className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4">regressão a vidas passadas</Link> e{" "}
+              <Link href="/terapias/reprogramacao-mental" className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4">reprogramação mental</Link>.
+            </p>
             <Link
               href="/parapsicologia-clinica"
               className="mt-6 inline-flex items-center gap-1.5 font-semibold text-[var(--color-amethyst)] hover:underline"
             >
-              Entender a abordagem em detalhe
+              Entenda a Parapsicologia Clínica em detalhe
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -214,7 +237,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5 — AS 9 TERAPIAS */}
+      {/* 5 — AS TERAPIAS */}
       <TherapyGrid />
 
       {/* 6 — QUIZ */}
@@ -382,7 +405,7 @@ export default function Home() {
 
       {/* 12 — CONTATO */}
       <section id="contato" className="bg-[var(--color-dawn-deep)]">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 [&>*]:min-w-0">
           <div data-reveal>
             <Eyebrow>Vamos conversar</Eyebrow>
             <h2 className="mt-4 text-4xl leading-[1.1] sm:text-5xl">
@@ -400,10 +423,13 @@ export default function Home() {
                 <span className="text-[var(--color-gold)]">✉</span>
                 {clinica.email}
               </a>
-              <p className="flex items-center gap-3">
+              <a
+                href={`tel:+${clinica.whatsappNumero}`}
+                className="flex items-center gap-3 hover:text-[var(--color-amethyst)]"
+              >
                 <span className="text-[var(--color-gold)]">☏</span>
                 {clinica.telefoneExibicao}
-              </p>
+              </a>
             </div>
           </div>
           <div

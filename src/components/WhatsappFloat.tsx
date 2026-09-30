@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { linkWhatsApp } from "@/lib/whatsapp";
 import { track } from "@/lib/analytics";
+import { CHAVE_CONSENTIMENTO } from "@/components/CookieConsent";
 
 /*
   Botão flutuante de WhatsApp — fica sempre visível no canto,
@@ -11,6 +12,18 @@ import { track } from "@/lib/analytics";
 */
 export function WhatsappFloat() {
   const [visivel, setVisivel] = useState(false);
+  // Enquanto o aviso de cookies está aberto, o botão sobe um pouco no
+  // celular para não ficar escondido atrás dele.
+  const [avisoAberto, setAvisoAberto] = useState(false);
+
+  useEffect(() => {
+    const verificar = () =>
+      setAvisoAberto(!localStorage.getItem(CHAVE_CONSENTIMENTO));
+    verificar();
+    const fechou = () => setAvisoAberto(false);
+    window.addEventListener("consentimento", fechou);
+    return () => window.removeEventListener("consentimento", fechou);
+  }, []);
 
   useEffect(() => {
     const aoRolar = () => setVisivel(window.scrollY > 400);
@@ -26,7 +39,7 @@ export function WhatsappFloat() {
       rel="noopener noreferrer"
       onClick={() => track("clique_whatsapp", { origem: "flutuante" })}
       aria-label="Falar no WhatsApp"
-      className={`fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-[#25D366] py-3.5 pl-3.5 pr-5 text-white shadow-lg transition-all duration-300 hover:shadow-xl sm:bottom-7 sm:right-7 ${
+      className={`fixed ${avisoAberto ? "bottom-44" : "bottom-5"} right-5 z-40 flex items-center gap-2.5 rounded-full bg-[#25D366] py-3.5 pl-3.5 pr-5 text-white shadow-lg transition-all duration-300 hover:shadow-xl sm:bottom-7 sm:right-7 ${
         visivel ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

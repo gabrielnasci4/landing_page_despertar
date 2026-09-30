@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
 import { PsiMark } from "@/components/PsiMark";
+import { metadadosPagina } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Recebemos o seu contato",
-  description: "Obrigado pelo contato com a Despertar PΨ.",
+  ...metadadosPagina({
+    titulo: "Recebemos o seu contato",
+    descricao: "Obrigado pelo contato com a Despertar ParaPSI.",
+    caminho: "/obrigado",
+  }),
   // Não faz sentido esta página aparecer no Google.
   robots: { index: false, follow: false },
-  alternates: { canonical: "/obrigado" },
 };
 
 export default function ObrigadoPage() {

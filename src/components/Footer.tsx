@@ -31,9 +31,9 @@ export function Footer() {
 
         {/* Terapias */}
         <div>
-          <h3 className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-gold)]">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-gold)]">
             Terapias
-          </h3>
+          </p>
           <ul className="mt-4 space-y-2 text-sm">
             {terapias.map((t) => (
               <li key={t.slug}>
@@ -50,9 +50,9 @@ export function Footer() {
 
         {/* Navegação */}
         <div>
-          <h3 className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-gold)]">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-gold)]">
             Navegar
-          </h3>
+          </p>
           <ul className="mt-4 space-y-2 text-sm">
             {[
               { r: "A abordagem", h: "/parapsicologia-clinica" },
@@ -75,9 +75,9 @@ export function Footer() {
 
         {/* Contato */}
         <div>
-          <h3 className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-gold)]">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-gold)]">
             Contato
-          </h3>
+          </p>
           <ul className="mt-4 space-y-3 text-sm">
             <li>
               <a

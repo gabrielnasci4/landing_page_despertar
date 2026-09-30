@@ -1,16 +1,26 @@
-import type { Metadata } from "next";
 import { QuizGame } from "@/components/QuizGame";
 import { Eyebrow } from "@/components/ui";
+import { metadadosPagina } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
-export const metadata: Metadata = {
-  title: "Qual caminho de cuidado conversa com o seu momento?",
-  description:
-    "Responda quatro perguntas e receba uma orientação inicial, sem definir uma técnica fechada. O caminho é sempre individual, construído numa conversa com Marco Sadério, da Despertar PΨ.",
-  alternates: { canonical: "/quiz" },
-};
+export const metadata = metadadosPagina({
+  titulo: "Qual caminho de cuidado conversa com o seu momento?",
+  descricao:
+    "Responda quatro perguntas e receba uma orientação inicial. O caminho é sempre individual, construído numa conversa com Marco Sadério, da Despertar ParaPSI.",
+  caminho: "/quiz",
+});
 
 export default function QuizPage() {
   return (
+    <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { nome: "Início", url: "/" },
+          { nome: "Quizes", url: "/quizes" },
+          { nome: "Qual caminho de cuidado", url: "/quiz" },
+        ])}
+      />
     <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
       <div className="text-center">
         <Eyebrow className="justify-center">Um convite à reflexão</Eyebrow>
@@ -28,5 +38,6 @@ export default function QuizPage() {
         <QuizGame />
       </div>
     </section>
+    </>
   );
 }

@@ -22,6 +22,9 @@ export const clinica = {
   // Versão por extenso (usada onde o símbolo Ψ não fica bom, ex.: Google).
   // Uma palavra só (como o domínio) para o Google não separar em "para psi".
   nomeExtenso: "Despertar ParaPSI",
+  // Nome EXATAMENTE como está no Google Meu Negócio (usado nos dados
+  // estruturados da empresa). Se mudar lá, mude aqui também.
+  nomeNoGoogle: "Despertar ParaPSI - Parapsicologia Clínica",
   // Frase curta que descreve a atividade (aparece ao lado do nome).
   atividade: "Parapsicologia Clínica e Terapias Integrativas",
 
@@ -57,9 +60,14 @@ export const clinica = {
     cidade: "Joinville",
     estado: "SC",
     cep: "89202-205",
-    // Coordenadas do Google Maps (ajuda o Google a posicionar no mapa).
-    latitude: "-26.312575",
-    longitude: "-48.8450751",
+    // Coordenadas do pino da clínica no Google Maps (dados para o Google).
+    latitude: "-26.31258",
+    longitude: "-48.8453314",
+    // Coordenadas da FOTO 360° (tour virtual). São diferentes das de
+    // cima de propósito: é o ponto exato onde a foto foi tirada. Se
+    // mudar, o quadro do tour pode passar a mostrar a rua.
+    tourLatitude: "-26.312575",
+    tourLongitude: "-48.8450751",
     // Link para o botão "Como chegar" (perfil do Google do Marco).
     linkMapa: "https://share.google/0zdUJUY7Ejjeo3TGY",
   },

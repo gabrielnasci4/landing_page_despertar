@@ -108,7 +108,7 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
         <select
           name="interesse"
           defaultValue={interessePadrao}
-          className="min-h-[48px] rounded-xl border border-[var(--color-dawn-line)] bg-white px-4 text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-amethyst)]"
+          className="w-full min-w-0 min-h-[48px] rounded-xl border border-[var(--color-dawn-line)] bg-white px-4 text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-amethyst)]"
         >
           <option value="">Ainda não sei / quero orientação</option>
           {terapias.map((t) => (
@@ -127,7 +127,7 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
           name="mensagem"
           rows={3}
           placeholder="Conte, se quiser, o que te trouxe até aqui."
-          className="resize-none rounded-xl border border-[var(--color-dawn-line)] bg-white px-4 py-3 text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-amethyst)]"
+          className="w-full min-w-0 resize-none rounded-xl border border-[var(--color-dawn-line)] bg-white px-4 py-3 text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-amethyst)]"
         />
       </label>
 
@@ -185,7 +185,7 @@ function Campo({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="min-h-[48px] rounded-xl border border-[var(--color-dawn-line)] bg-white px-4 text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-amethyst)]"
+        className="w-full min-w-0 min-h-[48px] rounded-xl border border-[var(--color-dawn-line)] bg-white px-4 text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-amethyst)]"
       />
     </label>
   );

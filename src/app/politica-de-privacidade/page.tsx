@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { clinica } from "@/content/clinica";
 import { ferramentasAtivas } from "@/lib/ferramentas";
+import { metadadosPagina } from "@/lib/seo";
 
 /*
   ⚠️ ATUALIZE ESTA DATA sempre que o TEXTO desta página for alterado.
@@ -11,12 +11,12 @@ import { ferramentasAtivas } from "@/lib/ferramentas";
 */
 const ULTIMA_ATUALIZACAO = "setembro de 2026";
 
-export const metadata: Metadata = {
-  title: "Política de Privacidade",
-  description:
+export const metadata = metadadosPagina({
+  titulo: "Política de Privacidade",
+  descricao:
     "Política de Privacidade da Despertar ParaPSI: como tratamos os dados pessoais em conformidade com a LGPD.",
-  alternates: { canonical: "/politica-de-privacidade" },
-};
+  caminho: "/politica-de-privacidade",
+});
 
 // Junta uma lista em texto corrido: "a, b e c".
 function juntar(itens: string[]) {
