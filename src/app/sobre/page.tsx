@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { personJsonLd, breadcrumbJsonLd } from "@/lib/jsonld";
 import { clinica } from "@/content/clinica";
-import { formacao } from "@/content/formacao";
+import { formacao, instituicaoTexto } from "@/content/formacao";
 import { metadadosPagina } from "@/lib/seo";
 
 export const metadata = metadadosPagina({
@@ -102,7 +102,7 @@ export default function SobrePage() {
                     {c.curso}
                   </p>
                   <p className="mt-1 text-sm text-[var(--color-ink-soft)]">
-                    {c.instituicao}
+                    {instituicaoTexto(c)}
                   </p>
                 </div>
               </li>

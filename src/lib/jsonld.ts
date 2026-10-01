@@ -1,6 +1,6 @@
 import { clinica } from "@/content/clinica";
 import { terapias } from "@/content/terapias";
-import { formacao } from "@/content/formacao";
+import { formacao, instituicoesDe } from "@/content/formacao";
 import type { PerguntaFrequente } from "@/content/faq";
 import { temEndereco, pendente } from "@/lib/site";
 
@@ -158,7 +158,7 @@ export function webSiteJsonLd() {
 
 export function personJsonLd() {
   const p = clinica.profissional;
-  const instituicoes = [...new Set(formacao.map((f) => f.instituicao))];
+  const instituicoes = [...new Set(formacao.flatMap(instituicoesDe))];
   return {
     "@context": "https://schema.org",
     "@type": "Person",
