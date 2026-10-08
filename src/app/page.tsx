@@ -46,8 +46,8 @@ export default function Home() {
               de você.
             </p>
             <p className="mt-5 max-w-xl text-lg font-semibold leading-snug text-[var(--color-twilight)]">
-              Atendimento presencial em Joinville e online com Marco Sadério,
-              parapsicólogo clínico.
+              Atendimento presencial em Joinville e online para outras cidades,
+              com Marco Sadério, parapsicólogo clínico.
             </p>
             {/* No celular, este parágrafo vai para depois dos botões, para o
                 "Agendar pelo WhatsApp" aparecer já na primeira tela. */}
@@ -227,7 +227,7 @@ export default function Home() {
               href="/parapsicologia-clinica"
               className="mt-6 inline-flex items-center gap-1.5 font-semibold text-[var(--color-amethyst)] hover:underline"
             >
-              Entenda a Parapsicologia Clínica em detalhe
+              Conheça o trabalho do parapsicólogo clínico em Joinville
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

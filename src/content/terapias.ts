@@ -15,12 +15,29 @@
   IMPORTANTE (jurídico): mantenha a linguagem de "apoio" e
   "bem-estar". Evite prometer cura ou usar "tratamento",
   "paciente" ou "diagnóstico". Veja COMO-EDITAR.md.
+
+  IMPORTANTE (metodologia): o texto público explica o que é, para
+  quem pode fazer sentido, onde atende e como agendar. NÃO publicar
+  protocolos, sequência da sessão, roteiros, perguntas internas ou
+  combinações de técnicas do Marco.
   ============================================================
 */
+
+import { clinica } from "./clinica";
+
+const e = clinica.endereco;
+// "Av. Getúlio Vargas, 567, no bairro Bucarein"
+const ONDE = `${e.logradouro}, no bairro ${e.bairro}`;
 
 export type Terapia = {
   slug: string; // endereço da página (não use espaços nem acentos)
   nome: string;
+  // Outros nomes pelos quais a prática é procurada (ex.: "Hipnoterapia").
+  // O primeiro entra no título principal da página: "Hipnose Clínica e
+  // Hipnoterapia em Joinville".
+  outrosNomes?: string[];
+  // true = só atendimento presencial (a página não oferece online).
+  soPresencial?: boolean;
   cor: string; // cor-tema (do espectro da cromoterapia)
   corSentido: string; // o que essa cor representa
   eyebrow: string; // rótulo curto acima do título
@@ -28,7 +45,7 @@ export type Terapia = {
   pergunta: string; // pergunta reflexiva do Marco (vira destaque)
   oQueE: string[]; // parágrafos explicando o que é
   apoia: string[]; // "pode apoiar em..." (lista)
-  comoFunciona: string; // como acontece na prática
+  comoFunciona: string; // o que esperar (sem expor a metodologia)
   metaTitle: string; // título que aparece na aba do navegador e no Google
   metaDescription: string; // resumo que o Google mostra na busca
   faq?: { pergunta: string; resposta: string }[]; // dúvidas específicas
@@ -59,7 +76,7 @@ export const terapias: Terapia[] = [
       "Insights e decisões mais conscientes",
     ],
     comoFunciona:
-      "Cada encontro é uma conversa cuidadosa, conduzida no seu ritmo. As conversas terapêuticas podem vir sozinhas ou preparar e complementar outras práticas, como o relaxamento, a hipnose ou o Reiki, dando sentido a todo o processo.",
+      "Cada encontro é uma conversa cuidadosa, conduzida no seu ritmo, em um espaço seguro e sem julgamentos. As conversas terapêuticas podem acontecer sozinhas ou acompanhar outras práticas, conforme o que fizer sentido para você.",
     metaTitle: "Conversas Terapêuticas em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Conversas terapêuticas em Joinville: escuta acolhedora para organizar emoções, ganhar clareza e abrir novos caminhos. Presencial e online. Agende pelo WhatsApp.",
@@ -68,6 +85,7 @@ export const terapias: Terapia[] = [
     slug: "hipnose-clinica",
     relacionadas: ["regressao-de-memorias", "reprogramacao-mental", "relaxamento-mental"],
     nome: "Hipnose Clínica",
+    outrosNomes: ["Hipnoterapia"],
     cor: "#3e6b8f",
     corSentido: "foco e calma",
     eyebrow: "Estado de foco profundo",
@@ -78,6 +96,7 @@ export const terapias: Terapia[] = [
     oQueE: [
       "Muitas pessoas associam hipnose a palco ou entretenimento. A hipnose clínica é totalmente diferente: é um estado natural de relaxamento profundo e foco concentrado, no qual a mente fica mais aberta a sugestões terapêuticas positivas.",
       "Você não perde o controle. Permanece consciente o tempo todo e apenas acessa um nível mais tranquilo da mente, aquele em que guardamos memórias, crenças e padrões que orientam boa parte do que sentimos e fazemos.",
+      `Hipnose clínica e hipnoterapia são nomes para a mesma prática: o uso da hipnose voltado ao autoconhecimento e à mudança de padrões. As sessões de hipnoterapia acontecem presencialmente em ${clinica.endereco.cidade}, no consultório da ${clinica.nomeExtenso}, e também online para quem está em outras cidades.`,
     ],
     apoia: [
       "Ansiedade, estresse e momentos de tensão",
@@ -87,9 +106,9 @@ export const terapias: Terapia[] = [
       "Qualidade do sono e sensação de bem-estar",
     ],
     comoFunciona:
-      "A sessão começa com uma conversa para entender o seu momento. Em seguida, com técnicas de respiração e relaxamento guiado, você chega a um estado calmo e concentrado, no seu ritmo. Tudo é conduzido em um espaço seguro, sem julgamentos, e sempre respeitando seus limites.",
+      "Você permanece consciente e no controle durante toda a sessão, em um estado calmo e concentrado, no seu ritmo. Cada atendimento é individual, conduzido em um espaço seguro, sem julgamentos e sempre respeitando seus limites.",
     metaTitle:
-      "Hipnose Clínica em [cidade] | Despertar ParaPSI",
+      "Hipnose Clínica e Hipnoterapia em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Hipnose Clínica em Joinville com Marco Sadério. Conheça como a abordagem pode ser utilizada em processos de autoconhecimento e mudança de padrões. Agende.",
     faq: [
@@ -102,6 +121,16 @@ export const terapias: Terapia[] = [
         pergunta: "E se eu não conseguir ser hipnotizado?",
         resposta:
           "A maioria das pessoas entra tranquilamente nesse estado, porque ele é natural, e todos nós passamos por ele várias vezes ao dia. A condução é feita no seu ritmo, sem pressa.",
+      },
+      {
+        pergunta: "Hipnose clínica e hipnoterapia são a mesma coisa?",
+        resposta:
+          `Sim. Hipnoterapia é o nome dado ao uso da hipnose com propósito de cuidado e autoconhecimento, o que aqui chamamos de hipnose clínica. Quem procura hipnoterapia ou um hipnoterapeuta em ${clinica.endereco.cidade} encontra na ${clinica.nomeExtenso} a hipnose clínica com Marco Sadério, parapsicólogo clínico.`,
+      },
+      {
+        pergunta: `Onde fazer hipnose em ${clinica.endereco.cidade}?`,
+        resposta:
+          `As sessões presenciais acontecem na ${clinica.nomeExtenso}, na ${ONDE}, próximo ao Centro de ${clinica.endereco.cidade}. Para quem está em outras cidades, também há atendimento online, por ${clinica.plataformaOnline}. O agendamento é feito pelo WhatsApp.`,
       },
     ],
   },
@@ -128,7 +157,7 @@ export const terapias: Terapia[] = [
       "Abertura para novas oportunidades",
     ],
     comoFunciona:
-      "A partir de uma conversa inicial, identificamos juntos as crenças que hoje limitam você. Com técnicas de relaxamento e sugestão positiva, trabalhamos para firmar novos entendimentos, no seu tempo e de acordo com o que faz sentido para a sua vida.",
+      "Cada processo é individual e respeita o seu tempo e aquilo que faz sentido para a sua vida. O foco está em reconhecer as crenças que hoje limitam você e abrir espaço para novos entendimentos, em um ambiente acolhedor e sem julgamentos.",
     metaTitle: "Reprogramação Mental em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Reprogramação mental em Joinville: reconheça crenças que limitam e firme novos padrões de autoconfiança e equilíbrio. Presencial e online. Agende pelo WhatsApp.",
@@ -156,7 +185,7 @@ export const terapias: Terapia[] = [
       "Lidar melhor com críticas e conflitos",
     ],
     comoFunciona:
-      "Em conversa, mapeamos os padrões de linguagem e de pensamento ligados ao que você quer alcançar. A partir daí, praticamos novas formas de comunicar e de interpretar situações, com exercícios simples que você pode levar para o dia a dia.",
+      "O trabalho é prático e voltado aos objetivos que você traz, com recursos que você pode levar para o dia a dia. Cada encontro é individual e conduzido no seu ritmo.",
     metaTitle: "PNL (Programação Neurolinguística) em [cidade] | Despertar ParaPSI",
     metaDescription:
       "PNL (Programação Neurolinguística) em Joinville: entenda como pensamento e linguagem moldam resultados e ganhe clareza e confiança. Agende pelo WhatsApp.",
@@ -165,6 +194,7 @@ export const terapias: Terapia[] = [
     slug: "regressao-de-memorias",
     relacionadas: ["vidas-passadas", "regressao-ao-utero-materno", "hipnose-clinica"],
     nome: "Regressão de Memórias",
+    outrosNomes: ["Terapia Regressiva"],
     cor: "#48507e",
     corSentido: "profundidade",
     eyebrow: "A raiz no passado",
@@ -174,7 +204,7 @@ export const terapias: Terapia[] = [
       "E se aquilo que mais te trava hoje tivesse origem em um episódio esquecido, e você pudesse finalmente se libertar dele?",
     oQueE: [
       "Nossa mente guarda muito do que vivemos, mesmo o que esquecemos conscientemente. Muitas vezes, incômodos e bloqueios do presente têm origem em lembranças antigas.",
-      "A regressão de memórias é uma técnica para acessar essas recordações e ressignificá-las, trazendo alívio e clareza. Não se trata de reviver a dor, e sim de reencontrar a lembrança para observá-la de um lugar seguro.",
+      "A regressão de memórias, também chamada de terapia regressiva, é uma prática para acessar essas recordações e ressignificá-las, trazendo alívio e clareza. Não se trata de reviver a dor, e sim de reencontrar a lembrança para observá-la de um lugar seguro.",
     ],
     apoia: [
       "Reconhecer a origem de medos e inseguranças",
@@ -183,15 +213,20 @@ export const terapias: Terapia[] = [
       "Mais clareza sobre a própria história",
     ],
     comoFunciona:
-      "Depois de uma conversa de acolhimento, você é conduzido a um estado de relaxamento no qual pode acessar a lembrança com segurança e distanciamento. A condução é cuidadosa e respeita totalmente o seu ritmo e o seu conforto.",
-    metaTitle: "Regressão de Memórias em [cidade] | Despertar ParaPSI",
+      "Você permanece consciente e observa as lembranças com segurança e distanciamento, sem a intenção de reviver a dor. A condução é cuidadosa e respeita totalmente o seu ritmo e o seu conforto.",
+    metaTitle: "Regressão de Memórias e Terapia Regressiva em [cidade] | Despertar ParaPSI",
     metaDescription:
-      "Regressão de Memórias em Joinville com acompanhamento de Marco Sadério. Conheça a abordagem e tire suas dúvidas antes de agendar uma sessão.",
+      "Regressão de Memórias e terapia regressiva em Joinville com Marco Sadério. Conheça a abordagem e tire suas dúvidas antes de agendar uma sessão.",
     faq: [
       {
         pergunta: "Vou reviver traumas e sofrer de novo?",
         resposta:
           "O trabalho é conduzido para que você observe a lembrança de um lugar seguro, com distanciamento, e não para reviver a dor. O objetivo é justamente trazer alívio e uma nova compreensão.",
+      },
+      {
+        pergunta: "Regressão de memórias e terapia regressiva são a mesma coisa?",
+        resposta:
+          "Sim. Terapia regressiva é outro nome usado para a regressão de memórias: o trabalho de acessar lembranças desta vida que ainda influenciam o presente. A regressão a vidas passadas e a regressão ao útero materno são vertentes diferentes, cada uma com a sua página.",
       },
     ],
   },
@@ -216,7 +251,7 @@ export const terapias: Terapia[] = [
       "Reconexão com memórias de segurança",
     ],
     comoFunciona:
-      "Em um estado de relaxamento profundo e guiado, acessamos com delicadeza essas primeiras impressões. Todo o processo é conduzido com cuidado, no seu tempo, dentro de um espaço seguro e sem julgamentos.",
+      "Todo o processo é conduzido com delicadeza e cuidado, no seu tempo, dentro de um espaço seguro e sem julgamentos.",
     metaTitle: "Regressão ao Útero Materno em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Regressão ao útero materno em Joinville: acolha inseguranças ligadas ao início da vida, com segurança e respeito ao seu ritmo. Agende pelo WhatsApp.",
@@ -307,6 +342,7 @@ export const terapias: Terapia[] = [
     slug: "reiki",
     relacionadas: ["cromoterapia", "relaxamento-mental", "meditacao"],
     nome: "Reiki",
+    soPresencial: true, // aplicação pela imposição das mãos
     cor: "#4e7a5e",
     corSentido: "equilíbrio",
     eyebrow: "Energia e equilíbrio",
@@ -325,15 +361,28 @@ export const terapias: Terapia[] = [
       "Clareza mental e serenidade",
     ],
     comoFunciona:
-      "Você permanece confortavelmente deitado ou sentado, vestido, enquanto conduzo a aplicação pela imposição das mãos. É um momento de descanso profundo, e muitas pessoas relatam uma sensação de leveza e paz ao final.",
+      "Na sessão de Reiki, você permanece confortavelmente deitado ou sentado, vestido, enquanto a aplicação é feita pela imposição das mãos. É um momento de descanso profundo, e muitas pessoas relatam uma sensação de leveza e paz ao final.",
     metaTitle: "Reiki em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Sessões de Reiki em Joinville na Despertar ParaPSI. Uma prática integrativa voltada ao relaxamento e bem-estar. Fale com Marco e agende seu horário.",
+    faq: [
+      {
+        pergunta: `Onde fazer Reiki em ${clinica.endereco.cidade}?`,
+        resposta:
+          `As sessões de Reiki em ${clinica.endereco.cidade} acontecem na ${clinica.nomeExtenso}, na ${ONDE}, próximo ao Centro. É só agendar o seu horário pelo WhatsApp.`,
+      },
+      {
+        pergunta: "O Reiki substitui acompanhamento médico ou psicológico?",
+        resposta:
+          "Não. O Reiki é uma prática integrativa e complementar, voltada ao relaxamento e ao bem-estar. Ele pode acompanhar, mas não substitui, o cuidado de médicos e psicólogos.",
+      },
+    ],
   },
   {
     slug: "cromoterapia",
     relacionadas: ["reiki", "relaxamento-mental", "meditacao"],
     nome: "Cromoterapia",
+    soPresencial: true, // usa luzes e ambientes do consultório
     cor: "#c79a54",
     corSentido: "o espectro das cores",
     eyebrow: "O poder das cores",
@@ -352,7 +401,7 @@ export const terapias: Terapia[] = [
       "Vermelho: favorecer a sensação de energia e vitalidade",
     ],
     comoFunciona:
-      "Usamos luzes e ambientes com cores escolhidas de acordo com o que você precisa naquele momento: mais calma, mais energia ou mais clareza. A cromoterapia costuma acompanhar outras práticas, potencializando o relaxamento.",
+      "As luzes e os ambientes de cor são escolhidos de acordo com o que você busca naquele momento, como mais calma, mais energia ou mais clareza, em um ambiente tranquilo.",
     metaTitle: "Cromoterapia em [cidade] | Despertar ParaPSI",
     metaDescription:
       "Cromoterapia em Joinville: as cores e a luz usadas para favorecer calma, equilíbrio e bem-estar, junto a outras práticas. Agende pelo WhatsApp.",

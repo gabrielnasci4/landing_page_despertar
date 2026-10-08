@@ -38,7 +38,7 @@ export const faq: PerguntaFrequente[] = [
   {
     pergunta: "Como funciona o atendimento online?",
     resposta:
-      "Boa parte das práticas, como o diálogo terapêutico, a PNL, o relaxamento e a hipnose, pode ser conduzida por videochamada, com a mesma atenção do presencial. Basta um lugar tranquilo e uma conexão estável. Fale com o Marco para saber qual formato faz mais sentido para o seu caso.",
+      "O atendimento é presencial em Joinville e online para quem está em outras cidades ou prefere não se deslocar. Boa parte das práticas, como o diálogo terapêutico, a PNL, o relaxamento e a hipnose, pode ser conduzida por videochamada (Google Meet), com a mesma atenção do presencial. Basta um lugar tranquilo e uma conexão estável. Fale com o Marco para saber qual formato faz mais sentido para o seu caso.",
   },
   {
     pergunta: "E se eu não “ver” nada durante uma regressão?",

@@ -5,7 +5,7 @@ import type { PerguntaFrequente } from "@/content/faq";
 import { temEndereco, pendente } from "@/lib/site";
 
 // — Horário de funcionamento em formato schema.org (a partir do texto
-//   livre em clinica.horarios, ex.: "Segunda a sexta" / "9h às 18h"). —
+//   livre em clinica.horarios, ex.: "Segunda a sexta" / "8h às 18h"). —
 const DIAS: Record<string, string> = {
   domingo: "Sunday", segunda: "Monday", terça: "Tuesday", terca: "Tuesday",
   quarta: "Wednesday", quinta: "Thursday", sexta: "Friday",
@@ -191,6 +191,7 @@ export function serviceJsonLd(slug: string) {
     "@context": "https://schema.org",
     "@type": "Service",
     name: t.nome,
+    ...(t.outrosNomes?.length ? { alternateName: t.outrosNomes } : {}),
     serviceType: t.nome,
     description: t.metaDescription,
     provider: { "@id": ID_EMPRESA },

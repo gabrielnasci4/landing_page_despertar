@@ -44,6 +44,8 @@ export default async function TerapiaPage({
   if (!t) notFound();
 
   const cidade = clinica.endereco.cidade;
+  // Título principal: "Hipnose Clínica e Hipnoterapia" (quando há outro nome).
+  const titulo = t.outrosNomes?.length ? `${t.nome} e ${t.outrosNomes[0]}` : t.nome;
   // "Continue explorando": as relacionadas definidas em terapias.ts
   // (ou, se não houver, as primeiras da lista).
   const outras = (
@@ -91,13 +93,15 @@ export default async function TerapiaPage({
                 mas em tamanho menor, para o visual continuar igual.
               */}
               <h1 className="mt-5 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">
-                {t.nome}{" "}
+                {titulo}{" "}
                 <span className="mt-2 block font-display text-2xl italic text-[var(--color-ink-soft)] sm:text-3xl">
                   em {cidade}
                 </span>
               </h1>
               <p className="mt-4 text-sm font-semibold uppercase tracking-[0.12em] text-[var(--color-ink-soft)]">
-                Atendimento presencial e online
+                {t.soPresencial
+                  ? `Atendimento presencial em ${cidade}`
+                  : `Atendimento presencial em ${cidade} e online para outras cidades`}
               </p>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
                 {t.resumo}
@@ -177,26 +181,28 @@ export default async function TerapiaPage({
 
         {/* Como funciona */}
         <h2 className="mt-14 text-2xl text-[var(--color-twilight)] sm:text-3xl">
-          Como acontece na prática
+          O que esperar
         </h2>
         <p className="mt-5 text-[1.08rem] leading-relaxed text-[var(--color-ink)]">
           {t.comoFunciona}
         </p>
         <p className="mt-5 text-[1.08rem] leading-relaxed text-[var(--color-ink)]">
           Os atendimentos acontecem presencialmente em {cidade}, na{" "}
-          {clinica.nomeExtenso}, e também online. {t.nome} faz parte da{" "}
-          <Link
-            href="/parapsicologia-clinica"
-            className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
-          >
-            Parapsicologia Clínica
-          </Link>
-          , a abordagem que integra as práticas conduzidas por{" "}
+          {clinica.nomeExtenso}
+          {t.soPresencial ? "" : ", e também online para quem está em outras cidades"}
+          . {t.nome} é uma das práticas integradas ao trabalho de{" "}
           <Link
             href="/sobre"
             className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
           >
             Marco Sadério
+          </Link>
+          ,{" "}
+          <Link
+            href="/parapsicologia-clinica"
+            className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
+          >
+            parapsicólogo clínico em {cidade}
           </Link>
           .
         </p>
@@ -209,8 +215,8 @@ export default async function TerapiaPage({
             Ficou com vontade de experimentar?
           </h2>
           <p className="mx-auto mt-3 max-w-md text-[var(--color-ink-soft)]">
-            Converse com o Marco pelo WhatsApp, com atendimento em {cidade} e
-            online. Sem compromisso.
+            Converse com o Marco pelo WhatsApp, com atendimento em {cidade}
+            {t.soPresencial ? "" : " e online"}. Sem compromisso.
           </p>
           <div className="mt-6 flex justify-center">
             <CtaWhatsapp

@@ -9,9 +9,9 @@ import { terapias } from "@/content/terapias";
 import { clinica } from "@/content/clinica";
 
 export const metadata = metadadosPagina({
-  tituloCompleto: "Parapsicologia Clínica em Joinville | Marco Sadério",
+  tituloCompleto: "Parapsicólogo Clínico em Joinville | Marco Sadério",
   descricao:
-    "Conheça a Parapsicologia Clínica com Marco Sadério em Joinville. Atendimento presencial com acolhimento e abordagens integrativas. Agende sua conversa.",
+    "Marco Sadério, parapsicólogo clínico em Joinville. Atendimento presencial e online para outras cidades, com acolhimento e práticas integrativas. Agende.",
   caminho: "/parapsicologia-clinica",
 });
 
@@ -26,23 +26,23 @@ export default function ParapsicologiaPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { nome: "Início", url: "/" },
-          { nome: "A abordagem", url: "/parapsicologia-clinica" },
+          { nome: "Parapsicólogo Clínico", url: "/parapsicologia-clinica" },
         ])}
       />
 
       <section className="grain relative overflow-hidden bg-[var(--color-amethyst-tint)]">
         <div className="relative z-10 mx-auto max-w-3xl px-5 py-16 text-center sm:px-8 sm:py-24">
-          <Eyebrow className="justify-center">A abordagem</Eyebrow>
+          <Eyebrow className="justify-center">Parapsicologia Clínica</Eyebrow>
           <h1 className="mt-5 text-[2.4rem] leading-[1.06] sm:text-5xl lg:text-6xl">
-            Parapsicologia Clínica em {clinica.endereco.cidade}
+            Parapsicólogo Clínico em {clinica.endereco.cidade}
           </h1>
           <p className="mt-4 font-display text-2xl italic text-[var(--color-amethyst)] sm:text-3xl">
             Compreender as raízes invisíveis do que sentimos.
           </p>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-ink-soft)]">
-            Atendimento presencial em {clinica.endereco.cidade} e online com{" "}
-            {clinica.profissional.nome}, parapsicólogo clínico da{" "}
-            {clinica.nomeExtenso}.
+            {clinica.profissional.nome} é parapsicólogo clínico e conduz os
+            atendimentos da {clinica.nomeExtenso}: presencial em{" "}
+            {clinica.endereco.cidade} e online para outras cidades.
           </p>
           <div className="mt-8 flex justify-center">
             <CtaWhatsapp origem="abordagem_topo" variante="whatsapp">
@@ -143,8 +143,8 @@ export default function ParapsicologiaPage() {
         </h2>
         <p className="mt-5 text-[1.08rem] leading-relaxed text-[var(--color-ink)]">
           Conforme o momento de cada pessoa, o trabalho pode reunir recursos como{" "}
-          <Link href="/terapias/hipnose-clinica" className={linkTexto}>hipnose clínica</Link>,{" "}
-          <Link href="/terapias/regressao-de-memorias" className={linkTexto}>regressão de memórias</Link>,{" "}
+          <Link href="/terapias/hipnose-clinica" className={linkTexto}>hipnose clínica (hipnoterapia)</Link>,{" "}
+          <Link href="/terapias/regressao-de-memorias" className={linkTexto}>regressão de memórias (terapia regressiva)</Link>,{" "}
           <Link href="/terapias/reprogramacao-mental" className={linkTexto}>reprogramação mental</Link>,{" "}
           <Link href="/terapias/pnl" className={linkTexto}>PNL</Link>,{" "}
           <Link href="/terapias/reiki" className={linkTexto}>Reiki</Link>, relaxamento
@@ -186,7 +186,7 @@ export default function ParapsicologiaPage() {
 
         {/* Onde */}
         <h2 className="mt-14 text-2xl text-[var(--color-twilight)] sm:text-3xl">
-          Atendimento presencial em {clinica.endereco.cidade}
+          Presencial em {clinica.endereco.cidade} e online para outras cidades
         </h2>
         <p className="mt-5 text-[1.08rem] leading-relaxed text-[var(--color-ink)]">
           O consultório fica na {enderecoLinha()}.

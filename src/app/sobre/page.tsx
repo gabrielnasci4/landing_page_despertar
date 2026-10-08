@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { Eyebrow } from "@/components/ui";
@@ -57,7 +58,14 @@ export default function SobrePage() {
               que mais conecta com quem lê. Veja COMO-EDITAR.md.
             */}
             <p>
-              Sou {p.nome}, {p.titulo.toLowerCase()}, e dedico o meu trabalho a
+              Sou {p.nome},{" "}
+              <Link
+                href="/parapsicologia-clinica"
+                className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
+              >
+                {p.titulo.toLowerCase()} em {clinica.endereco.cidade}
+              </Link>
+              , e dedico o meu trabalho a
               acompanhar pessoas em processos de autoconhecimento, equilíbrio
               emocional e bem-estar. Acredito que cada um de nós carrega, dentro
               de si, os recursos para compreender e ressignificar aquilo que nos

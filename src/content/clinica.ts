@@ -85,7 +85,7 @@ export const clinica = {
   // — Horários de atendimento —
   // Cada linha: dia(s) e horário. Deixe a lista vazia [] para esconder.
   horarios: [
-    { dias: "Segunda a sexta", horario: "9h às 18h" },
+    { dias: "Segunda a sexta", horario: "8h às 18h" },
   ],
 
   // — Redes sociais —
