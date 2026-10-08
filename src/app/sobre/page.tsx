@@ -9,7 +9,8 @@ import { formacao, instituicaoTexto } from "@/content/formacao";
 import { metadadosPagina } from "@/lib/seo";
 
 export const metadata = metadadosPagina({
-  titulo: "Marco Sadério, Parapsicólogo Clínico em Joinville",
+  // "Parapsicólogo Clínico em Joinville" fica só com /parapsicologia-clinica.
+  tituloCompleto: "Marco Sadério | Formação e trajetória | Despertar ParaPSI",
   descricao:
     "Conheça Marco Sadério, parapsicólogo clínico em Joinville: formação, valores e a forma de atender, com acolhimento e sigilo. Agende uma conversa pelo WhatsApp.",
   caminho: "/sobre",
@@ -41,13 +42,15 @@ export default function SobrePage() {
         <div data-reveal>
           <Eyebrow>Quem conduz o seu processo</Eyebrow>
           {/*
-            O cargo e a cidade ficam DENTRO do h1 (o Google lê o h1 inteiro),
-            mas com estilo menor, para o visual continuar com o nome em destaque.
+            h1: "Marco Sadério – formação e trajetória". O termo
+            "Parapsicólogo Clínico em Joinville" fica com a página
+            /parapsicologia-clinica (aqui ele aparece só no texto).
           */}
           <h1 className="mt-5 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">
-            {p.nome}{" "}
+            {p.nome}
+            <span className="sr-only"> – </span>
             <span className="mt-3 block font-display text-xl italic text-[var(--color-amethyst)] sm:text-2xl">
-              {p.titulo} em {clinica.endereco.cidade}
+              Formação e trajetória
             </span>
           </h1>
 
