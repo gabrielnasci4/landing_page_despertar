@@ -74,7 +74,9 @@ export const clinica = {
 
   // Tour virtual 360° da clínica (Street View do Google). Deixe "" para esconder.
   tourVirtual:
-    "https://www.google.com/maps/@-26.312575,-48.8450751,3a,75y,137.35h,74.27t/data=!3m7!1e1!3m5!1sCIABIhCoMGoPSiBLKjtxrLlexMZQ!2e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgpms-cs-s%2FAFP8RcOyKHqmeq99fUbgeN18FCPIlWvDiHCwlur60VRzBosuuTjvs5uCLTVksAQuhqfeNVAZKIIDjhqRaJmnk5uGWLICv1Jue-l0-sxF0S6zPUiZeVkUIROQd2qZ2XmfFwFjaV3aZXAs96sQ0HNQ%3Dw900-h600-k-no-pi15.733438988891152-ya171.54626255290174-ro0-fo100!7i12000!8i6000?entry=ttu",
+    "https://www.google.com/maps/@-26.3126306,-48.8453667,3a,75y,75.8h,90t/data=!3m4!1e1!3m2!1sCIABIhDEq-lH6Kyqiju8vcWdMH8w!2e10",
+  tourVirtualRotulo: "Conheça nossa clínica em 360°",
+  tourVirtualDescricao: "Abre o tour no Google Maps em uma nova aba.",
 
   // Atende presencial, online, ou os dois? true = sim.
   atendePresencial: true,

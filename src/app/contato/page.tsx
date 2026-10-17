@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/ContactForm";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
+import { CtaTour360 } from "@/components/CtaTour360";
 import { Eyebrow } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
@@ -109,6 +110,7 @@ export default function ContatoPage() {
                 Ver como chegar no mapa →
               </a>
             )}
+            <CtaTour360 fullWidth />
           </div>
 
           {/* Formulário */}

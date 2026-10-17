@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CtaWhatsapp } from "@/components/CtaWhatsapp";
+import { CtaTour360 } from "@/components/CtaTour360";
 import { PhotoSlot } from "@/components/PhotoSlot";
 import { Eyebrow, DisclaimerNote } from "@/components/ui";
 import { TherapyGrid } from "@/components/sections/TherapyGrid";
@@ -66,6 +67,9 @@ export default function Home() {
               >
                 Conhecer as terapias
               </Link>
+            </div>
+            <div className="mt-3">
+              <CtaTour360 />
             </div>
           </div>
 
