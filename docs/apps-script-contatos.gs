@@ -25,18 +25,30 @@
   ============================================================
 */
 
+// Responde "ok" SOMENTE depois que a linha foi gravada na planilha.
+// Qualquer erro na gravação responde "erro" (o site então não mostra
+// "Recebemos o seu contato"). Falha só no e-mail NÃO desfaz o "ok":
+// o contato já está salvo na planilha.
 function doPost(e) {
-  var aba = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-  if (aba.getLastRow() === 0) {
-    aba.appendRow(["Data", "Nome", "WhatsApp/telefone", "Interesse", "Mensagem"]);
+  var nome, tel, interesse, msg, quando;
+  try {
+    var aba = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    if (aba.getLastRow() === 0) {
+      aba.appendRow(["Data", "Nome", "WhatsApp/telefone", "Interesse", "Mensagem"]);
+    }
+    var d = JSON.parse(e.postData.contents);
+    nome = limpo(d.nome, 120);
+    tel = limpo(d.telefone, 40);
+    if (!nome || !tel) return ContentService.createTextOutput("ignorado");
+    interesse = limpo(d.interesse, 120);
+    msg = limpo(d.mensagem, 2000);
+    quando = Utilities.formatDate(new Date(), "America/Sao_Paulo", "dd/MM/yyyy HH:mm");
+    aba.appendRow([quando, nome, tel, interesse, msg]);
+    SpreadsheetApp.flush(); // garante que a linha foi escrita
+  } catch (err) {
+    return ContentService.createTextOutput("erro");
   }
   try {
-    var d = JSON.parse(e.postData.contents);
-    var nome = limpo(d.nome, 120), tel = limpo(d.telefone, 40);
-    if (!nome || !tel) return ContentService.createTextOutput("ignorado");
-    var interesse = limpo(d.interesse, 120), msg = limpo(d.mensagem, 2000);
-    var quando = Utilities.formatDate(new Date(), "America/Sao_Paulo", "dd/MM/yyyy HH:mm");
-    aba.appendRow([quando, nome, tel, interesse, msg]);
     MailApp.sendEmail(
       "despertarparapsi@gmail.com",
       "Novo contato pelo site: " + nome,
@@ -46,7 +58,9 @@ function doPost(e) {
       "Interesse: " + (interesse || "não informado") + "\n" +
       "Mensagem: " + (msg || "(sem mensagem)")
     );
-  } catch (err) {}
+  } catch (err) {
+    // e-mail falhou, mas o contato está salvo na planilha
+  }
   return ContentService.createTextOutput("ok");
 }
 

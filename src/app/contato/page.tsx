@@ -19,13 +19,11 @@ export const metadata = metadadosPagina({
 export default function ContatoPage() {
   const horariosValidos = clinica.horarios.filter((h) => !pendente(h.horario));
   const e = clinica.endereco;
-  // Endereço do tour 360° (Street View do Google) montado a partir das
-  // coordenadas do PONTO DO TOUR (dentro da clínica), que são um pouco
-  // diferentes do pino do Google Meu Negócio. O "137.35" é só o ângulo
-  // inicial da câmera.
+  // Quadro do tour 360° (Street View do Google), começando na entrada
+  // da clínica: mesmo ponto e direção do link "tourVirtual".
   const tourEmbed =
     e.tourLatitude && e.tourLongitude
-      ? `https://www.google.com/maps/embed?pb=!6m7!1m6!2m2!1d${e.tourLatitude}!2d${e.tourLongitude}!3f137.35!4f-0!5f1`
+      ? `https://www.google.com/maps/embed?pb=!6m7!1m6!2m2!1d${e.tourLatitude}!2d${e.tourLongitude}!3f${e.tourDirecao}!4f0!5f1`
       : "";
 
   return (

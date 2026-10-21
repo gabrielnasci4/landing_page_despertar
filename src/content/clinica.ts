@@ -63,11 +63,13 @@ export const clinica = {
     // Coordenadas do pino da clínica no Google Maps (dados para o Google).
     latitude: "-26.31258",
     longitude: "-48.8453314",
-    // Coordenadas da FOTO 360° (tour virtual). São diferentes das de
-    // cima de propósito: é o ponto exato onde a foto foi tirada. Se
-    // mudar, o quadro do tour pode passar a mostrar a rua.
-    tourLatitude: "-26.312575",
-    tourLongitude: "-48.8450751",
+    // Ponto de INÍCIO do tour 360° no quadro da página de contato: a
+    // entrada da clínica (portão do 567), o mesmo ponto do link
+    // "tourVirtual" abaixo. Os três valores vêm desse link:
+    // .../maps/@LATITUDE,LONGITUDE,3a,75y,DIREÇÃOh,...
+    tourLatitude: "-26.3126306",
+    tourLongitude: "-48.8453667",
+    tourDirecao: "75.8", // para onde a câmera aponta ao abrir (graus)
     // Link para o botão "Como chegar" (perfil do Google do Marco).
     linkMapa: "https://share.google/0zdUJUY7Ejjeo3TGY",
   },

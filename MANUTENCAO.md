@@ -137,10 +137,26 @@ já preenchido — se a pessoa desistir de mandar, o contato se perde.
 
 ## 7. Analytics e SEO
 
+- **Microsoft Clarity (em uso):** recebe os eventos abaixo (só o nome,
+  sem dados pessoais e sem a terapia de interesse). No painel, filtre
+  as sessões pelo nome do evento (eventos personalizados / "Custom
+  events"). Vale só daqui para frente; não há dados antigos.
+  - `capsula_link_aberto`: abriu o site pelo link `/#capsula`
+    (o divulgado). Clicar em "Mensagem do dia" no menu não conta.
+  - `capsula_vista`: a mensagem do dia ficou pelo menos metade visível
+    por 1 segundo (uma vez por visita à página).
+  - `capsula_sorteada`: clicou em "Tirar outra mensagem".
+  - `clique_whatsapp`: clicou em um botão de WhatsApp.
+  - `formulario_whatsapp_aberto`: enviou o formulário e o WhatsApp
+    abriu. NÃO é contato confirmado (a pessoa ainda precisa tocar em
+    Enviar no WhatsApp).
+  - `envio_formulario`: contato GRAVADO na planilha (só existe quando a
+    planilha estiver ligada).
+  - `quiz_concluido`, `autoteste_concluido`, `autoteste_compartilhado`.
 - **GA4:** crie a propriedade, pegue o ID `G-XXXX` e defina
   `NEXT_PUBLIC_GA_ID`. Só carrega após o consentimento de cookies.
-  Eventos já disparados: `clique_whatsapp` (com a origem),
-  `envio_formulario`, `quiz_concluido`.
+  Recebe os mesmos eventos; o único parâmetro permitido é `origem`
+  (onde fica o botão), definido em `src/lib/analytics.ts`.
 - **Meta Pixel:** defina `NEXT_PUBLIC_META_PIXEL_ID` para remarketing.
 - **Google Search Console** (https://search.google.com/search-console):
   adicione o domínio e envie `https://SEU_DOMINIO/sitemap.xml`.

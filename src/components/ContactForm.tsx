@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { terapias } from "@/content/terapias";
 import { clinica } from "@/content/clinica";
@@ -31,12 +31,16 @@ import { WEBHOOK_PLANILHA } from "@/lib/ferramentas";
 export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string }) {
   const router = useRouter();
   const [enviando, setEnviando] = useState(false);
+  // Trava imediata contra clique duplo (o "enviando" demora um instante
+  // para valer na tela).
+  const travado = useRef(false);
   const [erro, setErro] = useState("");
   // Mostrado quando o WhatsApp abriu mas o registro não foi confirmado.
   const [linkAberto, setLinkAberto] = useState("");
 
   async function aoEnviar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (travado.current) return;
     setErro("");
     const form = e.currentTarget;
     const dados = new FormData(form);
@@ -53,6 +57,7 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
       return;
     }
 
+    travado.current = true;
     setEnviando(true);
     setLinkAberto("");
 
@@ -67,7 +72,9 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
     //    depois de uma espera, o celular pode bloquear a janela.
     const link = linkWhatsApp(textoWpp);
     window.open(link, "_blank", "noopener,noreferrer");
-    track("envio_formulario", { interesse: interesse || "nao_informado" });
+    // Só registra que o WhatsApp foi aberto: NÃO é contato confirmado
+    // e NÃO leva a terapia de interesse (dado sensível).
+    track("formulario_whatsapp_aberto");
 
     // 2) Grava o contato na planilha e espera a CONFIRMAÇÃO ("ok").
     //    text/plain evita a checagem extra do navegador (CORS); o
@@ -89,9 +96,12 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
 
     // 3) Só vai para "Recebemos o seu contato" se a planilha confirmou.
     if (confirmado) {
+      // Contato realmente gravado na planilha.
+      track("envio_formulario");
       router.push("/obrigado");
       return;
     }
+    travado.current = false;
     setEnviando(false);
     setLinkAberto(link);
   }

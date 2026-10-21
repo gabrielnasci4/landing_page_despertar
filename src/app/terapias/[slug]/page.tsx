@@ -108,7 +108,7 @@ export default async function TerapiaPage({
               </p>
               <div className="mt-8">
                 <CtaWhatsapp
-                  origem={`terapia_${t.slug}_topo`}
+                  origem="terapia_topo"
                   mensagem={mensagemTerapia(t.nome)}
                   variante="whatsapp"
                 >
@@ -170,7 +170,7 @@ export default async function TerapiaPage({
             Quer entender se {t.nome} faz sentido para o seu momento?
           </p>
           <CtaWhatsapp
-            origem={`terapia_${t.slug}_meio`}
+            origem="terapia_meio"
             mensagem={mensagemTerapia(t.nome)}
             variante="whatsapp"
             className="shrink-0"
@@ -220,7 +220,7 @@ export default async function TerapiaPage({
           </p>
           <div className="mt-6 flex justify-center">
             <CtaWhatsapp
-              origem={`terapia_${t.slug}_fim`}
+              origem="terapia_fim"
               mensagem={mensagemTerapia(t.nome)}
               variante="whatsapp"
             >

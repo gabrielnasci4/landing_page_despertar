@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { frases } from "@/content/frases";
 import { track } from "@/lib/analytics";
 
@@ -13,6 +13,63 @@ import { track } from "@/lib/analytics";
 export function FrasesCard() {
   const [indice, setIndice] = useState(0);
   const [girando, setGirando] = useState(false);
+  const cartao = useRef<HTMLDivElement>(null);
+
+  /*
+    Medição no Clarity (sem enviar o texto da mensagem):
+    • "capsula_link_aberto": a pessoa ABRIU o site pelo link
+      despertarparapsi.com.br/#capsula (o que o Marco divulga). Clicar
+      em "Mensagem do dia" dentro do site não conta.
+    • "capsula_vista": a mensagem ficou pelo menos metade visível por
+      1 segundo, com a aba aberta. Conta uma vez por visita à página.
+  */
+  useEffect(() => {
+    const entrada = performance.getEntriesByType("navigation")[0];
+    if (entrada) {
+      const url = new URL(entrada.name);
+      if (url.pathname === "/" && url.hash === "#capsula") track("capsula_link_aberto");
+    }
+
+    const el = cartao.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    let timer: number | undefined;
+    let visivel = false;
+    let contou = false;
+    const parar = () => {
+      window.clearTimeout(timer);
+      timer = undefined;
+    };
+    const tentar = () => {
+      if (contou || timer !== undefined) return;
+      if (!visivel || document.visibilityState !== "visible") return;
+      timer = window.setTimeout(() => {
+        timer = undefined;
+        if (contou || !visivel || document.visibilityState !== "visible") return;
+        contou = true;
+        track("capsula_vista");
+        observador.disconnect();
+      }, 1000);
+    };
+    const observador = new IntersectionObserver(
+      ([item]) => {
+        visivel = item.isIntersecting && item.intersectionRatio >= 0.5;
+        if (visivel) tentar();
+        else parar();
+      },
+      { threshold: [0, 0.5] },
+    );
+    const aoMudarAba = () => {
+      if (document.visibilityState === "visible") tentar();
+      else parar();
+    };
+    observador.observe(el);
+    document.addEventListener("visibilitychange", aoMudarAba);
+    return () => {
+      parar();
+      observador.disconnect();
+      document.removeEventListener("visibilitychange", aoMudarAba);
+    };
+  }, []);
 
   // Sorteia uma frase diferente já ao abrir a página (feito só no
   // navegador para não dar conflito de renderização).
@@ -28,7 +85,7 @@ export function FrasesCard() {
       novo = Math.floor(Math.random() * frases.length);
     }
     setGirando(true);
-    track("frase_sorteada");
+    track("capsula_sorteada");
     window.setTimeout(() => {
       setIndice(novo);
       setGirando(false);
@@ -37,7 +94,9 @@ export function FrasesCard() {
 
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-dawn-line)] bg-[var(--color-dawn)] px-7 py-12 shadow-sm sm:px-14 sm:py-16">
+      <div
+        ref={cartao}
+        className="relative overflow-hidden rounded-[2rem] border border-[var(--color-dawn-line)] bg-[var(--color-dawn)] px-7 py-12 shadow-sm sm:px-14 sm:py-16">
         <span
           className="font-display text-5xl leading-none text-[var(--color-gold)]"
           aria-hidden="true"
