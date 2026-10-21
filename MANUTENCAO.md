@@ -143,15 +143,19 @@ já preenchido — se a pessoa desistir de mandar, o contato se perde.
   events"). Vale só daqui para frente; não há dados antigos.
   - `capsula_link_aberto`: abriu o site pelo link `/#capsula`
     (o divulgado). Clicar em "Mensagem do dia" no menu não conta.
-  - `capsula_vista`: a mensagem do dia ficou pelo menos metade visível
-    por 1 segundo (uma vez por visita à página).
-  - `capsula_sorteada`: clicou em "Tirar outra mensagem".
+  - `capsula_visualizada`: a mensagem do dia ficou pelo menos metade
+    visível por 1 segundo seguido, com a aba aberta.
+    (Esses dois contam no máximo uma vez por visita.)
+  - `frase_sorteada`: clicou em "Tirar outra mensagem".
   - `clique_whatsapp`: clicou em um botão de WhatsApp.
-  - `formulario_whatsapp_aberto`: enviou o formulário e o WhatsApp
-    abriu. NÃO é contato confirmado (a pessoa ainda precisa tocar em
-    Enviar no WhatsApp).
+  - `contato_tentativa`: enviou o formulário (dados válidos).
+  - `whatsapp_abertura_solicitada` / `whatsapp_abertura_falhou`: o site
+    pediu ao navegador para abrir o WhatsApp (ou deu erro). NÃO é
+    contato confirmado: a pessoa ainda precisa tocar em Enviar lá.
   - `envio_formulario`: contato GRAVADO na planilha (só existe quando a
-    planilha estiver ligada).
+    planilha estiver ligada; hoje nunca acontece).
+  - Não some os "Smart Events" automáticos do Clarity (formulário,
+    cliques) a estes, como se fossem contatos a mais.
   - `quiz_concluido`, `autoteste_concluido`, `autoteste_compartilhado`.
 - **GA4:** crie a propriedade, pegue o ID `G-XXXX` e defina
   `NEXT_PUBLIC_GA_ID`. Só carrega após o consentimento de cookies.

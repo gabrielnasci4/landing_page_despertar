@@ -38,6 +38,18 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
   // Mostrado quando o WhatsApp abriu mas o registro não foi confirmado.
   const [linkAberto, setLinkAberto] = useState("");
 
+  // Pede ao navegador para abrir o WhatsApp. Não dá para confirmar que
+  // abriu de fato (com "noopener" o navegador não informa), por isso o
+  // evento é "abertura SOLICITADA".
+  function abrirWhatsApp(link: string) {
+    try {
+      window.open(link, "_blank", "noopener,noreferrer");
+      track("whatsapp_abertura_solicitada");
+    } catch {
+      track("whatsapp_abertura_falhou");
+    }
+  }
+
   async function aoEnviar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (travado.current) return;
@@ -70,11 +82,11 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
 
     // 1) Abre o WhatsApp JÁ (antes de esperar a planilha): se abrir
     //    depois de uma espera, o celular pode bloquear a janela.
+    //    Os eventos NÃO são contato confirmado e NÃO levam a terapia de
+    //    interesse nem dados pessoais.
     const link = linkWhatsApp(textoWpp);
-    window.open(link, "_blank", "noopener,noreferrer");
-    // Só registra que o WhatsApp foi aberto: NÃO é contato confirmado
-    // e NÃO leva a terapia de interesse (dado sensível).
-    track("formulario_whatsapp_aberto");
+    track("contato_tentativa");
+    abrirWhatsApp(link);
 
     // 2) Grava o contato na planilha e espera a CONFIRMAÇÃO ("ok").
     //    text/plain evita a checagem extra do navegador (CORS); o
@@ -178,17 +190,18 @@ export function ContactForm({ interessePadrao = "" }: { interessePadrao?: string
           role="status"
           className="rounded-xl border border-[var(--color-dawn-line)] bg-[var(--color-dawn-deep)] p-4 text-sm leading-relaxed text-[var(--color-ink)]"
         >
-          Abrimos o WhatsApp com a sua mensagem pronta. Para o Marco receber,
-          toque em <strong>Enviar</strong> lá no WhatsApp. Se a janela não
-          abriu,{" "}
-          <a
-            href={linkAberto}
-            target="_blank"
-            rel="noopener noreferrer"
+          Estamos abrindo o WhatsApp com a sua mensagem pronta. Para o Marco
+          receber, toque em <strong>Enviar</strong> lá no WhatsApp. Se a
+          janela não abriu,{" "}
+          {/* Botão (e não link) para o endereço com nome e mensagem da
+              pessoa não ficar escrito na página. */}
+          <button
+            type="button"
+            onClick={() => abrirWhatsApp(linkAberto)}
             className="font-semibold text-[var(--color-amethyst)] underline underline-offset-4"
           >
             toque aqui
-          </a>
+          </button>
           .
         </div>
       )}

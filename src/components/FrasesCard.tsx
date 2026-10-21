@@ -10,6 +10,11 @@ import { track } from "@/lib/analytics";
   outra", sorteia uma frase diferente — como o cartãozinho que o
   Marco entrega em mãos.
 */
+// Uma visita = esta aba desde que o site foi aberto/recarregado. Ir para
+// outra página e voltar para a home (sem recarregar) não conta de novo.
+let linkContado = false;
+let vistaContada = false;
+
 export function FrasesCard() {
   const [indice, setIndice] = useState(0);
   const [girando, setGirando] = useState(false);
@@ -20,33 +25,37 @@ export function FrasesCard() {
     • "capsula_link_aberto": a pessoa ABRIU o site pelo link
       despertarparapsi.com.br/#capsula (o que o Marco divulga). Clicar
       em "Mensagem do dia" dentro do site não conta.
-    • "capsula_vista": a mensagem ficou pelo menos metade visível por
-      1 segundo, com a aba aberta. Conta uma vez por visita à página.
+    • "capsula_visualizada": a mensagem ficou pelo menos metade visível
+      por 1 segundo seguido, com a aba aberta.
+    Os dois contam no máximo uma vez por visita. Não medem qual
+    mensagem foi vista nem pessoas únicas.
   */
   useEffect(() => {
     const entrada = performance.getEntriesByType("navigation")[0];
-    if (entrada) {
+    if (entrada && !linkContado) {
       const url = new URL(entrada.name);
-      if (url.pathname === "/" && url.hash === "#capsula") track("capsula_link_aberto");
+      if (url.pathname === "/" && url.hash === "#capsula") {
+        linkContado = true;
+        track("capsula_link_aberto");
+      }
     }
 
     const el = cartao.current;
-    if (!el || !("IntersectionObserver" in window)) return;
+    if (!el || vistaContada || !("IntersectionObserver" in window)) return;
     let timer: number | undefined;
     let visivel = false;
-    let contou = false;
     const parar = () => {
       window.clearTimeout(timer);
       timer = undefined;
     };
     const tentar = () => {
-      if (contou || timer !== undefined) return;
+      if (vistaContada || timer !== undefined) return;
       if (!visivel || document.visibilityState !== "visible") return;
       timer = window.setTimeout(() => {
         timer = undefined;
-        if (contou || !visivel || document.visibilityState !== "visible") return;
-        contou = true;
-        track("capsula_vista");
+        if (vistaContada || !visivel || document.visibilityState !== "visible") return;
+        vistaContada = true;
+        track("capsula_visualizada");
         observador.disconnect();
       }, 1000);
     };
@@ -85,7 +94,7 @@ export function FrasesCard() {
       novo = Math.floor(Math.random() * frases.length);
     }
     setGirando(true);
-    track("capsula_sorteada");
+    track("frase_sorteada");
     window.setTimeout(() => {
       setIndice(novo);
       setGirando(false);
